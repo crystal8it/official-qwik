@@ -1,0 +1,13 @@
+.entryAnimation {
+  animation: backgroundEntry 0.5s ease-in;
+}
+
+@keyframes backgroundEntry {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

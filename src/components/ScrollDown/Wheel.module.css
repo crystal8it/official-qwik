@@ -1,0 +1,43 @@
+.textCenter {
+  text-align: center;
+  margin: 5px 0;
+}
+
+.mouseBody {
+  border-style: solid;
+  border-width: 2px;
+  border-color: #888;
+  border-radius: 32px;
+  margin-top: calc(100vh - 150px);
+  height: 43px;
+  width: 23px;
+  margin: 0 auto;
+}
+
+.mouseWheel {
+  border-style: solid;
+  border-width: 2px;
+  border-color: #888;
+  border-radius: 8px;
+  background-color: #888;
+  position: relative;
+  height: 3px;
+  width: 3px;
+  margin: 0 auto;
+  animation: wheel_animation 1.5s linear infinite;
+}
+
+@keyframes wheel_animation {
+  0% {
+    opacity: 0;
+    top: 2px;
+  }
+  50% {
+    opacity: 1;
+    top: 50%;
+  }
+  100% {
+    opacity: 0;
+    top: 33px;
+  }
+}
