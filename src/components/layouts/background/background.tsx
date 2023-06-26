@@ -54,21 +54,29 @@ const Background = component$(() => {
     const getNextColor = getColorTransition('#151934', '#440044', 20000);
     const getNextColorReverse = getColorTransition('#440044', '#151934', 20000);
 
+    // aniamtion time
+    const duration = 1500;
+    let startTime: null | DOMHighResTimeStamp;
+
     // line animation
     const startX = windowWidth.value - 450;
     const startY = 0;
     const endX = 0 + 450;
     const endY = windowHeight.value;
 
-    const duration = 1000;
     const distanceX = (endX - startX) / duration;
     const distanceY = (endY - startY) / duration;
 
-    // aniamtion time
-    let startTime: null | DOMHighResTimeStamp;
-
     // opacity
     let opacity = 0;
+
+    // lineCirclePoints
+    const numPoints = 100;
+    const points = drawLineCirclePoints(
+      numPoints,
+      windowWidth.value / 2,
+      windowHeight.value / 2
+    );
 
     const draw = (timestamp?: DOMHighResTimeStamp) => {
       if (!timestamp) timestamp = window.performance.now();
@@ -84,8 +92,18 @@ const Background = component$(() => {
       const lineCurrentX = startX + distanceX * elapsedTime;
       const lineCurrentY = startY + distanceY * elapsedTime;
 
+      const numCompletedPoints = Math.ceil(
+        (elapsedTime / duration) * numPoints
+      );
+
       if (lineCurrentX > endX || lineCurrentY < endY) {
+        ctx.setLineDash([1, 10]);
+        ctx.lineDashOffset = 0;
+
         drawLine(ctx, windowWidth.value - 450, 0, lineCurrentX, lineCurrentY);
+        drawLineCircle(ctx, points, numCompletedPoints);
+
+        ctx.setLineDash([]);
       } else {
         if (opacity < 1) opacity += 0.01;
 
@@ -197,6 +215,7 @@ function drawLine(
 ): void {
   ctx.beginPath();
   ctx.moveTo(startX, startY);
+  ctx.lineWidth = 2;
   ctx.lineTo(endX, endY);
   ctx.strokeStyle = '#fff';
   ctx.stroke();
@@ -218,6 +237,47 @@ function drawRect(
 
   ctx.fillStyle = linearGradient;
   ctx.fillRect(0, 0, endX, endY);
+}
+
+function drawLineCirclePoints(
+  numPoints: number = 200,
+  centerX: number,
+  centerY: number
+) {
+  const radius = 300;
+
+  const startAngle = 0;
+  const endAngle = Math.PI * 2;
+
+  const angleIncrement = (endAngle - startAngle) / numPoints;
+  const points = [];
+
+  for (let i = 0; i <= numPoints; i++) {
+    const angle = startAngle + i * angleIncrement;
+    const x = centerX + radius * Math.cos(angle);
+    const y = centerY + radius * Math.sin(angle);
+    points.push({ x: x, y: y });
+  }
+
+  return points;
+}
+
+function drawLineCircle(
+  ctx: CanvasRenderingContext2D,
+  points: { x: number; y: number }[],
+  numCompletedPoints: number
+) {
+  ctx.beginPath();
+  ctx.moveTo(points[0].x, points[0].y);
+  ctx.lineWidth = 3;
+
+  for (let i = 1; i <= numCompletedPoints; i++) {
+    ctx.lineTo(points[i].x, points[i].y);
+  }
+  ctx.lineDashOffset = 0;
+
+  ctx.strokeStyle = '#999';
+  ctx.stroke();
 }
 
 function drawCircle(
