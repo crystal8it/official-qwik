@@ -6,26 +6,23 @@ import {
   useOnWindow,
 } from '@builder.io/qwik';
 import styles from './background.module.css';
+import { getColorTransition } from '~/utils';
 
 const Background = component$(() => {
   const canvasRef = useSignal<HTMLCanvasElement>();
   const windowWidth = useSignal<number>(0);
   const windowHeight = useSignal<number>(0);
-  const scrollPercent = useSignal<number>(0);
-  const nScrollPercent = useSignal<number>(1);
 
   useOnWindow(
-    'scroll',
+    'resize',
     $(() => {
-      const scrollPos = window.scrollY;
-      const maxScroll = document.body.scrollHeight - window.innerHeight;
-      scrollPercent.value = scrollPos / maxScroll;
-      nScrollPercent.value = 1 - scrollPercent.value;
+      windowWidth.value = window.screen.width;
+      windowHeight.value = window.screen.height;
     })
   );
 
   useVisibleTask$(({ track }) => {
-    track(() => canvasRef.value);
+    track(() => [canvasRef.value, windowWidth.value, windowHeight.value]);
     const canvas = canvasRef.value;
     windowWidth.value = window.screen.width;
     windowHeight.value = window.screen.height;
@@ -42,17 +39,17 @@ const Background = component$(() => {
     }
 
     const stars: [number, number, number, number, number, number][] =
-      Array.from(Array(850), () => [
+      Array.from(Array(850), (_, index: number) => [
         Math.random() * windowWidth.value,
         Math.random() * windowHeight.value,
-        Math.random() * 4 + 1,
+        index % 2 === 0 ? Math.random() * 4 + 1 : Math.random() * 5 + 1,
         (Math.random() - 0.5) * 0.5,
         (Math.random() - 0.5) * 0.5,
         Math.random() * 0.5 + 0.5,
       ]);
 
-    const getNextColor = getColorTransition('#151934', '#440044', 20000);
-    const getNextColorReverse = getColorTransition('#440044', '#151934', 20000);
+    const getNextColorLeft = getColorTransition('#5250E6', '#3CE6E6', 20000);
+    const getNextColorRight = getColorTransition('#3CE6E6', '#5250E6', 20000);
 
     // aniamtion time
     const duration = 1500;
@@ -113,7 +110,8 @@ const Background = component$(() => {
           0,
           windowWidth.value,
           windowHeight.value,
-          getNextColor().rgb,
+          getNextColorLeft().rgb,
+          getNextColorRight().rgb,
           opacity
         );
 
@@ -124,7 +122,7 @@ const Background = component$(() => {
           windowWidth.value,
           windowHeight.value,
           windowWidth.value / 2,
-          `${getNextColorReverse().rgb}`,
+          '5,7,47',
           opacity
         );
       }
@@ -162,6 +160,9 @@ const Background = component$(() => {
         stars[i] = [x, y, r, vx, vy, opacity];
       });
 
+      ctx.fillStyle = `rgba(30,30,30,${0.1 * opacity})`;
+      ctx.fillRect(0, 0, windowWidth.value, windowHeight.value);
+
       requestAnimationFrame(draw);
     };
     draw();
@@ -176,35 +177,7 @@ const Background = component$(() => {
   );
 });
 
-function getColorTransition(
-  startColor: string,
-  endColor: string,
-  duration: number
-) {
-  const start = parseInt(startColor.substr(1), 16);
-  const end = parseInt(endColor.substr(1), 16);
-  const r0 = (start >> 16) & 255;
-  const g0 = (start >> 8) & 255;
-  const b0 = start & 255;
-  const r1 = (end >> 16) & 255;
-  const g1 = (end >> 8) & 255;
-  const b1 = end & 255;
-
-  const startTime = performance.now();
-
-  return function () {
-    const elapsed = performance.now() - startTime;
-    const progress = (elapsed / duration) % 1;
-    const reversedProgress =
-      progress <= 0.5 ? progress * 2 : 1 - (progress - 0.5) * 2;
-    const r = Math.round(r0 + (r1 - r0) * reversedProgress);
-    const g = Math.round(g0 + (g1 - g0) * reversedProgress);
-    const b = Math.round(b0 + (b1 - b0) * reversedProgress);
-    const hex = `#${((r << 16) | (g << 8) | b).toString(16).padStart(6, '0')}`;
-
-    return { hex, rgb: `${r},${g},${b}` };
-  };
-}
+const gradientRgbBasis = '21,45,92';
 
 function drawLine(
   ctx: CanvasRenderingContext2D,
@@ -215,7 +188,7 @@ function drawLine(
 ): void {
   ctx.beginPath();
   ctx.moveTo(startX, startY);
-  ctx.lineWidth = 2;
+  ctx.lineWidth = 5;
   ctx.lineTo(endX, endY);
   ctx.strokeStyle = '#fff';
   ctx.stroke();
@@ -227,13 +200,14 @@ function drawRect(
   startY: number,
   endX: number,
   endY: number,
-  rgb: string,
+  lrgb: string,
+  rrgb: string,
   opacity: number = 1
 ): void {
   const linearGradient = ctx.createLinearGradient(startX, startY, endX, endY);
-  linearGradient.addColorStop(0, `rgba(${rgb},${opacity})`);
-  linearGradient.addColorStop(0.5, `rgba(255,255,255,${opacity})`);
-  linearGradient.addColorStop(1, `rgb(${rgb},${opacity})`);
+  linearGradient.addColorStop(0, `rgba(${lrgb},${opacity})`);
+  linearGradient.addColorStop(0.5, `rgba(${gradientRgbBasis},${opacity})`);
+  linearGradient.addColorStop(1, `rgb(${rrgb},${opacity})`);
 
   ctx.fillStyle = linearGradient;
   ctx.fillRect(0, 0, endX, endY);
@@ -269,14 +243,14 @@ function drawLineCircle(
 ) {
   ctx.beginPath();
   ctx.moveTo(points[0].x, points[0].y);
-  ctx.lineWidth = 3;
+  ctx.lineWidth = 6;
 
   for (let i = 1; i <= numCompletedPoints; i++) {
     ctx.lineTo(points[i].x, points[i].y);
   }
   ctx.lineDashOffset = 0;
 
-  ctx.strokeStyle = '#999';
+  ctx.strokeStyle = '#fff';
   ctx.stroke();
 }
 
@@ -303,18 +277,18 @@ function drawCircle(
   );
 
   gradient.addColorStop(0, `rgba(${gradientColor1},${opacity})`);
-  gradient.addColorStop(0.3, `rgba(255,255,255,${opacity})`);
+  gradient.addColorStop(0.3, `rgba(${gradientRgbBasis},${opacity})`);
   gradient.addColorStop(
     0.4,
-    `rgba(255,255,255,${opacity >= 0.5 ? 0.5 : opacity})`
+    `rgba(${gradientRgbBasis},${opacity >= 0.5 ? 0.5 : opacity})`
   );
   gradient.addColorStop(
     0.5,
-    `rgba(255,255,255,${opacity >= 0.3 ? 0.3 : opacity})`
+    `rgba(${gradientRgbBasis},${opacity >= 0.3 ? 0.3 : opacity})`
   );
   gradient.addColorStop(
     0.6,
-    `rgba(255,255,255,${opacity >= 0.1 ? 0.1 : opacity})`
+    `rgba(${gradientRgbBasis},${opacity >= 0.1 ? 0.1 : opacity})`
   );
   gradient.addColorStop(1, `transparent`);
 

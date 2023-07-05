@@ -1,0 +1,82 @@
+.home {
+  position: relative;
+  height: 100%;
+  transition: all 0.6s ease-in;
+  z-index: -1;
+}
+
+.home-section {
+  width: var(--section-width);
+}
+
+.scroll-snap-type-y-mandatory {
+  height: 100%;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  z-index: 0;
+}
+
+.scroll-snap-type-y-mandatory > section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.slogan {
+  transition: all 0.3s ease-in;
+  width: 100%;
+}
+
+.slogan-box {
+  margin-top: 10px;
+}
+
+.slogan-text {
+  color: #fff;
+  font-size: 3rem;
+}
+
+.slogan-text-sm {
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1.8;
+}
+
+.web-design-and-system-design-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(auto-fit, minmax(min-content, 40vh));
+  gap: 80px;
+
+  & .title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 10px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+
+    & .sequence {
+      font-size: 50px;
+    }
+
+    & .title {
+      font-size: 20px;
+    }
+  }
+
+  & .content-container {
+    padding-top: 30px;
+    padding-bottom: 10px;
+
+    & .content {
+      font-size: 20px;
+      line-height: 1.5;
+    }
+  }
+}
+
+.protofolio-container {
+  display: flex;
+
+  gap: 80px;
+}

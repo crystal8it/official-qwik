@@ -5,10 +5,10 @@ export default component$(() => {
   return (
     <footer>
       <div class="container">
-        <a href="https://www.builder.io/" target="_blank" class={styles.anchor}>
-          <span>Made with ♡ by Builder.io</span>
+        <div class={styles.anchor}>
+          <span>Made with ♡ by Crystalbit</span>
           <span class={styles.spacer}>|</span>
-        </a>
+        </div>
       </div>
     </footer>
   );
