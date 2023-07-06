@@ -25,6 +25,19 @@ export default component$(() => {
   const containerEl = useSignal<HTMLElement>();
   const itemElRef = useStore<HTMLElement[]>([]);
   const activeSection = useSignal<string>('#hero');
+  const onDragScrollStore = useStore<{
+    isDown: boolean;
+    lastX: number;
+    velocity: number;
+    transformX: number;
+    trasformXLimit: number;
+  }>({
+    isDown: false,
+    lastX: 0,
+    velocity: 3,
+    transformX: 0,
+    trasformXLimit: -180,
+  });
 
   useVisibleTask$(() => {
     setTimeout(() => {
@@ -34,6 +47,21 @@ export default component$(() => {
 
   const addElementRef = $((element: Element) => {
     itemElRef.push(element as HTMLElement);
+  });
+
+  const scroll = $((e: any) => {
+    const sectionHeight = itemElRef[0].clientHeight;
+    const activeNumber = e.target.scrollTop / sectionHeight;
+
+    if (activeNumber < 1) {
+      activeSection.value = '#hero';
+    }
+    if (activeNumber >= 1 && activeNumber < 2) {
+      activeSection.value = '#webDesign';
+    }
+    if (activeNumber >= 2 && activeNumber < 3) {
+      activeSection.value = '#protofolio';
+    }
   });
 
   return (
@@ -57,7 +85,7 @@ export default component$(() => {
 
       {/* Body */}
       <div
-        // onScroll$={scroll}
+        onScroll$={scroll}
         ref={containerEl}
         class={styles['scroll-snap-type-y-mandatory']}
       >
@@ -124,7 +152,7 @@ export default component$(() => {
             >
               {WebDesignAndSystemDesignTranscript.map(
                 ({ title, content }, i) => (
-                  <BorderCard key={title}>
+                  <BorderCard key={title} index={i}>
                     <slot q:slot="title">
                       <div class={styles['title-container']}>
                         <h2 class={[styles.sequence, 'font-zen-maru']}>
@@ -146,7 +174,45 @@ export default component$(() => {
         </section>
 
         {/* Protfolio */}
-        <section ref={addElementRef} id="protofolio" class={[styles.home]}>
+        <section
+          onMouseDown$={(e) => {
+            onDragScrollStore.isDown = true;
+            onDragScrollStore.lastX = e.pageX;
+          }}
+          onMouseUp$={() => {
+            onDragScrollStore.isDown = false;
+          }}
+          onMouseLeave$={() => {
+            onDragScrollStore.isDown = false;
+          }}
+          onMouseMove$={(e) => {
+            if (onDragScrollStore.isDown) {
+              const currentX = e.pageX;
+
+              if (onDragScrollStore.lastX === null) return;
+
+              if (currentX < onDragScrollStore.lastX) {
+                if (
+                  onDragScrollStore.transformX <=
+                  onDragScrollStore.trasformXLimit
+                )
+                  return;
+
+                onDragScrollStore.transformX -= onDragScrollStore.velocity;
+              }
+
+              if (currentX > onDragScrollStore.lastX) {
+                if (onDragScrollStore.transformX >= 0) return;
+                onDragScrollStore.transformX += onDragScrollStore.velocity;
+              }
+
+              onDragScrollStore.lastX = currentX;
+            }
+          }}
+          ref={addElementRef}
+          id="protofolio"
+          class={[styles.home]}
+        >
           <article
             class={[styles.slogan, 'grid-center']}
             style={{
@@ -157,12 +223,19 @@ export default component$(() => {
           >
             <div class={[styles['slogan-box'], styles['home-section']]}>
               <h2 class={styles['slogan-text-sm']}>合作案列</h2>
-              <h2 class={[styles['slogan-text-sm'], 'font-zen-maru']}>
-                Protfolio
-              </h2>
+              <div style="display:flex;justify-content:space-between">
+                <h2 class={[styles['slogan-text-sm'], 'font-zen-maru']}>
+                  Protfolio
+                </h2>
+                <Wheel rotate={true} hideText={true}></Wheel>
+                <div></div>
+              </div>
             </div>
 
             <div
+              style={{
+                transform: `translateX(${onDragScrollStore.transformX}%)`,
+              }}
               class={[
                 styles['protofolio-container'],
                 styles['home-section'],
@@ -170,7 +243,7 @@ export default component$(() => {
               ]}
             >
               {ProtofolioTranscript.map(({ title, src, alt }, i) => (
-                <ImageCard title={title} key={title + i}>
+                <ImageCard title={title} key={title + i} index={i}>
                   <slot q:slot="img">
                     <Image src={src} alt={alt}></Image>
                   </slot>

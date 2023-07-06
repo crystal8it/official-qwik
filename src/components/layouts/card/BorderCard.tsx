@@ -2,12 +2,15 @@ import { useSignal, component$, Slot, useVisibleTask$ } from '@builder.io/qwik';
 import Divider from '~/components/divider/Divider';
 import styles from './card.module.css';
 
-export default component$(() => {
+type BorderCardProps = {
+  index: number;
+};
+
+export default component$(({ index }: BorderCardProps) => {
   const isShow = useSignal(false);
 
   useVisibleTask$(({ cleanup }) => {
     isShow.value = true;
-    console.log('border');
     cleanup(() => (isShow.value = false));
   });
 
@@ -16,7 +19,7 @@ export default component$(() => {
       class={[
         styles['border-card'],
         styles['card'],
-        'hidden',
+        `hidden-${index + 1}`,
         isShow.value ? 'show' : '',
       ]}
     >

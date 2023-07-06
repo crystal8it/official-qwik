@@ -2,10 +2,11 @@ import { useSignal, component$, Slot, useVisibleTask$ } from '@builder.io/qwik';
 import styles from './card.module.css';
 
 type cardProps = {
+  index: number;
   title?: string;
 };
 
-export default component$(({ title }: cardProps) => {
+export default component$(({ index, title }: cardProps) => {
   const isShow = useSignal(false);
 
   useVisibleTask$(({ cleanup }) => {
@@ -19,12 +20,14 @@ export default component$(({ title }: cardProps) => {
       class={[
         styles['image-card'],
         styles['card'],
-        'hidden',
-        isShow.value ? 'show' : '',
+        `hidden-${index}`,
+        isShow.value ? `show` : '',
       ]}
     >
-      <Slot name="img"></Slot>
-      <div class={styles['title']}>
+      <div style="height: 85%;">
+        <Slot name="img"></Slot>
+      </div>
+      <div class={[styles['title'], 'mt-3']}>
         <span>{title}</span>
       </div>
     </article>

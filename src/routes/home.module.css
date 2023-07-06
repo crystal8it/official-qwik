@@ -11,6 +11,7 @@
 
 .scroll-snap-type-y-mandatory {
   height: 100%;
+  overflow-x: hidden;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   z-index: 0;
@@ -77,6 +78,6 @@
 
 .protofolio-container {
   display: flex;
-
+  height: 65vh;
   gap: 80px;
 }

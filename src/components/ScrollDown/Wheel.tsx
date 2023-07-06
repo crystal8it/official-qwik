@@ -1,13 +1,23 @@
 import { component$ } from '@builder.io/qwik';
 import styles from './Wheel.module.css';
 
-export default component$(() => {
-  return (
-    <div>
-      <div class={styles.mouseBody}>
-        <div class={styles.mouseWheel}></div>
+type WheelProps = {
+  rotate?: boolean;
+  hideText?: boolean;
+};
+
+export default component$(
+  ({ rotate = false, hideText = false }: WheelProps) => {
+    return (
+      <div>
+        <div
+          class={styles.mouseBody}
+          style={rotate ? { rotate: '270deg' } : {}}
+        >
+          <div class={styles.mouseWheel}></div>
+        </div>
+        {hideText ? null : <h2 class={styles.textCenter}>Scroll</h2>}
       </div>
-      <h2 class={styles.textCenter}>Scroll</h2>
-    </div>
-  );
-});
+    );
+  }
+);

@@ -1,5 +1,6 @@
-import ilens from '~/assets/ilens.png';
 import thrct from '~/assets/thrct.png';
+import gr from '~/assets/gr.png';
+import ilens from '~/assets/ilens.png';
 
 const WebDesignAndSystemDesignTranscript = [
   {
@@ -24,6 +25,26 @@ const ProtofolioTranscript = [
     title: '希望馬場',
     src: thrct,
     alt: '希望馬場',
+  },
+  {
+    title: '廣容綠化',
+    src: gr,
+    alt: '廣容綠化',
+  },
+  {
+    title: '廣容綠化',
+    src: gr,
+    alt: '廣容綠化',
+  },
+  {
+    title: '廣容綠化',
+    src: gr,
+    alt: '廣容綠化',
+  },
+  {
+    title: '廣容綠化',
+    src: gr,
+    alt: '廣容綠化',
   },
   {
     title: '愛能視隱形眼鏡',

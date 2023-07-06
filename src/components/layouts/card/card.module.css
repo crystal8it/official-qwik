@@ -9,18 +9,13 @@
 }
 
 .image-card {
-  height: 55vh;
+  height: 100%;
   aspect-ratio: 3 / 4;
   flex-shrink: 0;
-  background: #fff;
 
   & .title {
-    position: absolute;
     width: 100%;
     z-index: 1;
-    bottom: -40px;
-    left: 50%;
-    transform: translateX(-50%);
     color: #fff;
     pointer-events: none;
     font-size: 30px;
@@ -29,7 +24,7 @@
   }
 }
 
-.image-card:before {
+.image-card > div:first-child:before {
   content: '';
   position: absolute;
   inset: 0;
@@ -38,11 +33,4 @@
   background: linear-gradient(to bottom right, #7674ea, #20f2ff);
   transition: all 0.3s ease-in;
   pointer-events: none;
-}
-
-.image-card:hover {
-  & .title {
-    visibility: visible;
-    opacity: 1;
-  }
 }

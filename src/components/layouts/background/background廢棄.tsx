@@ -143,6 +143,16 @@ const Background = component$(() => {
 
         ctx.restore();
 
+        x += vx;
+        y += vy;
+
+        if (x < 0 || x > windowWidth.value) {
+          vx *= -1;
+        }
+        if (y < 0 || y > windowHeight.value) {
+          vy *= -1;
+        }
+
         if (Math.random() < 0.5) {
           opacity = Math.random() * 0.5 + 0.5;
         }

@@ -13,7 +13,9 @@ export default component$(
       <img
         width={width}
         height={height}
-        style="object-fit:cover;object-position:center"
+        style="object-fit:cover;object-position:top;user-drag:none; -webkit-user-drag: none;
+        -moz-user-drag: none;
+        -ms-user-drag: none;"
         alt={alt}
         src={src}
       />

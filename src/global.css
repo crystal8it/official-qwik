@@ -47,10 +47,12 @@ body {
 
 ::-webkit-scrollbar {
   opacity: 0;
+  width: 0;
 }
 
 main {
   height: calc(100vh - 105px);
+  overflow: hidden;
 }
 
 footer {
@@ -130,9 +132,38 @@ button {
   position: sticky;
 }
 
-.hidden {
+.hidden-1 {
   opacity: 0;
   filter: blur(5px);
+  transform: translateX(-25%);
+  transition: all 1s;
+}
+
+.hidden-2 {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-50%);
+  transition: all 1s;
+}
+
+.hidden-3 {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-75%);
+  transition: all 1s;
+}
+
+.hidden-4 {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: all 1s;
+}
+
+.hidden-5 {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-125%);
   transition: all 1s;
 }
 
