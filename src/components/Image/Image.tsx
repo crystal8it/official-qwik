@@ -1,24 +1,50 @@
 import { component$ } from '@builder.io/qwik';
 
+type source = {
+  srcSet: string;
+  type: 'image/webp' | 'image/png' | 'image/jpeg';
+};
+
 type ImageProps = {
   src: string;
   alt: string;
+  fitPosition?: 'top' | 'center' | 'bottom';
   width?: string;
   height?: string;
+  sources?: source[];
 };
 
 export default component$(
-  ({ src, alt, width = '100%', height = '100%' }: ImageProps) => {
+  ({
+    src,
+    alt,
+    fitPosition = 'top',
+    width = '100%',
+    height = '100%',
+    sources,
+  }: ImageProps) => {
     return (
-      <img
-        width={width}
-        height={height}
-        style="object-fit:cover;object-position:top;user-drag:none; -webkit-user-drag: none;
-        -moz-user-drag: none;
-        -ms-user-drag: none;"
-        alt={alt}
-        src={src}
-      />
+      <picture>
+        {sources !== undefined && sources.length > 0
+          ? sources?.map(({ srcSet, type }) => (
+              <source key={srcSet} srcSet={srcSet} type={type} />
+            ))
+          : null}
+        <img
+          width={width}
+          height={height}
+          style={{
+            'objectFit': 'cover',
+            'userDrag': 'none',
+            '-webkitUserDrag': 'none',
+            '-mozUserDrag': 'none',
+            '-msUserDrag': 'none',
+            'objectPosition': fitPosition,
+          }}
+          alt={alt}
+          src={src}
+        />
+      </picture>
     );
   }
 );

@@ -2,12 +2,7 @@
 
 :root {
   --qwik-white: #fff;
-  --qwik-dark-blue: #006ce9;
-  --qwik-light-blue: #18b6f6;
-  --qwik-light-purple: #ac7ff4;
-  --qwik-dark-purple: #713fc2;
-  --qwik-dirty-black: #1d2033;
-  --qwik-dark-background: #151934;
+  --qwik-dark-background: #02021c;
   --qwik-dark-text: #ffffff;
   --section-width: 75vw;
 }
@@ -26,14 +21,10 @@ body {
   padding: 0;
   margin: 0;
   line-height: inherit;
-}
-
-body {
-  padding: 0;
-  line-height: inherit;
   overflow: hidden;
   background-color: var(--qwik-dark-background);
   color: var(--qwik-dark-text);
+  scroll-behavior: smooth;
 }
 
 *,
@@ -43,6 +34,7 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 ::-webkit-scrollbar {
@@ -51,12 +43,12 @@ body {
 }
 
 main {
-  height: calc(100vh - 105px);
+  height: 100vh;
   overflow: hidden;
 }
 
 footer {
-  position: sticky;
+  position: fixed;
   bottom: 0;
   left: 0;
 }
@@ -88,6 +80,10 @@ button {
 
 .bg-white {
   background: var(--qwik-white);
+}
+
+.bg-dark-blue {
+  background: var(--qwik-dark-background);
 }
 
 .display-none {
@@ -135,46 +131,29 @@ button {
 .hidden-1 {
   opacity: 0;
   filter: blur(5px);
-  transform: translateX(-25%);
+  transform: translateY(25%);
   transition: all 1s;
 }
 
 .hidden-2 {
   opacity: 0;
   filter: blur(5px);
-  transform: translateX(-50%);
-  transition: all 1s;
-}
-
-.hidden-3 {
-  opacity: 0;
-  filter: blur(5px);
-  transform: translateX(-75%);
-  transition: all 1s;
-}
-
-.hidden-4 {
-  opacity: 0;
-  filter: blur(5px);
-  transform: translateX(-100%);
-  transition: all 1s;
-}
-
-.hidden-5 {
-  opacity: 0;
-  filter: blur(5px);
-  transform: translateX(-125%);
+  transform: translateY(50%);
   transition: all 1s;
 }
 
 .show {
   opacity: 1;
   filter: blur(0px);
-  transform: translateX(0);
+  transform: translateY(0);
 }
 
 .trans-3 {
   transition: all 0.3s ease-in;
+}
+
+.trans-10-opacity {
+  transition: opacity 0.5s ease-in, visibillity 0.5s ease-in;
 }
 
 /* margin */
@@ -823,6 +802,8 @@ button {
   padding-left: 40px;
 }
 
+/* letter  */
+
 .text-sm {
   font-size: 14px;
 }
@@ -849,4 +830,16 @@ button {
 
 .text-4xl {
   font-size: 32px;
+}
+
+.letter-spacing-1 {
+  letter-spacing: 4px;
+}
+
+.letter-spacing-2 {
+  letter-spacing: 8px;
+}
+
+.letter-spacing-3 {
+  letter-spacing: 12px;
 }

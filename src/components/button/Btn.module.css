@@ -1,9 +1,9 @@
 .btn {
-  background: linear-gradient(to bottom right, #7674ea, #20f2ff);
+  background: linear-gradient(to right, #7674ea, #20f2ff);
   border-radius: 999px;
   outline: none;
   box-shadow: none;
-  font-size: 1.4rem;
+  font-size: 20px;
 }
 
 .sm {
@@ -15,5 +15,95 @@
 }
 
 .lg {
-  padding: 10px 35px;
+  padding: 10px 45px;
+
+  @media screen and (max-width: 580px) {
+    font-size: 16px;
+    padding: 10px 30px;
+  }
+
+  @media screen and (max-width: 376px) {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+}
+
+.bubble {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  & .rounded-1 {
+    width: 18px;
+    aspect-ratio: 1 /1;
+    border-radius: 999px;
+  }
+
+  & .rounded-2 {
+    width: 25px;
+    aspect-ratio: 1 /1;
+    border-radius: 999px;
+  }
+
+  & .rounded-3 {
+    width: 35px;
+    aspect-ratio: 1 /1;
+    border-radius: 999px;
+  }
+}
+
+.btn:hover > .bubble {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  & .rounded-1 {
+    width: 18px;
+    aspect-ratio: 1 /1;
+    border-radius: 999px;
+  }
+
+  & .rounded-2 {
+    width: 25px;
+    aspect-ratio: 1 /1;
+    border-radius: 999px;
+  }
+
+  & .rounded-3 {
+    width: 35px;
+    aspect-ratio: 1 /1;
+    border-radius: 999px;
+  }
+}
+
+.bubble-after {
+  right: -137px;
+
+  & > div {
+    background-color: #20f2ff;
+  }
+}
+
+.bubble-before {
+  left: -137px;
+
+  & > div {
+    background-color: #7674ea;
+  }
+}
+
+@keyframes bubble-scale {
+  from {
+    width: 35px;
+  }
+
+  to {
+    width: 18px;
+  }
 }

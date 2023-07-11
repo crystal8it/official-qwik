@@ -18,6 +18,11 @@
       aspect-ratio: 1 / 1;
       border-radius: 100%;
       background: #fff;
+      transition: width 0.2s linear;
+
+      &:hover {
+        width: 15px;
+      }
     }
 
     & > .item.active {
@@ -28,7 +33,7 @@
 
 @keyframes pulse-animation {
   0% {
-    box-shadow: 0 0 0 0px rgba(230, 230, 230, 0);
+    box-shadow: 0 0 0 0px rgba(230, 230, 230, 0.2);
   }
 
   25% {

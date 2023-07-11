@@ -9,7 +9,7 @@ type WheelProps = {
 export default component$(
   ({ rotate = false, hideText = false }: WheelProps) => {
     return (
-      <div>
+      <div class={styles['rwd-wheel-position']}>
         <div
           class={styles.mouseBody}
           style={rotate ? { rotate: '270deg' } : {}}

@@ -3,10 +3,12 @@ import styles from './card.module.css';
 
 type cardProps = {
   index: number;
-  title?: string;
+  title: string;
+  subTitle: string;
+  tag: string[];
 };
 
-export default component$(({ index, title }: cardProps) => {
+export default component$(({ index, title, subTitle, tag }: cardProps) => {
   const isShow = useSignal(false);
 
   useVisibleTask$(({ cleanup }) => {
@@ -20,15 +22,23 @@ export default component$(({ index, title }: cardProps) => {
       class={[
         styles['image-card'],
         styles['card'],
-        `hidden-${index}`,
+        `hidden-${index % 2 === 0 ? '1' : '2'}`,
         isShow.value ? `show` : '',
       ]}
     >
-      <div style="height: 85%;">
+      <div style="wdith: 100%;aspect-ratio: 3 / 4">
         <Slot name="img"></Slot>
       </div>
       <div class={[styles['title'], 'mt-3']}>
-        <span>{title}</span>
+        <p>{title}</p>
+        <p>{subTitle}</p>
+        <div class={styles['tag-container']}>
+          {tag.map((t, i) => (
+            <p key={i + t} class={styles['tag']}>
+              #{t}
+            </p>
+          ))}
+        </div>
       </div>
     </article>
   );

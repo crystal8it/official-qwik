@@ -9,7 +9,7 @@
 }
 
 .image-card {
-  height: 100%;
+  width: 100%;
   aspect-ratio: 3 / 4;
   flex-shrink: 0;
 
@@ -18,19 +18,40 @@
     z-index: 1;
     color: #fff;
     pointer-events: none;
-    font-size: 30px;
-    transition: all 0.3s ease-in;
-    text-align: center;
-  }
-}
+    padding: 15px 10px 0 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 
-.image-card > div:first-child:before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  opacity: 0.2;
-  z-index: 1;
-  background: linear-gradient(to bottom right, #7674ea, #20f2ff);
-  transition: all 0.3s ease-in;
-  pointer-events: none;
+    & > p:first-child {
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 1.4;
+    }
+
+    & > p:nth-child(2) {
+      margin-top: 5px;
+      font-size: 18px;
+      line-height: 1.4;
+      font-weight: 300;
+    }
+
+    & > .tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 10px;
+      gap: 15px;
+      width: 100%;
+      padding: 2px 0px;
+
+      & > .tag {
+        flex-shrink: 0;
+        font-size: 18px;
+        border-radius: 999px;
+        padding: 10px 20px;
+        border: 2px solid #fff;
+      }
+    }
+  }
 }

@@ -3,6 +3,15 @@
   margin: 5px 0;
 }
 
+.rwd-wheel-position {
+  @media screen and (max-width: 450px) {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.7);
+  }
+}
+
 .mouseBody {
   border-style: solid;
   border-width: 2px;

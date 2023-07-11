@@ -1,9 +1,10 @@
 import {
+  $,
   component$,
   useSignal,
-  $,
   createContextId,
   useContextProvider,
+  useContext,
 } from '@builder.io/qwik';
 import { Link } from '@builder.io/qwik-city';
 import CrystalBitLogo from '~/components/icons/crystalbit';
@@ -11,6 +12,7 @@ import Burger from '~/components/icons/burger';
 import Menu from '~/components/layouts/menu/menu';
 import Transition from '~/components/Transition/transition';
 import styles from './header.module.css';
+import { headerActiveContext } from '~/store/globalStore';
 
 type menu = boolean;
 
@@ -22,6 +24,10 @@ export default component$(() => {
   const menuActive = $(() => (menu.value = true));
   const menuInactive = $(() => (menu.value = false));
   useContextProvider(menuInactiveContext, menuInactive);
+
+  const headerActive = useContext(headerActiveContext);
+
+  console.log(headerActive);
 
   return (
     <header class={[styles.header, styles.wrapper]}>

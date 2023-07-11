@@ -6,7 +6,7 @@ import {
   useOnWindow,
 } from '@builder.io/qwik';
 import styles from './background.module.css';
-import { getColorTransition } from '~/utils';
+import { getColorTransition } from '~/utils/color';
 
 const Background = component$(() => {
   const canvasRef = useSignal<HTMLCanvasElement>();
