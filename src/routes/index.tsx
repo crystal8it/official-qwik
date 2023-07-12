@@ -13,11 +13,17 @@ import RegularBtn from '~/components/button/RegularBtn';
 import BubbleBtn from '~/components/button/BubbleBtn';
 import Background from '~/components/layouts/background/background';
 import ImageCard from '~/components/layouts/card/ImageCard';
+import BorderCard from '~/components/layouts/card/BorderCard';
 import Image from '~/components/Image/Image';
 import SideBar from '~/components/sidebar/SideBar';
 import Divider from '~/components/divider/Divider';
+import { UFO } from '~/components/icons/ufo';
 import arcPng from '~/assets/arc.png';
-import { ProtofolioTranscript } from '~/Transcript';
+import {
+  ProtofolioTranscript,
+  ServiceTranscript,
+  PartnerTranscript,
+} from '~/Transcript';
 import { headerHandlerContext } from '~/store/globalStore';
 
 export default component$(() => {
@@ -85,7 +91,7 @@ export default component$(() => {
         <Divider
           type="verticle"
           width="0.5px"
-          links={['#hero', '#protofolio', '#webDesign']}
+          links={['#hero', '#protofolio', '#service']}
           active={activeSection.value}
         ></Divider>
       </SideBar>
@@ -163,6 +169,7 @@ export default component$(() => {
               opacity: showSlogan.value ? '1' : '0',
               height: '100%',
               paddingTop: '140px',
+              paddingBottom: '140px',
             }}
           >
             <div class={[styles['slogan-box'], styles['home-section']]}>
@@ -237,11 +244,73 @@ export default component$(() => {
               >
                 SERVICE
               </h2>
-              <div style="display:flex;justify-content:space-between">
-                <h2 class={[styles['slogan-text-sm'], 'letter-spacing-2']}>
-                  服務項目
-                </h2>
-              </div>
+              <h2 class={[styles['slogan-text-sm'], 'letter-spacing-2']}>
+                服務項目
+              </h2>
+              <UFO width={350}></UFO>
+            </div>
+
+            <div
+              class={[
+                styles['service-container'],
+                styles['home-section'],
+                'bg-dark-blue',
+              ]}
+            >
+              {ServiceTranscript.map(({ title, engTitle, content }, i) => (
+                <BorderCard
+                  key={title}
+                  index={i}
+                  title={title}
+                  engTitle={engTitle}
+                  content={content}
+                ></BorderCard>
+              ))}
+            </div>
+          </article>
+        </section>
+
+        <section
+          ref={addElementRef}
+          id="service"
+          class={[styles.home, 'bg-dark-blue']}
+        >
+          <article
+            class={[styles.slogan, 'grid-center', 'bg-dark-blue']}
+            style={{
+              visibility: showSlogan.value ? 'visible' : 'hidden',
+              opacity: showSlogan.value ? '1' : '0',
+              height: '100%',
+              paddingTop: '140px',
+            }}
+          >
+            <div class={[styles['slogan-box'], styles['home-section']]}>
+              <h2
+                class={[
+                  styles['slogan-text'],
+                  'font-zen-maru',
+                  'letter-spacing-2',
+                ]}
+              >
+                PARTNER
+              </h2>
+              <h2 class={[styles['slogan-text-sm'], 'letter-spacing-2']}>
+                合作夥伴
+              </h2>
+            </div>
+
+            <div
+              class={[
+                styles['partner-container'],
+                styles['home-section'],
+                'bg-dark-blue',
+              ]}
+            >
+              {PartnerTranscript.map(({ href, src, sources, alt }, i) => (
+                <a href={href} target="_blank" rel="noreferrer" key={href + i}>
+                  <Image src={src} sources={sources} alt={alt}></Image>
+                </a>
+              ))}
             </div>
           </article>
         </section>

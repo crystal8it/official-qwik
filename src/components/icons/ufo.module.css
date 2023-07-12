@@ -1,0 +1,15 @@
+.ufo {
+  position: absolute;
+  right: -100px;
+  top: -250px;
+
+  & .light {
+    opacity: 0;
+    visibillity: hidden;
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
