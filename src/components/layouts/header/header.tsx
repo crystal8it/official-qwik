@@ -27,10 +27,15 @@ export default component$(() => {
 
   const headerActive = useContext(headerActiveContext);
 
-  console.log(headerActive);
-
   return (
-    <header class={[styles.header, styles.wrapper]}>
+    <header
+      class={[
+        styles.header,
+        styles.wrapper,
+        headerActive.value ? styles.active : '',
+        'trans-3',
+      ]}
+    >
       <div class={styles.logo}>
         <Link href="/" title="qwik">
           <CrystalBitLogo height={54} width={200} fill={'white'} />

@@ -16,8 +16,9 @@ import ImageCard from '~/components/layouts/card/ImageCard';
 import Image from '~/components/Image/Image';
 import SideBar from '~/components/sidebar/SideBar';
 import Divider from '~/components/divider/Divider';
-import { ProtofolioTranscript } from '~/Transcript';
 import arcPng from '~/assets/arc.png';
+import { ProtofolioTranscript } from '~/Transcript';
+import { headerHandlerContext } from '~/store/globalStore';
 
 export default component$(() => {
   const showSlogan = useSignal(false);
@@ -25,6 +26,8 @@ export default component$(() => {
   const itemElRef = useStore<HTMLElement[]>([]);
   const activeSection = useSignal<string>('#hero');
   const heroTransform = useSignal<number>(0);
+
+  const headerHandler = useContext(headerHandlerContext);
 
   useVisibleTask$(() => {
     setTimeout(() => {
@@ -50,6 +53,12 @@ export default component$(() => {
 
     if (heroTransform.value < 0) {
       heroTransform.value = 0;
+    }
+
+    if (activeNumber > 1) {
+      headerHandler.active();
+    } else {
+      headerHandler.inactive();
     }
 
     if (activeNumber < 1.2) {

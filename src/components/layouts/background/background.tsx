@@ -233,7 +233,7 @@ const Background = component$(({ transform }: BackgroundProps) => {
           height: '100vh',
           visibility: isShow.value ? 'visible' : 'hidden',
           opacity: isShow.value ? '1' : '0',
-          transform: `translateX(${transform * 0.2}%)`,
+          transform: `translate(${transform * 0.2}%, ${-transform * 0.1}%)`,
         }}
         class="trans-10-opacity"
       >
@@ -257,7 +257,7 @@ const Background = component$(({ transform }: BackgroundProps) => {
           height: '100vh',
           visibility: isShow.value ? 'visible' : 'hidden',
           opacity: isShow.value ? '1' : '0',
-          transform: `translateX(${-transform * 0.2}%)`,
+          transform: `translate(${-transform * 0.2}%, ${-transform * 0.1}%)`,
         }}
         class="trans-10-opacity"
       >
