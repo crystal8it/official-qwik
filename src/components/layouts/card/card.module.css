@@ -10,20 +10,76 @@
   display: flex;
   flex-direction: column;
 
+  @media screen and (max-width: 1150px) {
+    aspect-ratio: 3 / 1;
+  }
+
+  @media screen and (max-width: 805px) {
+    aspect-ratio: 2 / 1;
+  }
+
+  @media screen and (max-width: 805px) {
+    aspect-ratio: 3 / 4;
+  }
+
   & .title-container {
     flex: 0 0 25%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
+    @media screen and (max-width: 1150px) {
+      flex: 0 0 35%;
+    }
+
     & .index {
       font-weight: 600;
       font-size: 60px;
+
+      @media screen and (max-width: 1650px) {
+        font-size: 55px;
+      }
+
+      @media screen and (max-width: 1450px) {
+        font-size: 50px;
+      }
+
+      @media screen and (max-width: 1250px) {
+        font-size: 40px;
+      }
+
+      @media screen and (max-width: 1200px) {
+        font-size: 35px;
+      }
+
+      @media screen and (max-width: 1150px) {
+        font-size: 55px;
+      }
+
+      @media screen and (max-width: 450px) {
+        font-size: 45px;
+      }
     }
 
     & .title {
       margin-top: 15px;
       font-size: 25px;
+
+      @media screen and (max-width: 1650px) {
+        font-size: 20px;
+      }
+
+      @media screen and (max-width: 1450px) {
+        font-size: 17px;
+      }
+
+      @media screen and (max-width: 1250px) {
+        font-size: 16px;
+      }
+
+      @media screen and (max-width: 1150px) {
+        font-size: 20px;
+      }
     }
   }
 
@@ -35,6 +91,14 @@
 
     & .eng-title {
       font-size: 16px;
+
+      @media screen and (max-width: 1450px) {
+        font-size: 12px;
+      }
+
+      @media screen and (max-width: 1150px) {
+        font-size: 16px;
+      }
     }
   }
 
@@ -47,6 +111,19 @@
       font-weight: 300;
       line-height: 1.4;
       font-size: 20px;
+
+      @media screen and (max-width: 1450px) {
+        font-size: 18px;
+      }
+
+      @media screen and (max-width: 610px) {
+        padding-bottom: 15px;
+        padding-top: 15px;
+      }
+
+      @media screen and (max-width: 450px) {
+        padding-bottom: 25px;
+      }
     }
   }
 }
@@ -94,6 +171,68 @@
         border-radius: 999px;
         padding: 10px 20px;
         border: 2px solid #fff;
+      }
+    }
+  }
+}
+
+.solid-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  aspect-ratio: 3 / 4;
+  padding: 10px;
+
+  &.bg-1 {
+    background: linear-gradient(to right, #7674ea, #6c83ec);
+  }
+
+  &.bg-2 {
+    background: linear-gradient(to right, #6889ed, #5d99f0);
+  }
+
+  &.bg-3 {
+    background: linear-gradient(to right, #589ff1, #4eaff4);
+  }
+
+  &.bg-4 {
+    background: linear-gradient(to right, #49b5f5, #3ec5f7);
+  }
+
+  &.bg-5 {
+    background: linear-gradient(to right, #3acbf8, #2fdbfb);
+  }
+
+  &.bg-6 {
+    background: linear-gradient(to right, #2be1fc, #20f1ff);
+  }
+
+  & .title-container {
+    padding-top: 7px;
+    padding-left: 7px;
+
+    & > p {
+      line-height: 0.6;
+      font-size: 55px;
+      font-weight: 600;
+      letter-spacing: 2px;
+
+      @media screen and (max-width: 410px) {
+        font-size: 35px;
+      }
+    }
+  }
+
+  & .content-container {
+    display: flex;
+    justify-content: flex-end;
+
+    & > p {
+      font-size: 25px;
+      letter-spacing: 2px;
+
+      @media screen and (max-width: 410px) {
+        font-size: 18px;
       }
     }
   }

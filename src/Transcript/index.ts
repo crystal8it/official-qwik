@@ -39,13 +39,13 @@ const ServiceTranscript: TServiceTranscript[] = [
   },
   {
     title: '數據分析和機器人代操',
-    engTitle: 'Data analysis & robotic automation',
+    engTitle: 'Data analysis & automation',
     content:
       '我們提供數據管理服務，幫助您優化SEO、了解流量、用戶行為和市場趨勢，進而增加銷量。客製化系統更更可以通過數據管理流程、訂單、客戶等，省下更多人力資源。',
   },
   {
     title: '企業數位化諮詢與協助',
-    engTitle: 'Digital transformation for businesses',
+    engTitle: 'Digital transformation',
     content:
       '多重驗證、定期備份、加密和授權限制等，都是確保資料安全的好方法，我們也能替您在大流量進入時監控把關，確保運行穩定，斷絕可能存在的風險和意外。',
   },
@@ -154,4 +154,34 @@ const PartnerTranscript: TPartnerTranscript[] = [
   },
 ];
 
-export { ServiceTranscript, ProtofolioTranscript, PartnerTranscript };
+type TProcessTranscript = {
+  content: string;
+};
+
+const ProcessTranscript: TProcessTranscript[] = [
+  {
+    content: '瞭解需求',
+  },
+  {
+    content: '提供報價',
+  },
+  {
+    content: '設計開發',
+  },
+  {
+    content: '測試優化',
+  },
+  {
+    content: '上線交付',
+  },
+  {
+    content: '維護支援',
+  },
+];
+
+export {
+  ServiceTranscript,
+  ProtofolioTranscript,
+  PartnerTranscript,
+  ProcessTranscript,
+};

@@ -1,5 +1,9 @@
 .btn {
-  background: linear-gradient(to right, #7674ea, #20f2ff);
+  background: linear-gradient(
+    to right,
+    var(--qwik-dark-purple),
+    var(--qwik-light-blue)
+  );
   border-radius: 999px;
   outline: none;
   box-shadow: none;

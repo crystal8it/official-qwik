@@ -3,6 +3,29 @@
   right: -100px;
   top: -250px;
 
+  @media screen and (max-width: 800px) {
+    scale: 0.7;
+  }
+
+  @media screen and (max-width: 650px) {
+    scale: 0.5;
+    right: -100px;
+    top: -170px;
+  }
+
+  @media screen and (max-width: 570px) {
+    scale: 0.4;
+    right: -100px;
+    top: -150px;
+  }
+
+  @media screen and (max-width: 415px) {
+    scale: 0.4;
+    right: -140px;
+    top: -100px;
+    z-index: 1;
+  }
+
   & .light {
     opacity: 0;
     visibillity: hidden;
