@@ -1,8 +1,8 @@
 import { component$, useStore } from '@builder.io/qwik';
 import Wheel from '../ScrollDown/Wheel';
-import ImageCard from '../layouts/card/ImageCard';
-import Image from '../Image/Image';
-import { ProtofolioTranscript } from '~/Transcript';
+// import ImageCard from '../layouts/card/ImageCard';
+// import Image from '../Image/Image';
+// import { ProtofolioTranscript } from '~/Transcript';
 import styles from '~/routes/home.module.css';
 
 export default component$(
@@ -96,13 +96,13 @@ export default component$(
               'mt-5',
             ]}
           >
-            {ProtofolioTranscript.map(({ title, src, alt }, i) => (
-              <ImageCard title={title} key={title + i} index={i}>
+            {/* {ProtofolioTranscript.map(({ title, src, alt }, i) => (
+              <ImageCard title={title} key={title + i}  subTitle={title} index={i}>
                 <slot q:slot="img">
                   <Image src={src} alt={alt}></Image>
                 </slot>
               </ImageCard>
-            ))}
+            ))} */}
           </div>
         </article>
       </section>
