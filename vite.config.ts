@@ -16,13 +16,6 @@ export default defineConfig(() => {
         '@components':'src/components',
         '@icons':'src/components/icons'
       }
-    },
-    build: {
-      rollupOptions: {
-        external: [
-          '~/assets/logo/pastaCoLogo.png',
-        ],
-      },
-    },
+    }
   };
 });

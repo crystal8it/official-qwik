@@ -5,6 +5,7 @@ import {
   createContextId,
   useContextProvider,
   useContext,
+  useOnWindow,
 } from '@builder.io/qwik';
 import { Link } from '@builder.io/qwik-city';
 import CrystalBitLogo from '~/components/icons/crystalbit';
@@ -25,7 +26,16 @@ export default component$(() => {
   const menuInactive = $(() => (menu.value = false));
   useContextProvider(menuInactiveContext, menuInactive);
 
+  const windowWidth = useSignal<number>(0);
+
   const headerActive = useContext(headerActiveContext);
+
+  useOnWindow(
+    'resize',
+    $(() => {
+      windowWidth.value = window.screen.width;
+    })
+  );
 
   return (
     <header
@@ -38,7 +48,11 @@ export default component$(() => {
     >
       <div class={styles.logo}>
         <Link href="/" title="qwik">
-          <CrystalBitLogo height={54} width={200} fill={'white'} />
+          <CrystalBitLogo
+            height={54}
+            width={windowWidth.value <= 500 ? 150 : 200}
+            fill={'white'}
+          />
         </Link>
       </div>
 

@@ -905,8 +905,10 @@ button {
 /* customer input */
 /* Customize the label (the container) */
 .customer-check-box {
+  flex-shrink: 0;
   color: #222;
   display: flex;
+
   align-items: center;
   gap: 10px;
   position: relative;
@@ -933,6 +935,11 @@ button {
   width: 25px;
   background-color: #eee;
   border-radius: 50%;
+
+  @media screen and (max-width: 768px) {
+    height: 15px;
+    width: 15px;
+  }
 }
 
 /* On mouse-over, add a grey background color */

@@ -3,6 +3,7 @@ import { component$ } from '@builder.io/qwik';
 type source = {
   srcSet: string;
   type: 'image/webp' | 'image/png' | 'image/jpeg';
+  media?: string;
 };
 
 type ImageProps = {
@@ -26,8 +27,8 @@ export default component$(
     return (
       <picture>
         {sources !== undefined && sources.length > 0
-          ? sources?.map(({ srcSet, type }) => (
-              <source key={srcSet} srcSet={srcSet} type={type} />
+          ? sources?.map(({ srcSet, media, type }) => (
+              <source key={srcSet} media={media} srcSet={srcSet} type={type} />
             ))
           : null}
         <img
@@ -43,6 +44,7 @@ export default component$(
           }}
           alt={alt}
           src={src}
+          loading="lazy"
         />
       </picture>
     );

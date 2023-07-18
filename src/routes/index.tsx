@@ -8,9 +8,10 @@ import {
 } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import styles from './home.module.css';
+import sendEmail from '~/utils/email';
 import Wheel from '~/components/ScrollDown/Wheel';
 import RegularBtn from '~/components/button/RegularBtn';
-import BubbleBtn from '~/components/button/BubbleBtn';
+// import BubbleBtn from '~/components/button/BubbleBtn';
 import Background from '~/components/layouts/background/background';
 import ImageCard from '~/components/layouts/card/ImageCard';
 import BorderCard from '~/components/layouts/card/BorderCard';
@@ -36,7 +37,7 @@ type Contact = {
   email: string;
   company: string;
   demand: { value: string[]; items: string[] };
-  message: string;
+  comment: string;
 };
 
 export default component$(() => {
@@ -81,7 +82,7 @@ export default component$(() => {
       showButtomDesert.value = false;
     }
 
-    if (activeNumber > 1 && activeNumber < 5.5) {
+    if (activeNumber > 1) {
       headerHandler.active();
     } else {
       headerHandler.inactive();
@@ -109,8 +110,6 @@ export default component$(() => {
     if (activeNumber >= 4.95) {
       activeSection.value = '#contact';
     }
-
-    console.log(activeNumber);
   });
 
   const formData = useStore<Contact>({
@@ -122,7 +121,43 @@ export default component$(() => {
       value: [],
       items: ['網頁設計', 'App設計', 'ERP設計', 'UI/UX設計', '其它'],
     },
-    message: '',
+    comment: '',
+  });
+
+  const resetFormData = $(() => {
+    formData.name = '';
+    formData.phone = '';
+    formData.email = '';
+    formData.company = '';
+    formData.demand = {
+      value: [],
+      items: ['網頁設計', 'App設計', 'ERP設計', 'UI/UX設計', '其它'],
+    };
+    formData.comment = '';
+  });
+
+  const sendEmailHandler = $(async () => {
+    if (formData.name === '' || formData.phone === '') {
+      window.alert('請輸入姓名與電話');
+
+      return;
+    }
+
+    const res = await sendEmail(
+      formData.name,
+      formData.phone,
+      formData.email,
+      formData.company,
+      formData.demand.value.join(','),
+      formData.comment
+    );
+
+    if (res === true) {
+      resetFormData();
+      window.alert('訊息已成功寄出,我們會盡快與您聯繫,謝謝!');
+    } else {
+      window.alert('訊息發送失敗,請稍後再嘗試!');
+    }
   });
 
   return (
@@ -258,24 +293,26 @@ export default component$(() => {
               ]}
             >
               {ProtofolioTranscript.map(
-                ({ title, subTitle, tag, src, sources, alt }, i) => (
+                ({ title, subTitle, href, tag, src, sources, alt }, i) => (
                   <div key={title + i} class={styles['protofolio-item']}>
-                    <ImageCard
-                      title={title}
-                      subTitle={subTitle}
-                      tag={tag}
-                      index={i}
-                    >
-                      <slot q:slot="img">
-                        <Image src={src} sources={sources} alt={alt}></Image>
-                      </slot>
-                    </ImageCard>
+                    <a href={href} target="_blank" rel="noreferrer noopener">
+                      <ImageCard
+                        title={title}
+                        subTitle={subTitle}
+                        tag={tag}
+                        index={i}
+                      >
+                        <slot q:slot="img">
+                          <Image src={src} sources={sources} alt={alt}></Image>
+                        </slot>
+                      </ImageCard>
+                    </a>
                   </div>
                 )
               )}
             </div>
             <div style="margin-top:80px">
-              <BubbleBtn>see more</BubbleBtn>
+              {/* <BubbleBtn>see more</BubbleBtn> */}
             </div>
           </article>
         </section>
@@ -448,7 +485,8 @@ export default component$(() => {
               visibility: showSlogan.value ? 'visible' : 'hidden',
               opacity: showSlogan.value ? '1' : '0',
               height: '100%',
-              paddingTop: '100px',
+              paddingTop: '150px',
+              paddingBottom: '100px',
             }}
           >
             <div class={[styles['slogan-box'], styles['home-section']]}>
@@ -526,13 +564,11 @@ export default component$(() => {
                     {/* checkbox */}
 
                     <div class={styles['div-label']}>
-                      <p style="font-size:16px;color: #222;">需求</p>
+                      <p>需求</p>
 
                       <div class={styles['checkbox-container']}>
                         {formData.demand.items.map((content) => (
                           <label key={content} class="customer-check-box">
-                            <span class="checkmark"></span>
-                            <p>{content}</p>
                             <input
                               onInput$={(event) => {
                                 if (
@@ -552,6 +588,8 @@ export default component$(() => {
                               }}
                               type="checkbox"
                             />
+                            <span class="checkmark"></span>
+                            <p>{content}</p>
                           </label>
                         ))}
                       </div>
@@ -561,7 +599,7 @@ export default component$(() => {
                       <p>備註</p>
                       <textarea
                         onInput$={(event) => {
-                          formData.message = (
+                          formData.comment = (
                             event.target as HTMLInputElement
                           ).value;
                         }}
@@ -574,6 +612,7 @@ export default component$(() => {
                   {/* button */}
                   <div>
                     <RegularBtn
+                      event={sendEmailHandler}
                       style="margin-top:25px;font-family: 'Zen Maru Gothic', sans-serif;"
                       size="lg"
                     >

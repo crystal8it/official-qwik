@@ -48,7 +48,7 @@
   font-size: 64px;
 
   @media screen and (max-width: 450px) {
-    font-size: 48px;
+    font-size: 32px;
   }
 }
 
@@ -74,6 +74,10 @@
   color: #fff;
   font-size: 32px;
   line-height: 1.8;
+
+  @media screen and (max-width: 450px) {
+    font-size: 24px;
+  }
 }
 
 .banner.slogan-text-sm {
@@ -162,7 +166,14 @@
 }
 
 .contact-container {
+  --font-size: 16px;
+
+  @media screen and (max-width: 1280px) {
+    --font-size: 14px;
+  }
+
   margin-top: 20px;
+
   & form {
     border-radius: 15px;
     padding: 60px;
@@ -170,10 +181,25 @@
     backdrop-filter: blur(5px);
     display: flex;
     gap: 20px;
-    aspect-ratio: 2 / 1;
+
+    @media screen and (max-width: 1280px) {
+      padding: 40px;
+    }
+
+    @media screen and (max-width: 1280px) {
+      padding: 40px;
+    }
+
+    @media screen and (max-width: 450px) {
+      padding: 20px;
+    }
+
+    @media screen and (max-width: 1080px) {
+      flex-direction: column;
+    }
 
     & label p {
-      font-size: 16px;
+      font-size: var(--font-size);
       color: #222;
     }
 
@@ -181,7 +207,7 @@
       border: 2px solid #ccc;
       border-radius: 8px;
       padding: 8px;
-      font-size: 16px;
+      font-size: var(--font-size);
       outline: none;
       width: 100%;
       margin-top: 8px;
@@ -196,12 +222,25 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      gap: 10px;
 
-      & > .div-label > .checkbox-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-top: 8px;
+      @media screen and (max-width: 1280px) {
+        flex: 0 0 100%;
+      }
+
+      & > .div-label {
+        & > p {
+          font-size: var(--font-size);
+          color: #222;
+        }
+
+        & > .checkbox-container {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-top: 8px;
+          flex-wrap: wrap;
+        }
       }
     }
 

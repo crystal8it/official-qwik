@@ -4,11 +4,17 @@ import styles from './Btn.module.css';
 type btn = {
   size?: 'sm' | 'md' | 'lg';
   style?: any;
+  event?: any;
 };
 
-export default component$(({ size = 'sm', style }: btn) => {
+export default component$(({ size = 'sm', style, event }: btn) => {
   return (
-    <button class={[styles.btn, styles[size]]} style={style}>
+    <button
+      preventdefault:click
+      onClick$={event}
+      class={[styles.btn, styles[size]]}
+      style={style}
+    >
       <Slot></Slot>
     </button>
   );

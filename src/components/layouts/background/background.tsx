@@ -2,7 +2,6 @@ import { component$, useSignal, useVisibleTask$ } from '@builder.io/qwik';
 import styles from './background.module.css';
 import { getColorTransition } from '~/utils/color';
 import {
-  drawLine,
   drawRect,
   drawLineCirclePoints,
   drawLineCircle,
@@ -11,16 +10,16 @@ import {
 import Image from '~/components/Image/Image';
 import Rocket from '~/assets/rocket.png';
 
-import arcWebp from '~/assets/background/arc.webp';
-import arcPng from '~/assets/background/arc.png';
-import planetsWebp from '~/assets/background/planets.webp';
-import planetsPng from '~/assets/background/planets.png';
-import leftCystalWebp from '~/assets/background/left-crystal.webp';
-import leftCystalPng from '~/assets/background/left-crystal.png';
-import rightCystalWebp from '~/assets/background/right-crystal.webp';
-import rightCystalPng from '~/assets/background/right-crystal.png';
-import arcDessertReverseWebp from '~/assets/background/arcDesertReverse.webp';
-import arcDessertReversePng from '~/assets/background/arcDesertReverse.png';
+import arcWebp from '~/assets/background/arc/arc.webp';
+import arcPng from '~/assets/background/arc/arc.png';
+import planetsWebp from '~/assets/background/planets/planets.webp';
+import planetsPng from '~/assets/background/planets/planets.png';
+import leftCystalWebp from '~/assets/background/left-crystal/left-crystal.webp';
+import leftCystalPng from '~/assets/background/left-crystal/left-crystal.png';
+import rightCystalWebp from '~/assets/background/right-crystal/right-crystal.webp';
+import rightCystalPng from '~/assets/background/right-crystal/right-crystal.png';
+import arcDessertReverseWebp from '~/assets/background/arcDesertReverse/arcDesertReverse.webp';
+import arcDessertReversePng from '~/assets/background/arcDesertReverse/arcDesertReverse.png';
 
 type BackgroundProps = {
   transform: number;
@@ -55,10 +54,10 @@ const Background = component$(
 
       // stars
       const stars: [number, number, number, number, number, number][] =
-        Array.from(Array(500), (_, index: number) => [
+        Array.from(Array(100), (_, index: number) => [
           Math.random() * windowWidth.value,
           Math.random() * windowHeight.value,
-          index % 2 === 0 ? Math.random() * 4 + 1 : Math.random() * 5 + 1,
+          index % 2 === 0 ? Math.random() * 1 + 1 : Math.random() * 3 + 1,
           (Math.random() - 0.5) * 0.5,
           (Math.random() - 0.5) * 0.5,
           Math.random() * 0.5 + 0.5,
@@ -115,7 +114,6 @@ const Background = component$(
 
           ctx.setLineDash([1, 10]);
           ctx.lineDashOffset = 0;
-          drawLine(ctx, startX, 0, lineCurrentX, lineCurrentY);
           drawLineCircle(ctx, points, numCompletedPoints);
 
           ctx.setLineDash([]);
