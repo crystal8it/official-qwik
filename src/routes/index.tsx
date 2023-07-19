@@ -153,8 +153,8 @@ export default component$(() => {
     );
 
     if (res === true) {
-      resetFormData();
       window.alert('訊息已成功寄出,我們會盡快與您聯繫,謝謝!');
+      resetFormData();
     } else {
       window.alert('訊息發送失敗,請稍後再嘗試!');
     }
@@ -523,6 +523,7 @@ export default component$(() => {
                           ).value;
                         }}
                         class={styles['custom-input']}
+                        value={formData.name}
                         type="text"
                       />
                     </label>
@@ -534,6 +535,7 @@ export default component$(() => {
                             event.target as HTMLInputElement
                           ).value;
                         }}
+                        value={formData.phone}
                         class={styles['custom-input']}
                         type="text"
                       />
@@ -547,6 +549,7 @@ export default component$(() => {
                             event.target as HTMLInputElement
                           ).value;
                         }}
+                        value={formData.email}
                         class={styles['custom-input']}
                         type="text"
                       />
@@ -560,6 +563,7 @@ export default component$(() => {
                             event.target as HTMLInputElement
                           ).value;
                         }}
+                        value={formData.company}
                         class={styles['custom-input']}
                         type="text"
                       />
@@ -589,6 +593,7 @@ export default component$(() => {
                                   ];
                                 }
                               }}
+                              checked={formData.demand.value.includes(content)}
                               type="checkbox"
                             />
                             <span class="checkmark"></span>
@@ -606,6 +611,7 @@ export default component$(() => {
                             event.target as HTMLInputElement
                           ).value;
                         }}
+                        value={formData.comment}
                         style=" height:100px"
                         class={styles['custom-input']}
                       ></textarea>
