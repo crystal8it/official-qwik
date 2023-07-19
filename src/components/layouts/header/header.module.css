@@ -19,7 +19,7 @@
 }
 
 .wrapper.active {
-  background: var(--qwik-dark-background);
+  background: rgba(2, 2, 28, 0.6);
   backdrop-filter: blur(4px);
 }
 

@@ -10,20 +10,165 @@ import {
 import Image from '~/components/Image/Image';
 import Rocket from '~/assets/rocket.png';
 
-import arcWebp from '~/assets/background/arc/arc.webp';
-import arcPng from '~/assets/background/arc/arc.png';
-import planetsWebp from '~/assets/background/planets/planets.webp';
-import planetsPng from '~/assets/background/planets/planets.png';
-import leftCystalWebp from '~/assets/background/left-crystal/left-crystal.webp';
-import leftCystalPng from '~/assets/background/left-crystal/left-crystal.png';
-import rightCystalWebp from '~/assets/background/right-crystal/right-crystal.webp';
-import rightCystalPng from '~/assets/background/right-crystal/right-crystal.png';
-import arcDessertReverseWebp from '~/assets/background/arcDesertReverse/arcDesertReverse.webp';
-import arcDessertReversePng from '~/assets/background/arcDesertReverse/arcDesertReverse.png';
+// background
+
+// ar
+import arcWebpXl from '~/assets/background/arc/1440/arc.webp';
+import arcWebpLg from '~/assets/background/arc/1080/arc.webp';
+import arcWebpMd from '~/assets/background/arc/768/arc.webp';
+import arcWebpSm from '~/assets/background/arc/450/arc.webp';
+import arcPngXl from '~/assets/background/arc/1440/arc.png';
+
+// plane
+import planetsWebpXl from '~/assets/background/planets/1440/planets.webp';
+import planetsWebpLg from '~/assets/background/planets/1080/planets.webp';
+import planetsWebpMd from '~/assets/background/planets/768/planets.webp';
+import planetsWebpSm from '~/assets/background/planets/450/planets.webp';
+import planetsPngXl from '~/assets/background/planets/1440/planets.png';
+
+// left crystal
+import leftCystalWebpXl from '~/assets/background/left-crystal/1440/left-crystal.webp';
+import leftCystalWebpLg from '~/assets/background/left-crystal/1080/left-crystal.webp';
+import leftCystalWebpMd from '~/assets/background/left-crystal/768/left-crystal.webp';
+import leftCrystalWebpSm from '~/assets/background/left-crystal/450/left-crystal.webp';
+import leftCystalPngXl from '~/assets/background/left-crystal/1440/left-crystal.png';
+
+// right crystal
+import rightCystalWebpXl from '~/assets/background/right-crystal/1440/right-crystal.webp';
+import rightCystalWebpLg from '~/assets/background/right-crystal/1080/right-crystal.webp';
+import rightCystalWebpMd from '~/assets/background/right-crystal/768/right-crystal.webp';
+import rightCrystalWebpSm from '~/assets/background/right-crystal/450/right-crystal.webp';
+import rightCystalPngXl from '~/assets/background/right-crystal/1440/right-crystal.png';
+
+// arc desert
+import arcDessertReverseWebpXl from '~/assets/background/arcDesertReverse/1440/arcDesertReverse.webp';
+import arcDessertReverseWebpLg from '~/assets/background/arcDesertReverse/1080/arcDesertReverse.webp';
+import arcDessertReverseWebpMd from '~/assets/background/arcDesertReverse/768/arcDesertReverse.webp';
+import arcDessertReverseWebpSm from '~/assets/background/arcDesertReverse/450/arcDesertReverse.webp';
+import arcDessertReversePngXl from '~/assets/background/arcDesertReverse/1440/arcDesertReverse.png';
+
+type source = {
+  srcSet: string;
+  type: 'image/webp' | 'image/png' | 'image/jpeg';
+  media?: string;
+};
 
 type BackgroundProps = {
   transform: number;
   showButtomDesert: boolean;
+};
+
+const sources: { [key: string]: source[] } = {
+  arc: [
+    {
+      srcSet: arcWebpXl,
+      media: '(min-width: 1440px)',
+      type: 'image/webp',
+    },
+    {
+      srcSet: arcWebpLg,
+      media: '(min-width: 900px)',
+      type: 'image/webp',
+    },
+    {
+      srcSet: arcWebpMd,
+      media: '(min-width: 768px)',
+      type: 'image/webp',
+    },
+    {
+      srcSet: arcWebpSm,
+      media: '(min-width: 300px)',
+      type: 'image/webp',
+    },
+  ],
+  planets: [
+    {
+      srcSet: planetsWebpXl,
+      media: '(min-width: 1440px)',
+      type: 'image/webp',
+    },
+    {
+      srcSet: planetsWebpLg,
+      media: '(min-width: 900px)',
+      type: 'image/webp',
+    },
+    {
+      srcSet: planetsWebpMd,
+      media: '(min-width: 650px)',
+      type: 'image/webp',
+    },
+    {
+      srcSet: planetsWebpSm,
+      media: '(min-width: 300px)',
+      type: 'image/webp',
+    },
+  ],
+  leftCrystal: [
+    {
+      srcSet: leftCystalWebpXl,
+      media: '(min-width: 1440px)',
+      type: 'image/webp',
+    },
+    {
+      srcSet: leftCystalWebpLg,
+      media: '(min-width: 900px)',
+      type: 'image/webp',
+    },
+    {
+      srcSet: leftCystalWebpMd,
+      media: '(min-width: 650px)',
+      type: 'image/webp',
+    },
+    {
+      srcSet: leftCrystalWebpSm,
+      media: '(min-width: 300px)',
+      type: 'image/webp',
+    },
+  ],
+  rightCrystal: [
+    {
+      srcSet: rightCystalWebpXl,
+      media: '(min-width: 1440px)',
+      type: 'image/webp',
+    },
+    {
+      srcSet: rightCystalWebpLg,
+      media: '(min-width: 900px)',
+      type: 'image/webp',
+    },
+    {
+      srcSet: rightCystalWebpMd,
+      media: '(min-width: 650px)',
+      type: 'image/webp',
+    },
+    {
+      srcSet: rightCrystalWebpSm,
+      media: '(min-width: 300px)',
+      type: 'image/webp',
+    },
+  ],
+  arcDesertReverse: [
+    {
+      srcSet: arcDessertReverseWebpXl,
+      media: '(min-width: 1440px)',
+      type: 'image/webp',
+    },
+    {
+      srcSet: arcDessertReverseWebpLg,
+      media: '(min-width: 900px)',
+      type: 'image/webp',
+    },
+    {
+      srcSet: arcDessertReverseWebpMd,
+      media: '(min-width: 650px)',
+      type: 'image/webp',
+    },
+    {
+      srcSet: arcDessertReverseWebpSm,
+      media: '(min-width: 300px)',
+      type: 'image/webp',
+    },
+  ],
 };
 
 const Background = component$(
@@ -40,6 +185,11 @@ const Background = component$(
       const canvas = canvasRef.value;
       windowWidth.value = window.innerWidth;
       windowHeight.value = window.innerHeight;
+      let starsNumber = 100;
+
+      if (windowWidth.value >= 900) {
+        starsNumber = 300;
+      }
 
       if (!canvas) return;
 
@@ -54,7 +204,7 @@ const Background = component$(
 
       // stars
       const stars: [number, number, number, number, number, number][] =
-        Array.from(Array(100), (_, index: number) => [
+        Array.from(Array(starsNumber), (_, index: number) => [
           Math.random() * windowWidth.value,
           Math.random() * windowHeight.value,
           index % 2 === 0 ? Math.random() * 1 + 1 : Math.random() * 3 + 1,
@@ -175,10 +325,6 @@ const Background = component$(
 
           stars[i] = [x, y, r, vx, vy, opacity];
         });
-
-        // ctx.fillStyle = `rgba(30,30,30,${0.1 * opacity.value})`;
-        // ctx.fillRect(0, 0, windowWidth.value, windowHeight.value);
-
         requestAnimationFrame(draw);
       };
       draw();
@@ -204,8 +350,8 @@ const Background = component$(
           class="trans-10-opacity"
         >
           <Image
-            sources={[{ srcSet: planetsWebp, type: 'image/webp' }]}
-            src={planetsPng}
+            sources={sources.planets}
+            src={planetsPngXl}
             fitPosition="bottom"
             alt="hero"
           ></Image>
@@ -228,8 +374,8 @@ const Background = component$(
           class="trans-10-opacity"
         >
           <Image
-            sources={[{ srcSet: rightCystalWebp, type: 'image/webp' }]}
-            src={rightCystalPng}
+            sources={sources.rightCrystal}
+            src={rightCystalPngXl}
             fitPosition="bottom"
             alt="hero"
           ></Image>
@@ -253,8 +399,8 @@ const Background = component$(
           class="trans-10-opacity"
         >
           <Image
-            sources={[{ srcSet: leftCystalWebp, type: 'image/webp' }]}
-            src={leftCystalPng}
+            sources={sources.leftCrystal}
+            src={leftCystalPngXl}
             fitPosition="bottom"
             alt="hero"
           ></Image>
@@ -276,8 +422,8 @@ const Background = component$(
           class="trans-10-opacity"
         >
           <Image
-            sources={[{ srcSet: arcWebp, type: 'image/webp' }]}
-            src={arcPng}
+            sources={sources.arc}
+            src={arcPngXl}
             fitPosition="bottom"
             alt="hero"
           ></Image>
@@ -300,8 +446,8 @@ const Background = component$(
           class="trans-10-opacity"
         >
           <Image
-            sources={[{ srcSet: arcDessertReverseWebp, type: 'image/webp' }]}
-            src={arcDessertReversePng}
+            sources={sources.arcDesertReverse}
+            src={arcDessertReversePngXl}
             fitPosition="bottom"
             alt="hero"
           ></Image>

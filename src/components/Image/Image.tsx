@@ -44,7 +44,6 @@ export default component$(
           }}
           alt={alt}
           src={src}
-          loading="lazy"
         />
       </picture>
     );

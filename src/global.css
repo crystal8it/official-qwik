@@ -931,14 +931,14 @@ button {
 
 /* Create a custom radio button */
 .checkmark {
-  height: 25px;
-  width: 25px;
+  height: 26px;
+  width: 26px;
   background-color: #eee;
   border-radius: 50%;
 
   @media screen and (max-width: 768px) {
-    height: 15px;
-    width: 15px;
+    height: 16px;
+    width: 16px;
   }
 }
 
@@ -966,10 +966,16 @@ button {
 
 /* Style the indicator (dot/circle) */
 .customer-check-box .checkmark:after {
-  top: 9px;
-  left: 9px;
-  width: 8px;
-  height: 8px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
   background: white;
+
+  @media screen and (max-width: 768px) {
+    height: 8px;
+    width: 8px;
+  }
 }

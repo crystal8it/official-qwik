@@ -13,10 +13,8 @@ type Props = {
 };
 
 const links = [
-  { href: '', content: 'About' },
-  { href: '', content: 'Article' },
   { href: '', content: 'Works' },
-  { href: '', content: 'Contact' },
+  { href: '', content: 'Article' },
 ];
 
 export default component$(({ active, animationClass }: Props) => {
@@ -33,6 +31,10 @@ export default component$(({ active, animationClass }: Props) => {
           {content}
         </Link>
       ))}
+
+      <a href="#contact" onPointerDown$={menuInactive}>
+        Contact
+      </a>
 
       <div class={styles.menu_icon}>
         <Line></Line>

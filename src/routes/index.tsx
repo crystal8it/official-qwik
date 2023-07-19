@@ -160,6 +160,10 @@ export default component$(() => {
     }
   });
 
+  const redirectToContact = $(() => {
+    window.location.href = '#contact';
+  });
+
   return (
     <>
       {/* Layouts */}
@@ -234,6 +238,7 @@ export default component$(() => {
                 為你的品牌注入全新力量
               </h2>
               <RegularBtn
+                event={redirectToContact}
                 style="margin-top:25px;font-family: 'Zen Maru Gothic', sans-serif;"
                 size="lg"
               >
@@ -495,7 +500,7 @@ export default component$(() => {
                   'letter-spacing-2',
                 ]}
               >
-                Contact
+                CONTACT
               </h2>
               <h2 class={[styles['slogan-text-sm'], 'letter-spacing-2']}>
                 聯絡我們
@@ -609,11 +614,7 @@ export default component$(() => {
 
                   {/* button */}
                   <div>
-                    <RegularBtn
-                      event={sendEmailHandler}
-                      style="font-family: 'Zen Maru Gothic', sans-serif;"
-                      size="lg"
-                    >
+                    <RegularBtn event={sendEmailHandler} size="lg">
                       送出
                     </RegularBtn>
                   </div>

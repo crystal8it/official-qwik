@@ -6,7 +6,7 @@
 .rwd-wheel-position {
   @media screen and (max-width: 450px) {
     position: absolute;
-    bottom: 150px;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%) scale(0.7);
   }

@@ -182,6 +182,7 @@
   justify-content: space-between;
   aspect-ratio: 3 / 4;
   padding: 10px;
+  transition: transform 0.1s linear;
 
   &.bg-1 {
     background: linear-gradient(to right, #7674ea, #6c83ec);
@@ -236,4 +237,8 @@
       }
     }
   }
+}
+
+.solid-card:hover {
+  transform: translateY(-17px);
 }

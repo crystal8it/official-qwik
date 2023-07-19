@@ -1,13 +1,16 @@
 .btn {
-  background: linear-gradient(
-    to right,
-    var(--qwik-dark-purple),
-    var(--qwik-light-blue)
-  );
+  background: white;
   border-radius: 999px;
   outline: none;
   box-shadow: none;
   font-size: 20px;
+  transition: all 0.3s ease;
+  color: var(--qwik-dark-background);
+}
+
+.btn:hover {
+  background: var(--qwik-dark-background);
+  color: white;
 }
 
 .sm {
