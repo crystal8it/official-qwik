@@ -211,6 +211,11 @@
       outline: none;
       width: 100%;
       margin-top: 8px;
+
+      @media screen and (max-width: 1280px) {
+        padding: 3px;
+        margin-top: 5px;
+      }
     }
 
     & .custom-input:focus {
