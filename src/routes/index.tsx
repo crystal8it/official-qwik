@@ -480,12 +480,11 @@ export default component$(() => {
           }}
         >
           <article
-            class={[styles.slogan]}
+            class={[styles.slogan, styles['contact-padding ']]}
             style={{
               visibility: showSlogan.value ? 'visible' : 'hidden',
               opacity: showSlogan.value ? '1' : '0',
               height: '100%',
-              paddingTop: '115px',
             }}
           >
             <div class={[styles['slogan-box'], styles['home-section']]}>

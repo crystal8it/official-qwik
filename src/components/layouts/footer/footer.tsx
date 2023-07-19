@@ -6,7 +6,7 @@ export default component$(() => {
     <footer>
       <div class="container">
         <div class={styles.anchor}>
-          <span>Made with ♡ by Crystalbit</span>
+          <span>Made with by Crystalbit</span>
           <span class={styles.spacer}>|</span>
         </div>
       </div>
