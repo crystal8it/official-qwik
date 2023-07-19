@@ -480,7 +480,7 @@ export default component$(() => {
           }}
         >
           <article
-            class={[styles.slogan, styles['contact-padding ']]}
+            class={[styles.slogan, styles['contact-padding']]}
             style={{
               visibility: showSlogan.value ? 'visible' : 'hidden',
               opacity: showSlogan.value ? '1' : '0',
