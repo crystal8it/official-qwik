@@ -485,8 +485,7 @@ export default component$(() => {
               visibility: showSlogan.value ? 'visible' : 'hidden',
               opacity: showSlogan.value ? '1' : '0',
               height: '100%',
-              paddingTop: '150px',
-              paddingBottom: '100px',
+              paddingTop: '115px',
             }}
           >
             <div class={[styles['slogan-box'], styles['home-section']]}>
@@ -613,7 +612,7 @@ export default component$(() => {
                   <div>
                     <RegularBtn
                       event={sendEmailHandler}
-                      style="margin-top:25px;font-family: 'Zen Maru Gothic', sans-serif;"
+                      style="font-family: 'Zen Maru Gothic', sans-serif;"
                       size="lg"
                     >
                       送出
