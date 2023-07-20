@@ -21,6 +21,7 @@ import Rocket from '~/assets/rocket.png';
 // ar
 import arcWebpXl from '~/assets/background/arc/1440/arc.webp';
 import arcWebpLg from '~/assets/background/arc/1080/arc.webp';
+import arcWebpPortraitMd from '~/assets/background/arc/768/arc-portrait.webp';
 import arcWebpMd from '~/assets/background/arc/768/arc.webp';
 import arcWebpSm from '~/assets/background/arc/450/arc.webp';
 import arcPngXl from '~/assets/background/arc/1440/arc.png';
@@ -28,6 +29,7 @@ import arcPngXl from '~/assets/background/arc/1440/arc.png';
 // plane
 import planetsWebpXl from '~/assets/background/planets/1440/planets.webp';
 import planetsWebpLg from '~/assets/background/planets/1080/planets.webp';
+import planetsWebpPortraitMd from '~/assets/background/planets/768/planets-portrait.webp';
 import planetsWebpMd from '~/assets/background/planets/768/planets.webp';
 import planetsWebpSm from '~/assets/background/planets/450/planets.webp';
 import planetsPngXl from '~/assets/background/planets/1440/planets.png';
@@ -35,6 +37,7 @@ import planetsPngXl from '~/assets/background/planets/1440/planets.png';
 // left crystal
 import leftCystalWebpXl from '~/assets/background/left-crystal/1440/left-crystal.webp';
 import leftCystalWebpLg from '~/assets/background/left-crystal/1080/left-crystal.webp';
+import leftCystalWebpPortraitMd from '~/assets/background/left-crystal/768/left-crystal-portrait.webp';
 import leftCystalWebpMd from '~/assets/background/left-crystal/768/left-crystal.webp';
 import leftCrystalWebpSm from '~/assets/background/left-crystal/450/left-crystal.webp';
 import leftCystalPngXl from '~/assets/background/left-crystal/1440/left-crystal.png';
@@ -42,6 +45,7 @@ import leftCystalPngXl from '~/assets/background/left-crystal/1440/left-crystal.
 // right crystal
 import rightCystalWebpXl from '~/assets/background/right-crystal/1440/right-crystal.webp';
 import rightCystalWebpLg from '~/assets/background/right-crystal/1080/right-crystal.webp';
+import rightCystalWebpPortraitMd from '~/assets/background/right-crystal/768/right-crystal-portrait.webp';
 import rightCystalWebpMd from '~/assets/background/right-crystal/768/right-crystal.webp';
 import rightCrystalWebpSm from '~/assets/background/right-crystal/450/right-crystal.webp';
 import rightCystalPngXl from '~/assets/background/right-crystal/1440/right-crystal.png';
@@ -49,6 +53,7 @@ import rightCystalPngXl from '~/assets/background/right-crystal/1440/right-cryst
 // arc desert
 import arcDessertReverseWebpXl from '~/assets/background/arcDesertReverse/1440/arcDesertReverse.webp';
 import arcDessertReverseWebpLg from '~/assets/background/arcDesertReverse/1080/arcDesertReverse.webp';
+import arcDessertReverseWebpPortraitMd from '~/assets/background/arcDesertReverse/768/arcDesertReverse-portrait.webp';
 import arcDessertReverseWebpMd from '~/assets/background/arcDesertReverse/768/arcDesertReverse.webp';
 import arcDessertReverseWebpSm from '~/assets/background/arcDesertReverse/450/arcDesertReverse.webp';
 import arcDessertReversePngXl from '~/assets/background/arcDesertReverse/1440/arcDesertReverse.png';
@@ -67,6 +72,16 @@ type BackgroundProps = {
 const sources: { [key: string]: source[] } = {
   arc: [
     {
+      srcSet: arcWebpPortraitMd,
+      media: '(min-width: 650px) and (orientation: portrait)',
+      type: 'image/webp',
+    },
+    {
+      srcSet: arcWebpSm,
+      media: '(min-width: 300px) and (orientation: portrait)',
+      type: 'image/webp',
+    },
+    {
       srcSet: arcWebpXl,
       media: '(min-width: 1440px)',
       type: 'image/webp',
@@ -76,23 +91,24 @@ const sources: { [key: string]: source[] } = {
       media: '(min-width: 900px)',
       type: 'image/webp',
     },
-    {
-      srcSet: arcWebpSm,
-      media: '(orientation: portrait)',
-      type: 'image/webp',
-    },
+
     {
       srcSet: arcWebpMd,
       media: '(min-width: 650px)',
       type: 'image/webp',
     },
+  ],
+  planets: [
     {
-      srcSet: arcWebpSm,
+      srcSet: planetsWebpPortraitMd,
+      media: '(min-width: 650px) and (orientation: portrait)',
+      type: 'image/webp',
+    },
+    {
+      srcSet: planetsWebpSm,
       media: '(min-width: 300px) and (orientation: portrait)',
       type: 'image/webp',
     },
-  ],
-  planets: [
     {
       srcSet: planetsWebpXl,
       media: '(min-width: 1440px)',
@@ -103,23 +119,24 @@ const sources: { [key: string]: source[] } = {
       media: '(min-width: 900px)',
       type: 'image/webp',
     },
-    {
-      srcSet: planetsWebpSm,
-      media: '(orientation: portrait)',
-      type: 'image/webp',
-    },
+
     {
       srcSet: planetsWebpMd,
       media: '(min-width: 650px)',
       type: 'image/webp',
     },
+  ],
+  leftCrystal: [
     {
-      srcSet: planetsWebpSm,
+      srcSet: leftCystalWebpPortraitMd,
+      media: '(min-width: 650px) and (orientation: portrait)',
+      type: 'image/webp',
+    },
+    {
+      srcSet: leftCrystalWebpSm,
       media: '(min-width: 300px) and (orientation: portrait)',
       type: 'image/webp',
     },
-  ],
-  leftCrystal: [
     {
       srcSet: leftCystalWebpXl,
       media: '(min-width: 1440px)',
@@ -130,23 +147,24 @@ const sources: { [key: string]: source[] } = {
       media: '(min-width: 900px)',
       type: 'image/webp',
     },
-    {
-      srcSet: leftCrystalWebpSm,
-      media: '(orientation: portrait)',
-      type: 'image/webp',
-    },
+
     {
       srcSet: leftCystalWebpMd,
       media: '(min-width: 650px)',
       type: 'image/webp',
     },
+  ],
+  rightCrystal: [
     {
-      srcSet: leftCrystalWebpSm,
+      srcSet: rightCystalWebpPortraitMd,
+      media: '(min-width: 650px) and (orientation: portrait)',
+      type: 'image/webp',
+    },
+    {
+      srcSet: rightCrystalWebpSm,
       media: '(min-width: 300px) and (orientation: portrait)',
       type: 'image/webp',
     },
-  ],
-  rightCrystal: [
     {
       srcSet: rightCystalWebpXl,
       media: '(min-width: 1440px)',
@@ -157,23 +175,24 @@ const sources: { [key: string]: source[] } = {
       media: '(min-width: 900px)',
       type: 'image/webp',
     },
-    {
-      srcSet: rightCrystalWebpSm,
-      media: '(orientation: portrait)',
-      type: 'image/webp',
-    },
+
     {
       srcSet: rightCystalWebpMd,
       media: '(min-width: 650px)',
       type: 'image/webp',
     },
+  ],
+  arcDesertReverse: [
     {
-      srcSet: rightCrystalWebpSm,
+      srcSet: arcDessertReverseWebpPortraitMd,
+      media: '(min-width: 650px) and (orientation: portrait)',
+      type: 'image/webp',
+    },
+    {
+      srcSet: arcDessertReverseWebpSm,
       media: '(min-width: 300px) and (orientation: portrait)',
       type: 'image/webp',
     },
-  ],
-  arcDesertReverse: [
     {
       srcSet: arcDessertReverseWebpXl,
       media: '(min-width: 1440px)',
@@ -184,19 +203,10 @@ const sources: { [key: string]: source[] } = {
       media: '(min-width: 900px)',
       type: 'image/webp',
     },
-    {
-      srcSet: arcDessertReverseWebpSm,
-      media: '(orientation: portrait)',
-      type: 'image/webp',
-    },
+
     {
       srcSet: arcDessertReverseWebpMd,
       media: '(min-width: 650px)',
-      type: 'image/webp',
-    },
-    {
-      srcSet: arcDessertReverseWebpSm,
-      media: '(min-width: 300px) and (orientation: portrait)',
       type: 'image/webp',
     },
   ],
