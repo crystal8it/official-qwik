@@ -1,5 +1,7 @@
+import styles from './icons.module.css';
+
 export const Telegram = ({ size = 40 }) => (
-  <a href="https://www.google.com" target="_blank">
+  <a href="https://www.google.com" target="_blank" class={styles['icon-hover']}>
     <svg
       width={size}
       height={size}

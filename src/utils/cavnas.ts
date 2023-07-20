@@ -1,4 +1,4 @@
-const gradientRgbBasis = '130,130,88';
+const gradientRgbBasis = '96,233,146';
 
 function drawLine(
   ctx: CanvasRenderingContext2D,

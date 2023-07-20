@@ -1,7 +1,10 @@
+import styles from './icons.module.css';
+
 const Facebook = ({ size = 40 }) => (
   <a
     href="https://www.facebook.com/profile.php?id=100083152391417"
     target="_blank"
+    class={styles['icon-hover']}
   >
     <svg
       width={size}

@@ -1,0 +1,18 @@
+.icon-hover:hover {
+  border-radius: 5px;
+  animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0px rgba(230, 230, 230, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 0 4px rgba(230, 230, 230, 0.4);
+  }
+
+  75% {
+    box-shadow: 0 0 0 8px rgba(230, 230, 230, 0);
+  }
+}
