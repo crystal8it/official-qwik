@@ -635,6 +635,7 @@ export default component$(() => {
           id="emptySpace"
           style={{
             height: '20%',
+            pointerEvents: 'none',
           }}
         ></section>
       </div>
