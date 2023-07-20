@@ -220,6 +220,21 @@ const Background = component$(
       })
     );
 
+    useOnWindow(
+      'orientationchange',
+      $(() => {
+        const mediaQuery = window.matchMedia('(orientation: portrait)');
+
+        if (mediaQuery.matches) {
+          windowWidth.value = window.screen.width;
+          windowHeight.value = window.screen.height;
+        } else {
+          windowWidth.value = window.screen.width;
+          windowHeight.value = window.screen.height;
+        }
+      })
+    );
+
     useVisibleTask$(({ track }) => {
       track(() => [canvasRef.value, windowWidth.value, windowHeight.value]);
       const canvas = canvasRef.value;
