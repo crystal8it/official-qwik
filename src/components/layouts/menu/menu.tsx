@@ -1,5 +1,5 @@
 import { component$, useContext } from '@builder.io/qwik';
-import { Link } from '@builder.io/qwik-city';
+import { useNavigate } from '@builder.io/qwik-city';
 import { menuInactiveContext } from '~/components/layouts/header/header';
 import Line from '~/components/icons/line';
 import Facebook from '~/components/icons/facebook';
@@ -13,11 +13,12 @@ type Props = {
 };
 
 const links = [
-  { href: '', content: 'Works' },
+  { href: '/works', content: 'Works' },
   { href: '', content: 'Article' },
 ];
 
 export default component$(({ active, animationClass }: Props) => {
+  const nav = useNavigate();
   const menuInactive = useContext(menuInactiveContext);
 
   return (
@@ -27,9 +28,17 @@ export default component$(({ active, animationClass }: Props) => {
       </div>
 
       {links.map(({ href, content }) => (
-        <Link key={content} href={href}>
+        <a
+          style="cursor: pointer;"
+          preventdefault:click
+          onPointerDown$={() => {
+            menuInactive();
+            nav(href);
+          }}
+          key={content}
+        >
           {content}
-        </Link>
+        </a>
       ))}
 
       <a href="#contact" onPointerDown$={menuInactive}>
