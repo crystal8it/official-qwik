@@ -39,6 +39,10 @@ body {
   scroll-behavior: smooth;
 }
 
+a {
+  text-decoration: none;
+}
+
 ::-webkit-scrollbar {
   opacity: 0;
   width: 0;

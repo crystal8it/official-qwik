@@ -629,6 +629,14 @@ export default component$(() => {
             </TransformY>
           </article>
         </section>
+
+        {/* 123124 */}
+        <section
+          id="emptySpace"
+          style={{
+            height: '20%',
+          }}
+        ></section>
       </div>
     </>
   );

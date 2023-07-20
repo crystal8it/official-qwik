@@ -1,4 +1,10 @@
-import { component$, useSignal, useVisibleTask$ } from '@builder.io/qwik';
+import {
+  component$,
+  useSignal,
+  useVisibleTask$,
+  useOnWindow,
+  $,
+} from '@builder.io/qwik';
 import styles from './background.module.css';
 import { getColorTransition } from '~/utils/color';
 import {
@@ -71,13 +77,18 @@ const sources: { [key: string]: source[] } = {
       type: 'image/webp',
     },
     {
+      srcSet: arcWebpSm,
+      media: '(orientation: portrait)',
+      type: 'image/webp',
+    },
+    {
       srcSet: arcWebpMd,
-      media: '(min-width: 768px)',
+      media: '(min-width: 650px)',
       type: 'image/webp',
     },
     {
       srcSet: arcWebpSm,
-      media: '(min-width: 300px)',
+      media: '(min-width: 300px) and (orientation: portrait)',
       type: 'image/webp',
     },
   ],
@@ -93,13 +104,18 @@ const sources: { [key: string]: source[] } = {
       type: 'image/webp',
     },
     {
+      srcSet: planetsWebpSm,
+      media: '(orientation: portrait)',
+      type: 'image/webp',
+    },
+    {
       srcSet: planetsWebpMd,
       media: '(min-width: 650px)',
       type: 'image/webp',
     },
     {
       srcSet: planetsWebpSm,
-      media: '(min-width: 300px)',
+      media: '(min-width: 300px) and (orientation: portrait)',
       type: 'image/webp',
     },
   ],
@@ -115,13 +131,18 @@ const sources: { [key: string]: source[] } = {
       type: 'image/webp',
     },
     {
+      srcSet: leftCrystalWebpSm,
+      media: '(orientation: portrait)',
+      type: 'image/webp',
+    },
+    {
       srcSet: leftCystalWebpMd,
       media: '(min-width: 650px)',
       type: 'image/webp',
     },
     {
       srcSet: leftCrystalWebpSm,
-      media: '(min-width: 300px)',
+      media: '(min-width: 300px) and (orientation: portrait)',
       type: 'image/webp',
     },
   ],
@@ -137,13 +158,18 @@ const sources: { [key: string]: source[] } = {
       type: 'image/webp',
     },
     {
+      srcSet: rightCrystalWebpSm,
+      media: '(orientation: portrait)',
+      type: 'image/webp',
+    },
+    {
       srcSet: rightCystalWebpMd,
       media: '(min-width: 650px)',
       type: 'image/webp',
     },
     {
       srcSet: rightCrystalWebpSm,
-      media: '(min-width: 300px)',
+      media: '(min-width: 300px) and (orientation: portrait)',
       type: 'image/webp',
     },
   ],
@@ -159,13 +185,18 @@ const sources: { [key: string]: source[] } = {
       type: 'image/webp',
     },
     {
+      srcSet: arcDessertReverseWebpSm,
+      media: '(orientation: portrait)',
+      type: 'image/webp',
+    },
+    {
       srcSet: arcDessertReverseWebpMd,
       media: '(min-width: 650px)',
       type: 'image/webp',
     },
     {
       srcSet: arcDessertReverseWebpSm,
-      media: '(min-width: 300px)',
+      media: '(min-width: 300px) and (orientation: portrait)',
       type: 'image/webp',
     },
   ],
@@ -179,6 +210,15 @@ const Background = component$(
     const windowHeight = useSignal<number>(0);
     const opacity = useSignal<number>(0);
     const isShow = useSignal<boolean>(false);
+    const firstRender = useSignal<boolean>(true);
+
+    useOnWindow(
+      'resize',
+      $(() => {
+        windowWidth.value = window.screen.width;
+        windowHeight.value = window.screen.height;
+      })
+    );
 
     useVisibleTask$(({ track }) => {
       track(() => [canvasRef.value, windowWidth.value, windowHeight.value]);
@@ -258,7 +298,7 @@ const Background = component$(
           (elapsedTime / duration) * numPoints
         );
 
-        if (lineCurrentX > endX || lineCurrentY < endY) {
+        if ((lineCurrentX > endX || lineCurrentY < endY) && firstRender.value) {
           isShow.value = false;
           opacity.value = 0;
 
@@ -267,6 +307,10 @@ const Background = component$(
           drawLineCircle(ctx, points, numCompletedPoints);
 
           ctx.setLineDash([]);
+
+          setTimeout(() => {
+            firstRender.value = false;
+          }, duration);
         } else {
           if (opacity.value < 1) opacity.value += 0.01;
           drawRect(
@@ -342,7 +386,7 @@ const Background = component$(
             left: '0',
             zIndex: '0',
             width: '100%',
-            height: '100vh',
+            height: '100%',
             visibility: isShow.value ? 'visible' : 'hidden',
             opacity: isShow.value ? '1' : '0',
             transform: `translateY(${-transform * 0.1}%)`,
@@ -366,7 +410,7 @@ const Background = component$(
             left: '0',
             zIndex: '0',
             width: '100%',
-            height: '100vh',
+            height: '100%',
             visibility: isShow.value ? 'visible' : 'hidden',
             opacity: isShow.value ? '1' : '0',
             transform: `translate(${transform * 0.2}%, ${-transform * 0.1}%)`,
@@ -391,7 +435,7 @@ const Background = component$(
             left: '0',
             zIndex: '0',
             width: '100%',
-            height: '100vh',
+            height: '100%',
             visibility: isShow.value ? 'visible' : 'hidden',
             opacity: isShow.value ? '1' : '0',
             transform: `translate(${-transform * 0.2}%, ${-transform * 0.1}%)`,
@@ -415,7 +459,7 @@ const Background = component$(
             left: '0',
             zIndex: '0',
             width: '100%',
-            height: '100vh',
+            height: '100%',
             visibility: isShow.value ? 'visible' : 'hidden',
             opacity: isShow.value ? '1' : '0',
           }}
@@ -439,7 +483,7 @@ const Background = component$(
             left: '0',
             zIndex: '0',
             width: '100%',
-            height: '100vh',
+            height: '100%',
             visibility: isShow.value ? 'visible' : 'hidden',
             opacity: isShow.value ? '1' : '0',
           }}
