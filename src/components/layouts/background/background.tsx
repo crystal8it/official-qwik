@@ -14,7 +14,6 @@ import {
   drawCircle,
 } from '~/utils/cavnas';
 import Image from '~/components/Image/Image';
-import Rocket from '~/assets/rocket.png';
 
 // background
 
@@ -215,7 +214,6 @@ const sources: { [key: string]: source[] } = {
 const Background = component$(
   ({ transform, showButtomDesert }: BackgroundProps) => {
     const canvasRef = useSignal<HTMLCanvasElement>();
-    const rocketRef = useSignal<HTMLImageElement>();
     const windowWidth = useSignal<number>(0);
     const windowHeight = useSignal<number>(0);
     const opacity = useSignal<number>(0);
@@ -309,8 +307,6 @@ const Background = component$(
         if (!startTime) {
           startTime = timestamp;
         }
-
-        if (!rocketRef.value) return;
 
         ctx.clearRect(0, 0, windowWidth.value, windowHeight.value);
 
@@ -525,9 +521,7 @@ const Background = component$(
           style={{ position: 'fixed', top: '0', left: '0', zIndex: '-1' }}
           class={styles.entryAnimation}
           ref={canvasRef}
-        >
-          <img width="50px" height="50px" ref={rocketRef} src={Rocket} alt="" />
-        </canvas>
+        ></canvas>
       </>
     );
   }

@@ -10,8 +10,8 @@ type ImageProps = {
   src: string;
   alt: string;
   fitPosition?: 'top' | 'center' | 'bottom';
-  width?: string;
-  height?: string;
+  width?: any;
+  height?: any;
   sources?: source[];
 };
 
@@ -35,12 +35,8 @@ export default component$(
           width={width}
           height={height}
           style={{
-            'objectFit': 'cover',
-            'userDrag': 'none',
-            '-webkitUserDrag': 'none',
-            '-mozUserDrag': 'none',
-            '-msUserDrag': 'none',
-            'objectPosition': fitPosition,
+            objectFit: 'cover',
+            objectPosition: fitPosition,
           }}
           alt={alt}
           src={src}

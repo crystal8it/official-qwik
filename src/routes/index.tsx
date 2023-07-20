@@ -251,7 +251,9 @@ export default component$(() => {
         </section>
 
         <img
+          // @ts-ignore:next-line
           width="100%"
+          // @ts-ignore:next-line
           height="auto"
           style="object-fit: cover;transform:translateY(5px)"
           src={arcPng}
@@ -463,7 +465,9 @@ export default component$(() => {
         </section>
 
         <img
+          // @ts-ignore:next-line
           width="100%"
+          // @ts-ignore:next-line
           height="auto"
           style="object-fit: cover;transform:translateY(-5px)"
           src={arcReverse}
