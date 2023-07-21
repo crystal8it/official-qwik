@@ -1,11 +1,13 @@
 import { component$ } from '@builder.io/qwik';
-import type { DocumentHead } from '@builder.io/qwik-city';
+import { type DocumentHead, useNavigate } from '@builder.io/qwik-city';
 import styles from './works.module.css';
-import { ProtofolioTranscript } from '~/Transcript';
+import WorksTranscript from '~/Transcript/works';
 import ImageCard from '~/components/layouts/card/ImageCard';
 import Image from '~/components/Image/Image';
 
 export default component$(() => {
+  const nav = useNavigate();
+
   return (
     <div class={[styles['scroll-snap-type-y-mandatory'], 'bg-dark-blue']}>
       <section class={[styles.works, 'bg-dark-blue']}>
@@ -42,10 +44,16 @@ export default component$(() => {
               'bg-dark-blue',
             ]}
           >
-            {ProtofolioTranscript.map(
+            {WorksTranscript.map(
               ({ title, subTitle, href, tag, src, sources, alt }, i) => (
                 <div key={title + i} class={styles['protofolio-item']}>
-                  <a href={href} target="_blank" rel="noreferrer noopener">
+                  <a
+                    onPointerDown$={() => {
+                      nav(href);
+                    }}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
                     <ImageCard
                       title={title}
                       subTitle={subTitle}

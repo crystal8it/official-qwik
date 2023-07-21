@@ -1,0 +1,21 @@
+import { component$, Slot } from '@builder.io/qwik';
+import styles from './Btn.module.css';
+
+type btn = {
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  style?: any;
+  event?: any;
+};
+
+export default component$(({ size = 'sm', style, event }: btn) => {
+  return (
+    <button
+      preventdefault:click
+      onClick$={event}
+      class={[styles['linear-btn'], styles[size]]}
+      style={style}
+    >
+      <Slot></Slot>
+    </button>
+  );
+});
