@@ -1,16 +1,30 @@
-import { component$, $, useStore } from '@builder.io/qwik';
+import {
+  component$,
+  $,
+  useStore,
+  useSignal,
+  useVisibleTask$,
+} from '@builder.io/qwik';
 import { useLocation, type StaticGenerateHandler } from '@builder.io/qwik-city';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import styles from './work.module.css';
 import LinearBtn from '~/components/button/LinearBtn';
-import WorkTranscript from '~/Transcript/work-id';
 import loadWorkNames from './loadWorkNames';
+import WorkTranscript from '~/Transcript/work-id';
+import Image from '~/components/Image/Image';
+import TransformY from '~/components/Transition/transformY';
 
 export default component$(() => {
   const { params } = useLocation();
   const name = params.name;
 
   const signal = useStore(WorkTranscript[name]);
+  const isShow = useSignal(false);
+
+  useVisibleTask$(({ cleanup }) => {
+    isShow.value = true;
+    cleanup(() => (isShow.value = false));
+  });
 
   const clickRedirect = $(() => {
     const a = document.createElement('a');
@@ -22,11 +36,33 @@ export default component$(() => {
 
   return (
     <article class={[styles['work-container'], 'bg-dark-blue']}>
+      {/* banner */}
       <section class={styles.banner}>
-        <div></div>
+        <div
+          class={[
+            styles['img-container'],
+            `hidden-${1}`,
+            isShow.value ? 'show' : '',
+          ]}
+        >
+          <Image
+            width={800}
+            height={500}
+            obectFit="contain"
+            fitPosition="center"
+            src={signal.banner.image.src}
+            sources={signal.banner.image.sources}
+            alt={signal.banner.image.alt}
+          ></Image>
+        </div>
 
-        {/* banner */}
-        <div class={styles['title-container']}>
+        <div
+          class={[
+            styles['title-container'],
+            `hidden-${2}`,
+            isShow.value ? 'show' : '',
+          ]}
+        >
           <h2 class={[styles.title, styles.eng]}>{signal.banner.eng}</h2>
           <h2 class={styles.title}>{signal.banner.cht}</h2>
           <div class={styles['tag-container']}>
@@ -40,19 +76,56 @@ export default component$(() => {
       </section>
 
       {/* content */}
-      <div class={styles['content-background']}>
+      <section class={styles['content-background']}>
         <section class={styles.content}>
           <div class={styles['content-section']}>
-            <div class={styles['text-container']}>
-              <h2>客戶簡介</h2>
+            <TransformY
+              index={1}
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+              }}
+              myClass={[styles['text-container']]}
+            >
+              <Image
+                width={300}
+                height={90}
+                src={signal.customerIntroduction.logo.src}
+                sources={signal.customerIntroduction.logo.sources}
+                alt={signal.customerIntroduction.logo.alt}
+              ></Image>
+              <h2 class="mt-4">客戶簡介</h2>
               <p>{signal.customerIntroduction.content}</p>
-            </div>
-            <div class={styles['img-container']} id="sec-1-img"></div>
+            </TransformY>
+
+            <TransformY index={3} myClass={[styles['text-container']]}>
+              <Image
+                width={800}
+                height={500}
+                obectFit="contain"
+                fitPosition="center"
+                src={signal.customerIntroduction.image.src}
+                sources={signal.customerIntroduction.image.sources}
+                alt={signal.customerIntroduction.image.alt}
+              ></Image>
+            </TransformY>
           </div>
 
           <div style="margin-top:100px" class={[styles['content-section']]}>
-            <div class={styles['img-container']} id="sec-2-img"></div>
-            <div class={styles['text-container']}>
+            <TransformY index={3} myClass={[styles['text-container']]}>
+              <Image
+                width={800}
+                height={500}
+                obectFit="contain"
+                fitPosition="center"
+                src={signal.projectBackground.image.src}
+                sources={signal.projectBackground.image.sources}
+                alt={signal.projectBackground.image.alt}
+              ></Image>
+            </TransformY>
+
+            <TransformY index={1} myClass={[styles['text-container']]}>
               <div>
                 <h2>專案背景</h2>
                 <p>{signal.projectBackground.content}</p>
@@ -69,10 +142,12 @@ export default component$(() => {
               >
                 前往網站 &nbsp; &nbsp; &rarr;
               </LinearBtn>
-            </div>
+            </TransformY>
           </div>
         </section>
-      </div>
+      </section>
+
+      <section style="height:100vh"></section>
     </article>
   );
 });

@@ -1,4 +1,4 @@
-import { component$ } from '@builder.io/qwik';
+import { $, component$ } from '@builder.io/qwik';
 import { type DocumentHead, useNavigate } from '@builder.io/qwik-city';
 import styles from './works.module.css';
 import WorksTranscript from '~/Transcript/works';
@@ -7,6 +7,18 @@ import Image from '~/components/Image/Image';
 
 export default component$(() => {
   const nav = useNavigate();
+  const redirect = $((href: { type: 'inside' | 'outside'; url: string }) => {
+    if (href.type === 'inside') {
+      nav(href.url);
+    } else {
+      const a = document.createElement('a');
+      a.href = href.url;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.click();
+      a.remove();
+    }
+  });
 
   return (
     <div class={[styles['scroll-snap-type-y-mandatory'], 'bg-dark-blue']}>
@@ -64,11 +76,7 @@ export default component$(() => {
                   key={title + i}
                   class={styles['protofolio-item']}
                 >
-                  <a
-                    onPointerDown$={() => {
-                      nav(href);
-                    }}
-                  >
+                  <a onPointerDown$={() => redirect(href)}>
                     <ImageCard
                       title={title}
                       subTitle={subTitle}

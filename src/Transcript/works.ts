@@ -11,7 +11,10 @@ type TProtofolioTranscript = {
   id: string;
   title: string;
   subTitle: string;
-  href: string;
+  href: {
+    type: 'outside' | 'inside';
+    url: string;
+  };
   tag: string[];
   width: any;
   height: any;
@@ -29,7 +32,10 @@ const ProtofolioTranscript: TProtofolioTranscript[] = [
     id: 'thrct',
     title: '財團法人方興中馬匹輔學健康社福基金會募資網站',
     subTitle: '募資進度與目標輕鬆掌握',
-    href: '/work/thrct',
+    href: {
+      type: 'inside',
+      url: '/work/thrct',
+    },
     tag: ['活動網站', '公益行銷'],
     width: 540,
     height: 720,
@@ -46,7 +52,7 @@ const ProtofolioTranscript: TProtofolioTranscript[] = [
     id: 'grace888',
     title: '廣容綠化有限公司專案管理系統',
     subTitle: '脫離紙本苦海,專案.人員管理都變輕鬆了',
-    href: '/work/grace888',
+    href: { type: 'inside', url: '/work/grace888' },
     tag: ['系統設計', '工商企業'],
     width: 540,
     height: 720,
@@ -63,7 +69,7 @@ const ProtofolioTranscript: TProtofolioTranscript[] = [
     id: 'ilens',
     title: '愛能視隱形眼鏡銷售據點',
     subTitle: '據點與販售系列都能一手掌握',
-    href: '/work/ilens',
+    href: { type: 'inside', url: '/work/ilens' },
     tag: ['CYBERBIZ系統頁面客製', '工商企業'],
     width: 540,
     height: 720,
@@ -80,7 +86,10 @@ const ProtofolioTranscript: TProtofolioTranscript[] = [
     id: 'PASTA&CO電子信箱網域設定',
     title: 'PASTA & CO 電子信箱網域設定',
     subTitle: 'email地址也是pastaco.tw了,專業形象upup!',
-    href: '/work/PASTA&CO電子信箱網域設定',
+    href: {
+      type: 'outside',
+      url: 'https://www.pastaco.tw/zh-TW',
+    },
     tag: ['網路服務', '工商企業'],
     width: 540,
     height: 720,

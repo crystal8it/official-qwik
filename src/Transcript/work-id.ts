@@ -1,4 +1,16 @@
-type workArticle = {
+// ilens
+import ilensBannerWebp from '~/assets/work/ilens/work-ilens-banner.webp';
+import ilensBannerPng from '~/assets/work/ilens/work-ilens-banner.png';
+import ilensLogoWebp from '~/assets/work/ilens/work-ilens-logo.webp';
+import ilensLogoPng from '~/assets/work/ilens/work-ilens-logo.png';
+import ilensCustomerWebp from '~/assets/work/ilens/work-ilens-customer.webp';
+import ilensCustomerPng from '~/assets/work/ilens/work-ilens-customer.png';
+import ilensProjectWebp from '~/assets/work/ilens/work-ilens-project.webp';
+import ilensProjectPng from '~/assets/work/ilens/work-ilens-project.png';
+
+// thrct
+
+interface workArticle {
   content: string;
   image: {
     src: string;
@@ -9,17 +21,38 @@ type workArticle = {
     }[];
     alt: string;
   };
-};
+}
+
+interface TcustonerIntro extends workArticle {
+  logo: {
+    src: string;
+    sources: {
+      srcSet: string;
+      media?: string;
+      type: 'image/webp' | 'image/png' | 'image/jpeg';
+    }[];
+    alt: string;
+  };
+}
 
 type TWorkTranscript = {
   banner: {
     eng: string;
     cht: string;
     tag: string[];
+    image: {
+      src: string;
+      sources: {
+        srcSet: string;
+        media?: string;
+        type: 'image/webp' | 'image/png' | 'image/jpeg';
+      }[];
+      alt: string;
+    };
   };
-  customerIntroduction: workArticle;
+  customerIntroduction: TcustonerIntro;
   projectBackground: workArticle;
-  designConcept: workArticle;
+  designConcept: { content: string };
   href: string;
 };
 
@@ -29,8 +62,31 @@ const WorkTranscript: { [key: string]: TWorkTranscript } = {
       eng: 'The Fang Hsing-Chung Social Welfare Foundation for Horses in Education and Health',
       cht: '財團法人方興中馬匹輔學健康社福基金會募資網站',
       tag: ['活動網站', '公益行銷'],
+      image: {
+        src: '123',
+        sources: [
+          {
+            srcSet: '123',
+            media: '123',
+            type: 'image/webp',
+          },
+        ],
+        alt: '希望馬場',
+      },
     },
     customerIntroduction: {
+      logo: {
+        src: '123',
+        sources: [
+          {
+            srcSet: '123',
+            media: '123',
+            type: 'image/webp',
+          },
+        ],
+        alt: '希望馬場',
+      },
+
       content:
         '財團法人方興中馬匹輔學健康社福基金會致力推廣身心障礙馬術治療，旗下的希望馬場為全台唯一身心障礙者馬匹輔助教育團隊，提供專業馬術治療課程，並定期舉辦馬術比賽和相關公益活動，讓身心障礙者有機會接觸和參與馬術運動展現自我。',
       image: {
@@ -63,17 +119,6 @@ const WorkTranscript: { [key: string]: TWorkTranscript } = {
     designConcept: {
       content:
         '延續官網配色與設計，除了募款內容外另加設募款目標和階段動畫以及贊助人次，讓欲捐款者清楚知道捐款進度和金額，並引導捐款者回到財團法人方興中馬匹輔學健康社福基金會的官網進行捐款。',
-      image: {
-        src: '123',
-        sources: [
-          {
-            srcSet: '123',
-            media: '123',
-            type: 'image/webp',
-          },
-        ],
-        alt: '希望馬場',
-      },
     },
     href: 'https://support.thrct.org',
   },
@@ -82,51 +127,59 @@ const WorkTranscript: { [key: string]: TWorkTranscript } = {
       eng: 'Ilens Sales Location Page',
       cht: '愛能視隱形眼鏡銷售據點網頁',
       tag: ['CYBERBIZ系統頁面客製', '工商企業'],
-    },
-    customerIntroduction: {
-      content:
-        '愛能視秉持著安全、舒適和清晰的產品理念堅持創新，憑藉獨創的圖紋設計，領先時尚潮流。多年來用心耕耘台灣市場，如今已在全台擁有超過16000個眼鏡店面和藥妝門市，成為業界的領航者。',
       image: {
-        src: '123',
+        src: ilensBannerPng,
         sources: [
           {
-            srcSet: '123',
-            media: '123',
+            srcSet: ilensBannerWebp,
             type: 'image/webp',
           },
         ],
-        alt: '希望馬場',
+        alt: 'Ilens 愛能視, 隱形眼鏡專家',
+      },
+    },
+    customerIntroduction: {
+      logo: {
+        src: ilensLogoPng,
+        sources: [
+          {
+            srcSet: ilensLogoWebp,
+
+            type: 'image/webp',
+          },
+        ],
+        alt: 'Ilens 愛能視, 隱形眼鏡專家',
+      },
+      content:
+        '愛能視秉持著安全、舒適和清晰的產品理念堅持創新，憑藉獨創的圖紋設計，領先時尚潮流。多年來用心耕耘台灣市場，如今已在全台擁有超過16000個眼鏡店面和藥妝門市，成為業界的領航者。',
+      image: {
+        src: ilensCustomerPng,
+        sources: [
+          {
+            srcSet: ilensCustomerWebp,
+            type: 'image/webp',
+          },
+        ],
+        alt: 'Ilens 愛能視, 隱形眼鏡專家',
       },
     },
     projectBackground: {
       content:
         '業主深知客戶尋找門市的重要性，因此委託製作此專案，為了提供顧客以方便快捷的方式，尋找最近的銷售據點，讓顧客無論在何處，都能輕鬆找到他們心儀的隱形眼鏡。',
       image: {
-        src: '123',
+        src: ilensProjectPng,
         sources: [
           {
-            srcSet: '123',
-            media: '123',
+            srcSet: ilensProjectWebp,
             type: 'image/webp',
           },
         ],
-        alt: '希望馬場',
+        alt: 'Ilens 愛能視, 隱形眼鏡專家',
       },
     },
     designConcept: {
       content:
         '延續業主官網的配色及企業形象，我們將愛能視的主要色彩做為基礎，選用與他們形象相符的視覺元素和設計風格。增強業主的品牌識別度，使顧客在尋找門市時感受到熟悉和親近，同時傳達出對客戶需求的關懷和用心。',
-      image: {
-        src: '123',
-        sources: [
-          {
-            srcSet: '123',
-            media: '123',
-            type: 'image/webp',
-          },
-        ],
-        alt: '希望馬場',
-      },
     },
     href: 'https://www.ilens.com.tw/pages/%E8%B2%A9%E5%94%AE%E9%80%9A%E8%B7%AF',
   },
@@ -135,8 +188,30 @@ const WorkTranscript: { [key: string]: TWorkTranscript } = {
       eng: 'Grace888 Project Management System',
       cht: '廣容綠化有限公司專案管理系統',
       tag: ['系統設計', '工商企業'],
+      image: {
+        src: '123',
+        sources: [
+          {
+            srcSet: '123',
+            media: '123',
+            type: 'image/webp',
+          },
+        ],
+        alt: '希望馬場',
+      },
     },
     customerIntroduction: {
+      logo: {
+        src: '123',
+        sources: [
+          {
+            srcSet: '123',
+            media: '123',
+            type: 'image/webp',
+          },
+        ],
+        alt: '希望馬場',
+      },
       content:
         '廣容綠化以最新的技術與設備綠化環境，創造充滿美學、朝氣、友善植物健康的環境，並提升國人公共生活空間品質，對於樹木養護有多年專業經驗，秉持愛護樹木的理念，盡力協助每一次的相關工作，以樹木美化後的面貌達到環境、生態、美學的平衡為使命。',
       image: {
@@ -169,6 +244,14 @@ const WorkTranscript: { [key: string]: TWorkTranscript } = {
     designConcept: {
       content:
         '此專案的設計概念以簡約、舒適和直覺為主要方向。讓使用者體驗到簡單易懂的界面和流程。簡約的設計風格能減少不必要的複雜性，舒適的使用體驗能使工作效率增強，直覺的操作方式更能降低學習門檻，使業主能夠輕鬆享受高效率的企業轉型與管理過程。',
+    },
+    href: 'https://www.ilens.com.tw/pages/%E8%B2%A9%E5%94%AE%E9%80%9A%E8%B7%AF',
+  },
+  '4U2': {
+    banner: {
+      eng: '4U2 Sales Location Page',
+      cht: '4U2台灣總代理銷售據點',
+      tag: ['CYBERBIZ系統頁面客製', '工商企業'],
       image: {
         src: '123',
         sources: [
@@ -181,15 +264,18 @@ const WorkTranscript: { [key: string]: TWorkTranscript } = {
         alt: '希望馬場',
       },
     },
-    href: 'https://www.ilens.com.tw/pages/%E8%B2%A9%E5%94%AE%E9%80%9A%E8%B7%AF',
-  },
-  '4U2': {
-    banner: {
-      eng: '4U2 Sales Location Page',
-      cht: '4U2台灣總代理銷售據點',
-      tag: ['CYBERBIZ系統頁面客製', '工商企業'],
-    },
     customerIntroduction: {
+      logo: {
+        src: '123',
+        sources: [
+          {
+            srcSet: '123',
+            media: '123',
+            type: 'image/webp',
+          },
+        ],
+        alt: '希望馬場',
+      },
       content:
         'IG霸屏率最高熱銷高顏值彩妝4U2台灣官方總代理，致力以平實的價格，提供給消費者優質的美妝產品，創造高CP值的美妝護膚體驗',
       image: {
@@ -222,17 +308,6 @@ const WorkTranscript: { [key: string]: TWorkTranscript } = {
     designConcept: {
       content:
         '延續業主官網的配色及企業形象，我們將4U2的主要色彩做為基礎，選用與他們形象相符的視覺元素和設計風格。增強業主的品牌識別度，使顧客在尋找門市時感受到熟悉和親近，同時傳達出對客戶需求的關懷和用心。',
-      image: {
-        src: '123',
-        sources: [
-          {
-            srcSet: '123',
-            media: '123',
-            type: 'image/webp',
-          },
-        ],
-        alt: '希望馬場',
-      },
     },
     href: 'https://www.ilens.com.tw/pages/%E8%B2%A9%E5%94%AE%E9%80%9A%E8%B7%AF',
   },
