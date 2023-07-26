@@ -24,7 +24,7 @@ type TWorkTranscript = {
 };
 
 const WorkTranscript: { [key: string]: TWorkTranscript } = {
-  '財團法人方興中馬匹輔學健康社福基金會募資網站': {
+  'thrct': {
     banner: {
       eng: 'The Fang Hsing-Chung Social Welfare Foundation for Horses in Education and Health',
       cht: '財團法人方興中馬匹輔學健康社福基金會募資網站',
@@ -77,7 +77,7 @@ const WorkTranscript: { [key: string]: TWorkTranscript } = {
     },
     href: 'https://support.thrct.org',
   },
-  '愛能視隱形眼鏡銷售據點': {
+  'ilens': {
     banner: {
       eng: 'Ilens Sales Location Page',
       cht: '愛能視隱形眼鏡銷售據點網頁',
@@ -130,7 +130,7 @@ const WorkTranscript: { [key: string]: TWorkTranscript } = {
     },
     href: 'https://www.ilens.com.tw/pages/%E8%B2%A9%E5%94%AE%E9%80%9A%E8%B7%AF',
   },
-  '廣容綠化有限公司專案管理系統': {
+  'grace888': {
     banner: {
       eng: 'Grace888 Project Management System',
       cht: '廣容綠化有限公司專案管理系統',
@@ -183,7 +183,7 @@ const WorkTranscript: { [key: string]: TWorkTranscript } = {
     },
     href: 'https://www.ilens.com.tw/pages/%E8%B2%A9%E5%94%AE%E9%80%9A%E8%B7%AF',
   },
-  '4U2台灣總代理銷售據點': {
+  '4U2': {
     banner: {
       eng: '4U2 Sales Location Page',
       cht: '4U2台灣總代理銷售據點',

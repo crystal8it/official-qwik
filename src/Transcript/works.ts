@@ -26,10 +26,10 @@ type TProtofolioTranscript = {
 
 const ProtofolioTranscript: TProtofolioTranscript[] = [
   {
-    id: '財團法人方興中馬匹輔學健康社福基金會募資網站',
+    id: 'thrct',
     title: '財團法人方興中馬匹輔學健康社福基金會募資網站',
     subTitle: '募資進度與目標輕鬆掌握',
-    href: '/work/財團法人方興中馬匹輔學健康社福基金會募資網站',
+    href: '/work/thrct',
     tag: ['活動網站', '公益行銷'],
     width: 540,
     height: 720,
@@ -43,10 +43,10 @@ const ProtofolioTranscript: TProtofolioTranscript[] = [
     alt: '財團法人方興中馬匹輔學健康社福基金會',
   },
   {
-    id: '廣容綠化有限公司專案管理系統',
+    id: 'grace888',
     title: '廣容綠化有限公司專案管理系統',
     subTitle: '脫離紙本苦海,專案.人員管理都變輕鬆了',
-    href: '/work/廣容綠化有限公司專案管理系統',
+    href: '/work/grace888',
     tag: ['系統設計', '工商企業'],
     width: 540,
     height: 720,
@@ -60,10 +60,10 @@ const ProtofolioTranscript: TProtofolioTranscript[] = [
     alt: '廣容綠化有限公司',
   },
   {
-    id: '愛能視隱形眼鏡銷售據點',
+    id: 'ilens',
     title: '愛能視隱形眼鏡銷售據點',
     subTitle: '據點與販售系列都能一手掌握',
-    href: '/work/愛能視隱形眼鏡銷售據點',
+    href: '/work/ilens',
     tag: ['CYBERBIZ系統頁面客製', '工商企業'],
     width: 540,
     height: 720,
