@@ -11,8 +11,6 @@
 .banner {
   width: 100%;
   height: 65%;
-  background: var(--qwik-dark-background);
-  /* background: white; */
   display: flex;
   justify-content: space-between;
   gap: 100px;
@@ -101,4 +99,9 @@
       }
     }
   }
+}
+
+.footer {
+  height: 100vh;
+  background: linear-gradient(to bottom left, #fabf3d, #04e0ee);
 }

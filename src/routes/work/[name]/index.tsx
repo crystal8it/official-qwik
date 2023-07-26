@@ -4,6 +4,7 @@ import {
   useStore,
   useSignal,
   useVisibleTask$,
+  useContext,
 } from '@builder.io/qwik';
 import { useLocation, type StaticGenerateHandler } from '@builder.io/qwik-city';
 import type { DocumentHead } from '@builder.io/qwik-city';
@@ -13,6 +14,8 @@ import loadWorkNames from './loadWorkNames';
 import WorkTranscript from '~/Transcript/work-id';
 import Image from '~/components/Image/Image';
 import TransformY from '~/components/Transition/transformY';
+import Contact from '~/components/Section/Contact';
+import { headerHandlerContext } from '~/store/globalStore';
 
 export default component$(() => {
   const { params } = useLocation();
@@ -20,10 +23,22 @@ export default component$(() => {
 
   const signal = useStore(WorkTranscript[name]);
   const isShow = useSignal(false);
+  const height = window.innerHeight;
+  const headerHandler = useContext(headerHandlerContext);
 
   useVisibleTask$(({ cleanup }) => {
     isShow.value = true;
     cleanup(() => (isShow.value = false));
+  });
+
+  const scroll = $((e: any) => {
+    const activeNumber = e.target.scrollTop / height;
+
+    if (activeNumber > 0.95) {
+      headerHandler.active();
+    } else {
+      headerHandler.inactive();
+    }
   });
 
   const clickRedirect = $(() => {
@@ -35,7 +50,7 @@ export default component$(() => {
   });
 
   return (
-    <article class={[styles['work-container'], 'bg-dark-blue']}>
+    <article onScroll$={scroll} class={[styles['work-container']]}>
       {/* banner */}
       <section class={styles.banner}>
         <div
@@ -147,7 +162,9 @@ export default component$(() => {
         </section>
       </section>
 
-      <section style="height:100vh"></section>
+      <section class={styles.footer}>
+        <Contact zIndex={0}></Contact>
+      </section>
     </article>
   );
 });

@@ -4,6 +4,8 @@ import grProtofolioPng from '../assets/protofolio/gr.png';
 import grProtofolioWebp from '../assets/protofolio/gr.webp';
 import ilensProtofolioPng from '../assets/protofolio/ilens.png';
 import ilensProtofolioWebp from '../assets/protofolio/ilens.webp';
+import AU2ProtofolioWebp from '~/assets/protofolio/4u2.webp';
+import AU2ProtofolioPng from '~/assets/protofolio/4u2.png';
 import pastaCoProtofolioPng from '../assets/protofolio/pastaCo.png';
 import pastaCoProtofolioWebp from '../assets/protofolio/pastaCo.webp';
 
@@ -81,6 +83,26 @@ const ProtofolioTranscript: TProtofolioTranscript[] = [
       },
     ],
     alt: '愛能視隱形眼鏡',
+  },
+  {
+    id: '4U2',
+    title: '4U2銷售據點',
+    subTitle: '據點與販售系列都能一手掌握',
+    href: {
+      type: 'inside',
+      url: '/work/4U2',
+    },
+    tag: ['CYBERBIZ系統頁面客製', '工商企業'],
+    width: 540,
+    height: 720,
+    src: AU2ProtofolioPng,
+    sources: [
+      {
+        srcSet: AU2ProtofolioWebp,
+        type: 'image/webp',
+      },
+    ],
+    alt: '4U2銷售據點',
   },
   {
     id: 'PASTA&CO電子信箱網域設定',
