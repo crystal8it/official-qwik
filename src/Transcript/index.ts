@@ -57,6 +57,8 @@ type TProtofolioTranscript = {
   subTitle: string;
   href: string;
   tag: string[];
+  width: any;
+  height: any;
   src: string;
   sources: {
     srcSet: string;
@@ -72,6 +74,8 @@ const ProtofolioTranscript: TProtofolioTranscript[] = [
     subTitle: '募資進度與目標輕鬆掌握',
     href: 'https://support.thrct.org/',
     tag: ['活動網站', '公益行銷'],
+    width: 540,
+    height: 720,
     src: thrctProtofolioPng,
     sources: [
       {
@@ -86,6 +90,8 @@ const ProtofolioTranscript: TProtofolioTranscript[] = [
     subTitle: '脫離紙本苦海,專案.人員管理都變輕鬆了',
     href: 'https://www.grace888.com.tw/',
     tag: ['系統設計', '工商企業'],
+    width: 540,
+    height: 720,
     src: grProtofolioPng,
     sources: [
       {
@@ -100,6 +106,8 @@ const ProtofolioTranscript: TProtofolioTranscript[] = [
     subTitle: '據點與販售系列都能一手掌握',
     href: 'https://www.ilens.com.tw/pages/%E8%B2%A9%E5%94%AE%E9%80%9A%E8%B7%AF',
     tag: ['CYBERBIZ系統頁面客製', '工商企業'],
+    width: 540,
+    height: 720,
     src: ilensProtofolioPng,
     sources: [
       {
@@ -114,6 +122,8 @@ const ProtofolioTranscript: TProtofolioTranscript[] = [
     subTitle: 'email地址也是pastaco.tw了,專業形象upup!',
     href: 'https://www.pastaco.tw/zh-TW',
     tag: ['網路服務', '工商企業'],
+    width: 540,
+    height: 720,
     src: pastaCoProtofolioPng,
     sources: [
       {
@@ -127,6 +137,8 @@ const ProtofolioTranscript: TProtofolioTranscript[] = [
 
 type TPartnerTranscript = {
   href: string;
+  width: any;
+  height: any;
   src: string;
   sources: {
     srcSet: string;
@@ -138,24 +150,32 @@ type TPartnerTranscript = {
 const PartnerTranscript: TPartnerTranscript[] = [
   {
     href: 'https://www.ilens.com.tw/',
+    width: 100,
+    height: 60,
     src: ilensLogoPng,
     sources: [{ srcSet: ilensLogoWebp, type: 'image/webp' }],
     alt: '愛能視隱形眼鏡, Ilens',
   },
   {
     href: 'https://www.grace888.com.tw/',
+    width: 100,
+    height: 60,
     src: yljLogoPng,
     sources: [{ srcSet: yljLogoWebp, type: 'image/webp' }],
     alt: '翊麗嘉環境工程有限公司',
   },
   {
     href: 'https://www.pastaco.tw/zh-TW',
+    width: 100,
+    height: 60,
     src: pastaCoLogoPng,
     sources: [{ srcSet: pastaCoLogoWebp, type: 'image/webp' }],
     alt: 'PASTA & CO',
   },
   {
     href: 'https://www.grace888.com.tw/',
+    width: 100,
+    height: 60,
     src: grLogoPng,
     sources: [{ srcSet: grLogoWebp, type: 'image/webp' }],
     alt: '廣容綠化有限公司',
@@ -163,18 +183,24 @@ const PartnerTranscript: TPartnerTranscript[] = [
 
   {
     href: 'https://www.cyberbiz.io/',
+    width: 100,
+    height: 60,
     src: cyberbizLogoPng,
     sources: [{ srcSet: cyberbizLogoWebp, type: 'image/webp' }],
     alt: 'CYBERBIZ線上商務與線下整合開店平台, 順利智慧股份有限公司',
   },
   {
     href: 'https://www.thrct.org/',
+    width: 100,
+    height: 60,
     src: thrctLogoPng,
     sources: [{ srcSet: thrctLogoWebp, type: 'image/webp' }],
     alt: '希望馬場, 財團法人方興中馬匹輔學健康社福基金會',
   },
   {
     href: 'https://www.blossombeaute.com/',
+    width: 100,
+    height: 60,
     src: kkckLogoPng,
     sources: [{ srcSet: kkckLogoWebp, type: 'image/webp' }],
     alt: '諄宏企業股份有限公司, 4u2, blossombeaute',

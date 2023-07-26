@@ -415,6 +415,8 @@ const Background = component$(
           class="trans-10-opacity"
         >
           <Image
+            width={1518}
+            height={854}
             sources={sources.planets}
             src={planetsPngXl}
             fitPosition="bottom"
@@ -439,6 +441,8 @@ const Background = component$(
           class="trans-10-opacity"
         >
           <Image
+            width={1518}
+            height={854}
             sources={sources.rightCrystal}
             src={rightCystalPngXl}
             fitPosition="bottom"
@@ -464,6 +468,8 @@ const Background = component$(
           class="trans-10-opacity"
         >
           <Image
+            width={1518}
+            height={854}
             sources={sources.leftCrystal}
             src={leftCystalPngXl}
             fitPosition="bottom"
@@ -487,6 +493,8 @@ const Background = component$(
           class="trans-10-opacity"
         >
           <Image
+            width={1518}
+            height={854}
             sources={sources.arc}
             src={arcPngXl}
             fitPosition="bottom"
@@ -511,6 +519,8 @@ const Background = component$(
           class="trans-10-opacity"
         >
           <Image
+            width={1518}
+            height={854}
             sources={sources.arcDesertReverse}
             src={arcDessertReversePngXl}
             fitPosition="bottom"

@@ -300,7 +300,20 @@ export default component$(() => {
               ]}
             >
               {ProtofolioTranscript.map(
-                ({ title, subTitle, href, tag, src, sources, alt }, i) => (
+                (
+                  {
+                    title,
+                    subTitle,
+                    href,
+                    tag,
+                    width,
+                    height,
+                    src,
+                    sources,
+                    alt,
+                  },
+                  i
+                ) => (
                   <div key={title + i} class={styles['protofolio-item']}>
                     <a href={href} target="_blank" rel="noreferrer noopener">
                       <ImageCard
@@ -310,7 +323,13 @@ export default component$(() => {
                         index={i}
                       >
                         <slot q:slot="img">
-                          <Image src={src} sources={sources} alt={alt}></Image>
+                          <Image
+                            width={width}
+                            height={height}
+                            src={src}
+                            sources={sources}
+                            alt={alt}
+                          ></Image>
                         </slot>
                       </ImageCard>
                     </a>
@@ -412,13 +431,21 @@ export default component$(() => {
                 'bg-dark-blue',
               ]}
             >
-              {PartnerTranscript.map(({ href, src, sources, alt }, i) => (
-                <TransformY key={href + i} index={i}>
-                  <a href={href} target="_blank" rel="noreferrer">
-                    <Image src={src} sources={sources} alt={alt}></Image>
-                  </a>
-                </TransformY>
-              ))}
+              {PartnerTranscript.map(
+                ({ width, height, href, src, sources, alt }, i) => (
+                  <TransformY key={href + i} index={i}>
+                    <a href={href} target="_blank" rel="noreferrer">
+                      <Image
+                        width={width}
+                        height={height}
+                        src={src}
+                        sources={sources}
+                        alt={alt}
+                      ></Image>
+                    </a>
+                  </TransformY>
+                )
+              )}
             </div>
           </article>
         </section>

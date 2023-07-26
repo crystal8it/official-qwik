@@ -25,7 +25,7 @@ export default component$(
     sources,
   }: ImageProps) => {
     return (
-      <picture>
+      <picture style="width: fit-content;height: fit-content">
         {sources !== undefined && sources.length > 0
           ? sources?.map(({ srcSet, media, type }) => (
               <source key={srcSet} media={media} srcSet={srcSet} type={type} />
@@ -37,6 +37,8 @@ export default component$(
           style={{
             objectFit: 'cover',
             objectPosition: fitPosition,
+            width: '100%',
+            height: '100%',
           }}
           alt={alt}
           src={src}

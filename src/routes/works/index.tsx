@@ -45,14 +45,29 @@ export default component$(() => {
             ]}
           >
             {WorksTranscript.map(
-              ({ title, subTitle, href, tag, src, sources, alt }, i) => (
-                <div key={title + i} class={styles['protofolio-item']}>
+              (
+                {
+                  title,
+                  subTitle,
+                  href,
+                  tag,
+                  width,
+                  height,
+                  src,
+                  sources,
+                  alt,
+                },
+                i
+              ) => (
+                <div
+                  style="cursor:pointer"
+                  key={title + i}
+                  class={styles['protofolio-item']}
+                >
                   <a
                     onPointerDown$={() => {
                       nav(href);
                     }}
-                    target="_blank"
-                    rel="noreferrer noopener"
                   >
                     <ImageCard
                       title={title}
@@ -61,7 +76,13 @@ export default component$(() => {
                       index={i}
                     >
                       <slot q:slot="img">
-                        <Image src={src} sources={sources} alt={alt}></Image>
+                        <Image
+                          width={width}
+                          height={height}
+                          src={src}
+                          sources={sources}
+                          alt={alt}
+                        ></Image>
                       </slot>
                     </ImageCard>
                   </a>
