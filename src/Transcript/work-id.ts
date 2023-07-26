@@ -9,6 +9,34 @@ import ilensProjectWebp from '~/assets/work/ilens/work-ilens-project.webp';
 import ilensProjectPng from '~/assets/work/ilens/work-ilens-project.png';
 
 // thrct
+import thrctBannerWebp from '~/assets/work/thrct/work-thrct-banner.webp';
+import thrctBannerPng from '~/assets/work/thrct/work-thrct-banner.png';
+import thrctLogoWebp from '~/assets/work/thrct/work-thrct-logo.webp';
+import thrctLogoPng from '~/assets/work/thrct/work-thrct-logo.png';
+import thrctCustomerWebp from '~/assets/work/thrct/work-thrct-customer.webp';
+import thrctCustomerPng from '~/assets/work/thrct/work-thrct-customer.png';
+import thrctProjectWebp from '~/assets/work/thrct/work-thrct-project.webp';
+import thrctProjectPng from '~/assets/work/thrct/work-thrct-project.png';
+
+// grace888
+import grace888BannerWebp from '~/assets/work/grace888/work-grace888-banner.webp';
+import grace888BannerPng from '~/assets/work/grace888/work-grace888-banner.png';
+import grace888LogoWebp from '~/assets/work/grace888/work-grace888-logo.webp';
+import grace888LogoPng from '~/assets/work/grace888/work-grace888-logo.png';
+import grace888CustomerWebp from '~/assets/work/grace888/work-grace888-customer.webp';
+import grace888CustomerPng from '~/assets/work/grace888/work-grace888-customer.png';
+import grace888ProjectWebp from '~/assets/work/grace888/work-grace888-project.webp';
+import grace888ProjectPng from '~/assets/work/grace888/work-grace888-project.png';
+
+// 4u2
+import Au2BannerWebp from '~/assets/work/4u2/work-4u2-banner.webp';
+import Au2BannerPng from '~/assets/work/4u2/work-4u2-banner.png';
+import Au2LogoWebp from '~/assets/work/4u2/work-4u2-logo.webp';
+import Au2LogoPng from '~/assets/work/4u2/work-4u2-logo.png';
+import Au2CustomerWebp from '~/assets/work/4u2/work-4u2-customer.webp';
+import Au2CustomerPng from '~/assets/work/4u2/work-4u2-customer.png';
+import Au2ProjectWebp from '~/assets/work/4u2/work-4u2-project.webp';
+import Au2ProjectPng from '~/assets/work/4u2/work-4u2-project.png';
 
 interface workArticle {
   content: string;
@@ -63,11 +91,10 @@ const WorkTranscript: { [key: string]: TWorkTranscript } = {
       cht: '財團法人方興中馬匹輔學健康社福基金會募資網站',
       tag: ['活動網站', '公益行銷'],
       image: {
-        src: '123',
+        src: thrctBannerPng,
         sources: [
           {
-            srcSet: '123',
-            media: '123',
+            srcSet: thrctBannerWebp,
             type: 'image/webp',
           },
         ],
@@ -76,11 +103,10 @@ const WorkTranscript: { [key: string]: TWorkTranscript } = {
     },
     customerIntroduction: {
       logo: {
-        src: '123',
+        src: thrctLogoPng,
         sources: [
           {
-            srcSet: '123',
-            media: '123',
+            srcSet: thrctLogoWebp,
             type: 'image/webp',
           },
         ],
@@ -90,11 +116,10 @@ const WorkTranscript: { [key: string]: TWorkTranscript } = {
       content:
         '財團法人方興中馬匹輔學健康社福基金會致力推廣身心障礙馬術治療，旗下的希望馬場為全台唯一身心障礙者馬匹輔助教育團隊，提供專業馬術治療課程，並定期舉辦馬術比賽和相關公益活動，讓身心障礙者有機會接觸和參與馬術運動展現自我。',
       image: {
-        src: '123',
+        src: thrctCustomerPng,
         sources: [
           {
-            srcSet: '123',
-            media: '123',
+            srcSet: thrctCustomerWebp,
             type: 'image/webp',
           },
         ],
@@ -105,11 +130,10 @@ const WorkTranscript: { [key: string]: TWorkTranscript } = {
       content:
         '馬術治療的場地、設備、馬匹培育和專業人員等，每年皆需支出龐大的經費，為使希望馬場能永續經營並為身心障礙學童分擔經濟重擔，期望藉助募資網站匯集社會大眾的力量，讓更多身心障礙者在"馬"上看到希望。',
       image: {
-        src: '123',
+        src: thrctProjectPng,
         sources: [
           {
-            srcSet: '123',
-            media: '123',
+            srcSet: thrctProjectWebp,
             type: 'image/webp',
           },
         ],
@@ -189,56 +213,55 @@ const WorkTranscript: { [key: string]: TWorkTranscript } = {
       cht: '廣容綠化有限公司專案管理系統',
       tag: ['系統設計', '工商企業'],
       image: {
-        src: '123',
+        src: grace888BannerPng,
         sources: [
           {
-            srcSet: '123',
-            media: '123',
+            srcSet: grace888BannerWebp,
             type: 'image/webp',
           },
         ],
-        alt: '希望馬場',
+        alt: '廣容綠化有限公司',
       },
     },
     customerIntroduction: {
       logo: {
-        src: '123',
+        src: grace888LogoPng,
         sources: [
           {
-            srcSet: '123',
+            srcSet: grace888LogoWebp,
             media: '123',
             type: 'image/webp',
           },
         ],
-        alt: '希望馬場',
+        alt: '廣容綠化有限公司',
       },
       content:
         '廣容綠化以最新的技術與設備綠化環境，創造充滿美學、朝氣、友善植物健康的環境，並提升國人公共生活空間品質，對於樹木養護有多年專業經驗，秉持愛護樹木的理念，盡力協助每一次的相關工作，以樹木美化後的面貌達到環境、生態、美學的平衡為使命。',
       image: {
-        src: '123',
+        src: grace888CustomerPng,
         sources: [
           {
-            srcSet: '123',
+            srcSet: grace888CustomerWebp,
             media: '123',
             type: 'image/webp',
           },
         ],
-        alt: '希望馬場',
+        alt: '廣容綠化有限公司',
       },
     },
     projectBackground: {
       content:
         '此專案背景業主希望進行企業轉型，實現無紙化經營，並朝系統化管理邁進，希望擺脫繁瑣的人工處理，因此我們為其設計了一套PMS系統，以滿足客戶的需求，將其業務流程轉化為高效、整潔、且易於管理的數字化平台。',
       image: {
-        src: '123',
+        src: grace888ProjectPng,
         sources: [
           {
-            srcSet: '123',
+            srcSet: grace888ProjectWebp,
             media: '123',
             type: 'image/webp',
           },
         ],
-        alt: '希望馬場',
+        alt: '廣容綠化有限公司',
       },
     },
     designConcept: {
@@ -253,37 +276,35 @@ const WorkTranscript: { [key: string]: TWorkTranscript } = {
       cht: '4U2台灣總代理銷售據點',
       tag: ['CYBERBIZ系統頁面客製', '工商企業'],
       image: {
-        src: '123',
+        src: Au2BannerPng,
         sources: [
           {
-            srcSet: '123',
+            srcSet: Au2BannerWebp,
             media: '123',
             type: 'image/webp',
           },
         ],
-        alt: '希望馬場',
+        alt: '4U2台灣總代理銷售據點',
       },
     },
     customerIntroduction: {
       logo: {
-        src: '123',
+        src: Au2LogoPng,
         sources: [
           {
-            srcSet: '123',
-            media: '123',
+            srcSet: Au2LogoWebp,
             type: 'image/webp',
           },
         ],
-        alt: '希望馬場',
+        alt: '4U2台灣總代理銷售據點',
       },
       content:
         'IG霸屏率最高熱銷高顏值彩妝4U2台灣官方總代理，致力以平實的價格，提供給消費者優質的美妝產品，創造高CP值的美妝護膚體驗',
       image: {
-        src: '123',
+        src: Au2CustomerPng,
         sources: [
           {
-            srcSet: '123',
-            media: '123',
+            srcSet: Au2CustomerWebp,
             type: 'image/webp',
           },
         ],
@@ -294,15 +315,14 @@ const WorkTranscript: { [key: string]: TWorkTranscript } = {
       content:
         '業主深知客戶尋找門市的重要性，因此委託製作此專案，為了提供顧客以方便快捷的方式，尋找最近的銷售據點，讓顧客無論在何處，都能輕鬆找到他們心儀的彩妝商品。',
       image: {
-        src: '123',
+        src: Au2ProjectPng,
         sources: [
           {
-            srcSet: '123',
-            media: '123',
+            srcSet: Au2ProjectWebp,
             type: 'image/webp',
           },
         ],
-        alt: '希望馬場',
+        alt: '4U2隱形眼鏡',
       },
     },
     designConcept: {
