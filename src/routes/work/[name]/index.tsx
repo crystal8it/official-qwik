@@ -90,6 +90,19 @@ export default component$(() => {
         </div>
       </section>
 
+      <svg
+        style="transform: translateY(5px);"
+        width="100%"
+        viewBox="0 0 2000 187"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 124.033C0 124.033 540.291 213.02 1063.41 61.2394C1586.53 -90.5409 2000 87.6125 2000 87.6125V187C2000 187 1641.08 187 1063.41 187C485.734 187 0 187 0 187V124.033Z"
+          fill="white"
+        />
+      </svg>
+
       {/* content */}
       <section class={styles['content-background']}>
         <section class={styles.content}>
@@ -114,7 +127,7 @@ export default component$(() => {
               <p>{signal.customerIntroduction.content}</p>
             </TransformY>
 
-            <TransformY index={3} myClass={[styles['text-container']]}>
+            <TransformY index={3} myClass={[styles['img-container']]}>
               <Image
                 width={800}
                 height={500}
@@ -127,7 +140,10 @@ export default component$(() => {
             </TransformY>
           </div>
 
-          <div style="margin-top:100px" class={[styles['content-section']]}>
+          <div
+            style="margin-top:100px"
+            class={[styles['content-section'], styles['flex-reverse-750']]}
+          >
             <TransformY index={3} myClass={[styles['text-container']]}>
               <Image
                 width={800}

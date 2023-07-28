@@ -17,6 +17,19 @@
   max-width: 1280px;
   margin: 100px auto 0 auto;
 
+  @media screen and (max-width: 1280px) {
+    padding-left: 20px;
+    padding-right: 40px;
+    gap: 50px;
+  }
+
+  @media screen and (max-width: 800px) {
+    padding-right: 20px;
+    height: 75%;
+    flex-direction: column-reverse;
+    gap: 20px;
+  }
+
   & .img-container {
     flex: 0 0 60%;
   }
@@ -26,13 +39,20 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-
     gap: 20px;
+
+    @media screen and (max-width: 800px) {
+      padding-left: 30px;
+    }
 
     & .title {
       font-size: 36px;
       font-weight: 600;
       line-height: 1.2;
+
+      @media screen and (max-width: 1280px) {
+        font-size: 24px;
+      }
     }
 
     & .title.eng {
@@ -54,40 +74,64 @@
         border-radius: 999px;
         padding: 10px 20px;
         border: 2px solid #fff;
+
+        @media screen and (max-width: 1280px) {
+          font-size: 14px;
+        }
       }
     }
   }
 }
 
 .content-background {
-  background-image: url('../../../assets/work/work-background.svg');
-  background-size: cover;
-  min-height: 100%;
-  height: fit-content;
+  height: auto;
+  padding-top: 50px;
   padding-bottom: 200px;
   width: 100%;
+  background: white;
 
   & .content {
     color: #222;
-    max-width: 1280px;
-    padding-top: 250px;
     padding-bottom: 50px;
+    max-width: 1280px;
     margin: 0 auto;
 
     & .content-section {
       display: flex;
       gap: 10%;
 
+      @media screen and (max-width: 1280px) {
+        padding-left: 20px;
+        padding-right: 20px;
+        gap: 20px;
+      }
+
+      @media screen and (max-width: 750px) {
+        flex-direction: column;
+      }
+
       & .img-container {
-        flex: 0 0 50%;
+        flex: 1 1 50%;
       }
 
       & .text-container {
-        flex: 0 0 50%;
+        flex: 1 1 50%;
+
+        @media screen and (max-width: 1280px) {
+          padding: 0 50px;
+        }
+
+        @media screen and (max-width: 600px) {
+          padding: 0 20px;
+        }
 
         & h2 {
           font-size: 32px;
           letter-spacing: 3px;
+
+          @media screen and (max-width: 1280px) {
+            font-size: 24px;
+          }
         }
 
         & p {
@@ -95,9 +139,19 @@
           font-size: 24px;
           line-height: 1.4;
           letter-spacing: 1px;
+
+          @media screen and (max-width: 1280px) {
+            font-size: 18px;
+          }
         }
       }
     }
+  }
+}
+
+.flex-reverse-750 {
+  @media screen and (max-width: 750px) {
+    flex-direction: column-reverse !important;
   }
 }
 
