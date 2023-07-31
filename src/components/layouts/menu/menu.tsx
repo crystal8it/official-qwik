@@ -14,7 +14,7 @@ type Props = {
 
 const links = [
   { href: '/works', content: 'Works' },
-  { href: '', content: 'Article' },
+  // { href: '', content: 'Article' },
 ];
 
 export default component$(({ active, animationClass }: Props) => {
@@ -41,9 +41,9 @@ export default component$(({ active, animationClass }: Props) => {
         </a>
       ))}
 
-      <a href="#contact" onPointerDown$={menuInactive}>
+      {/* <a href="#contact" onPointerDown$={menuInactive}>
         Contact
-      </a>
+      </a> */}
 
       <div class={styles.menu_icon}>
         <Line></Line>
