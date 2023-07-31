@@ -1,25 +1,12 @@
-import { $, component$ } from '@builder.io/qwik';
-import { type DocumentHead, useNavigate } from '@builder.io/qwik-city';
+import { component$ } from '@builder.io/qwik';
+import { type DocumentHead, Link } from '@builder.io/qwik-city';
 import styles from './works.module.css';
 import WorksTranscript from '~/Transcript/works';
 import ImageCard from '~/components/layouts/card/ImageCard';
 import Image from '~/components/Image/Image';
+import If from '~/components/If/If';
 
 export default component$(() => {
-  const nav = useNavigate();
-  const redirect = $((href: { type: 'inside' | 'outside'; url: string }) => {
-    if (href.type === 'inside') {
-      nav(href.url);
-    } else {
-      const a = document.createElement('a');
-      a.href = href.url;
-      a.target = '_blank';
-      a.rel = 'noopener noreferrer';
-      a.click();
-      a.remove();
-    }
-  });
-
   return (
     <div class={[styles['scroll-snap-type-y-mandatory'], 'bg-dark-blue']}>
       <section class={[styles.works, 'bg-dark-blue']}>
@@ -76,24 +63,50 @@ export default component$(() => {
                   key={title + i}
                   class={styles['protofolio-item']}
                 >
-                  <a onPointerDown$={() => redirect(href)}>
-                    <ImageCard
-                      title={title}
-                      subTitle={subTitle}
-                      tag={tag}
-                      index={i}
+                  <If condition={href.type === 'inside'}>
+                    <Link href={href.url}>
+                      <ImageCard
+                        title={title}
+                        subTitle={subTitle}
+                        tag={tag}
+                        index={i}
+                      >
+                        <slot q:slot="img">
+                          <Image
+                            width={width}
+                            height={height}
+                            src={src}
+                            sources={sources}
+                            alt={alt}
+                          ></Image>
+                        </slot>
+                      </ImageCard>
+                    </Link>
+                  </If>
+                  <If condition={href.type === 'outside'}>
+                    <a
+                      href={href.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      <slot q:slot="img">
-                        <Image
-                          width={width}
-                          height={height}
-                          src={src}
-                          sources={sources}
-                          alt={alt}
-                        ></Image>
-                      </slot>
-                    </ImageCard>
-                  </a>
+                      <ImageCard
+                        title={title}
+                        subTitle={subTitle}
+                        tag={tag}
+                        index={i}
+                      >
+                        <slot q:slot="img">
+                          <Image
+                            width={width}
+                            height={height}
+                            src={src}
+                            sources={sources}
+                            alt={alt}
+                          ></Image>
+                        </slot>
+                      </ImageCard>
+                    </a>
+                  </If>
                 </div>
               )
             )}
