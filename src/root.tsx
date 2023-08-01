@@ -23,13 +23,6 @@ export default component$(() => {
           src="https://www.googletagmanager.com/gtag/js?id=G-C1G8SZW33Y"
         ></script>
 
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          {/* @ts-ignore-next-line */}
-          function gtag(){dataLayer.push(arguments)}
-          gtag('js', new Date()); gtag('config', 'G-C1G8SZW33Y');
-        </script>
-
         <RouterHead />
       </head>
       <body lang="zh-TW">
