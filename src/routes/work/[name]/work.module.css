@@ -156,6 +156,7 @@
 }
 
 .footer {
-  height: 100vh;
+  height: auto;
+  padding-bottom: 150px;
   background: linear-gradient(to bottom left, #fabf3d, #04e0ee);
 }
