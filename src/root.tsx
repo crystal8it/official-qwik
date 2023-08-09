@@ -19,7 +19,6 @@ export default component$(() => {
 
         <QwikPartytown forward={['dataLayer.push']} />
         <script
-          async
           type="text/partytown"
           src="https://www.googletagmanager.com/gtag/js?id=G-C1G8SZW33Y"
         ></script>

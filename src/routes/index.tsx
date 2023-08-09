@@ -467,7 +467,8 @@ export const head: DocumentHead = {
   meta: [
     {
       name: 'description',
-      content: 'CRYSTAL BIT. 網頁設計, 系統設計, UI/UX 規劃 ',
+      content:
+        '位於桃園的CRYSTAL BIT. 是桃園網頁設計, 桃園系統設計, 桃園UI/UX 規劃, 桃園網站雲端空間等等的專業網頁、網站及系統設計服務, 網站設計, 系統設計, 雲端伺服器架設, 找CRYSTAL BIT. 就對了! ',
     },
   ],
 };
