@@ -18,10 +18,6 @@ export default component$(() => {
         <link rel="manifest" href="/manifest.json" />
 
         <QwikPartytown forward={['dataLayer.push']} />
-        <script
-          type="text/partytown"
-          src="https://www.googletagmanager.com/gtag/js?id=G-C1G8SZW33Y"
-        ></script>
 
         <script
           type="text/partytown"
