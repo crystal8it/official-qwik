@@ -468,7 +468,7 @@ export const head: DocumentHead = {
     {
       name: 'description',
       content:
-        '位於桃園的CRYSTAL BIT. 是桃園網頁設計, 桃園系統設計, 桃園UI/UX 規劃, 桃園網站雲端空間等等的專業網頁、網站及系統設計服務, 網站設計, 系統設計, 雲端伺服器架設, 找CRYSTAL BIT. 就對了! ',
+        '位於桃園中壢的CRYSTAL BIT. 是桃園中壢網頁設計, 桃園中壢系統設計, 桃園中壢UI/UX 規劃, Email 伺服器架設, 桃園中壢網站雲端空間架設等等的專業網站設計及系統設計服務公司, 網站設計, 系統設計, 雲端伺服器架設, Email 伺服器架設找CRYSTAL BIT. 就對了! ',
     },
   ],
 };
