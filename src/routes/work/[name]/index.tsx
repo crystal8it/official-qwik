@@ -201,7 +201,7 @@ export const head: DocumentHead = ({ params }) => {
   const name = params.name;
 
   return {
-    title: `CRYSTAL BIT. | 合作案例 - ${WorkTranscript[name].banner.cht} - 桃園中壢網頁設計, 桃園中壢系統設計, 桃園中壢 UI/UX 規劃, Email 伺服器架設, 桃園中壢雲端空間架設等等的專業網站設計及系統設計服務公司'`,
+    title: `合作案例 - ${WorkTranscript[name].banner.cht} - 桃園中壢網頁設計, 桃園中壢系統設計, 桃園中壢 UI/UX 規劃, Email 伺服器架設, 桃園中壢雲端空間架設等等的專業網站設計及系統設計服務公司'`,
     meta: [
       {
         name: 'description',
