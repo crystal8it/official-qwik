@@ -4,62 +4,62 @@ import {
   useVisibleTask$,
   useOnWindow,
   $,
-} from '@builder.io/qwik';
-import styles from './background.module.css';
-import { getColorTransition } from '~/utils/color';
+} from "@builder.io/qwik";
+import styles from "./background.module.css";
+import { getColorTransition } from "~/utils/color";
 import {
   drawRect,
   drawLineCirclePoints,
   drawLineCircle,
   drawCircle,
-} from '~/utils/cavnas';
-import Image from '~/components/Image/Image';
+} from "~/utils/cavnas";
+import Image from "~/components/Image/Image";
 
 // background
 
 // ar
-import arcWebpXl from '~/assets/background/arc/1440/arc.webp';
-import arcWebpLg from '~/assets/background/arc/1080/arc.webp';
-import arcWebpPortraitMd from '~/assets/background/arc/768/arc-portrait.webp';
-import arcWebpMd from '~/assets/background/arc/768/arc.webp';
-import arcWebpSm from '~/assets/background/arc/450/arc.webp';
-import arcPngXl from '~/assets/background/arc/1440/arc.png';
+import arcWebpXl from "~/assets/background/arc/1440/arc.webp";
+import arcWebpLg from "~/assets/background/arc/1080/arc.webp";
+import arcWebpPortraitMd from "~/assets/background/arc/768/arc-portrait.webp";
+import arcWebpMd from "~/assets/background/arc/768/arc.webp";
+import arcWebpSm from "~/assets/background/arc/450/arc.webp";
+import arcPngXl from "~/assets/background/arc/1440/arc.png";
 
 // plane
-import planetsWebpXl from '~/assets/background/planets/1440/planets.webp';
-import planetsWebpLg from '~/assets/background/planets/1080/planets.webp';
-import planetsWebpPortraitMd from '~/assets/background/planets/768/planets-portrait.webp';
-import planetsWebpMd from '~/assets/background/planets/768/planets.webp';
-import planetsWebpSm from '~/assets/background/planets/450/planets.webp';
-import planetsPngXl from '~/assets/background/planets/1440/planets.png';
+import planetsWebpXl from "~/assets/background/planets/1440/planets.webp";
+import planetsWebpLg from "~/assets/background/planets/1080/planets.webp";
+import planetsWebpPortraitMd from "~/assets/background/planets/768/planets-portrait.webp";
+import planetsWebpMd from "~/assets/background/planets/768/planets.webp";
+import planetsWebpSm from "~/assets/background/planets/450/planets.webp";
+import planetsPngXl from "~/assets/background/planets/1440/planets.png";
 
 // left crystal
-import leftCystalWebpXl from '~/assets/background/left-crystal/1440/left-crystal.webp';
-import leftCystalWebpLg from '~/assets/background/left-crystal/1080/left-crystal.webp';
-import leftCystalWebpPortraitMd from '~/assets/background/left-crystal/768/left-crystal-portrait.webp';
-import leftCystalWebpMd from '~/assets/background/left-crystal/768/left-crystal.webp';
-import leftCrystalWebpSm from '~/assets/background/left-crystal/450/left-crystal.webp';
-import leftCystalPngXl from '~/assets/background/left-crystal/1440/left-crystal.png';
+import leftCystalWebpXl from "~/assets/background/left-crystal/1440/left-crystal.webp";
+import leftCystalWebpLg from "~/assets/background/left-crystal/1080/left-crystal.webp";
+import leftCystalWebpPortraitMd from "~/assets/background/left-crystal/768/left-crystal-portrait.webp";
+import leftCystalWebpMd from "~/assets/background/left-crystal/768/left-crystal.webp";
+import leftCrystalWebpSm from "~/assets/background/left-crystal/450/left-crystal.webp";
+import leftCystalPngXl from "~/assets/background/left-crystal/1440/left-crystal.png";
 
 // right crystal
-import rightCystalWebpXl from '~/assets/background/right-crystal/1440/right-crystal.webp';
-import rightCystalWebpLg from '~/assets/background/right-crystal/1080/right-crystal.webp';
-import rightCystalWebpPortraitMd from '~/assets/background/right-crystal/768/right-crystal-portrait.webp';
-import rightCystalWebpMd from '~/assets/background/right-crystal/768/right-crystal.webp';
-import rightCrystalWebpSm from '~/assets/background/right-crystal/450/right-crystal.webp';
-import rightCystalPngXl from '~/assets/background/right-crystal/1440/right-crystal.png';
+import rightCystalWebpXl from "~/assets/background/right-crystal/1440/right-crystal.webp";
+import rightCystalWebpLg from "~/assets/background/right-crystal/1080/right-crystal.webp";
+import rightCystalWebpPortraitMd from "~/assets/background/right-crystal/768/right-crystal-portrait.webp";
+import rightCystalWebpMd from "~/assets/background/right-crystal/768/right-crystal.webp";
+import rightCrystalWebpSm from "~/assets/background/right-crystal/450/right-crystal.webp";
+import rightCystalPngXl from "~/assets/background/right-crystal/1440/right-crystal.png";
 
 // arc desert
-import arcDessertReverseWebpXl from '~/assets/background/arcDesertReverse/1440/arcDesertReverse.webp';
-import arcDessertReverseWebpLg from '~/assets/background/arcDesertReverse/1080/arcDesertReverse.webp';
-import arcDessertReverseWebpPortraitMd from '~/assets/background/arcDesertReverse/768/arcDesertReverse-portrait.webp';
-import arcDessertReverseWebpMd from '~/assets/background/arcDesertReverse/768/arcDesertReverse.webp';
-import arcDessertReverseWebpSm from '~/assets/background/arcDesertReverse/450/arcDesertReverse.webp';
-import arcDessertReversePngXl from '~/assets/background/arcDesertReverse/1440/arcDesertReverse.png';
+import arcDessertReverseWebpXl from "~/assets/background/arcDesertReverse/1440/arcDesertReverse.webp";
+import arcDessertReverseWebpLg from "~/assets/background/arcDesertReverse/1080/arcDesertReverse.webp";
+import arcDessertReverseWebpPortraitMd from "~/assets/background/arcDesertReverse/768/arcDesertReverse-portrait.webp";
+import arcDessertReverseWebpMd from "~/assets/background/arcDesertReverse/768/arcDesertReverse.webp";
+import arcDessertReverseWebpSm from "~/assets/background/arcDesertReverse/450/arcDesertReverse.webp";
+import arcDessertReversePngXl from "~/assets/background/arcDesertReverse/1440/arcDesertReverse.png";
 
 type source = {
   srcSet: string;
-  type: 'image/webp' | 'image/png' | 'image/jpeg';
+  type: "image/webp" | "image/png" | "image/jpeg";
   media?: string;
 };
 
@@ -72,141 +72,141 @@ const sources: { [key: string]: source[] } = {
   arc: [
     {
       srcSet: arcWebpPortraitMd,
-      media: '(min-width: 650px) and (orientation: portrait)',
-      type: 'image/webp',
+      media: "(min-width: 650px) and (orientation: portrait)",
+      type: "image/webp",
     },
     {
       srcSet: arcWebpSm,
-      media: '(min-width: 300px) and (orientation: portrait)',
-      type: 'image/webp',
+      media: "(min-width: 300px) and (orientation: portrait)",
+      type: "image/webp",
     },
     {
       srcSet: arcWebpXl,
-      media: '(min-width: 1440px)',
-      type: 'image/webp',
+      media: "(min-width: 1440px)",
+      type: "image/webp",
     },
     {
       srcSet: arcWebpLg,
-      media: '(min-width: 900px)',
-      type: 'image/webp',
+      media: "(min-width: 900px)",
+      type: "image/webp",
     },
 
     {
       srcSet: arcWebpMd,
-      media: '(min-width: 650px)',
-      type: 'image/webp',
+      media: "(min-width: 650px)",
+      type: "image/webp",
     },
   ],
   planets: [
     {
       srcSet: planetsWebpPortraitMd,
-      media: '(min-width: 650px) and (orientation: portrait)',
-      type: 'image/webp',
+      media: "(min-width: 650px) and (orientation: portrait)",
+      type: "image/webp",
     },
     {
       srcSet: planetsWebpSm,
-      media: '(min-width: 300px) and (orientation: portrait)',
-      type: 'image/webp',
+      media: "(min-width: 300px) and (orientation: portrait)",
+      type: "image/webp",
     },
     {
       srcSet: planetsWebpXl,
-      media: '(min-width: 1440px)',
-      type: 'image/webp',
+      media: "(min-width: 1440px)",
+      type: "image/webp",
     },
     {
       srcSet: planetsWebpLg,
-      media: '(min-width: 900px)',
-      type: 'image/webp',
+      media: "(min-width: 900px)",
+      type: "image/webp",
     },
 
     {
       srcSet: planetsWebpMd,
-      media: '(min-width: 650px)',
-      type: 'image/webp',
+      media: "(min-width: 650px)",
+      type: "image/webp",
     },
   ],
   leftCrystal: [
     {
       srcSet: leftCystalWebpPortraitMd,
-      media: '(min-width: 650px) and (orientation: portrait)',
-      type: 'image/webp',
+      media: "(min-width: 650px) and (orientation: portrait)",
+      type: "image/webp",
     },
     {
       srcSet: leftCrystalWebpSm,
-      media: '(min-width: 300px) and (orientation: portrait)',
-      type: 'image/webp',
+      media: "(min-width: 300px) and (orientation: portrait)",
+      type: "image/webp",
     },
     {
       srcSet: leftCystalWebpXl,
-      media: '(min-width: 1440px)',
-      type: 'image/webp',
+      media: "(min-width: 1440px)",
+      type: "image/webp",
     },
     {
       srcSet: leftCystalWebpLg,
-      media: '(min-width: 900px)',
-      type: 'image/webp',
+      media: "(min-width: 900px)",
+      type: "image/webp",
     },
 
     {
       srcSet: leftCystalWebpMd,
-      media: '(min-width: 650px)',
-      type: 'image/webp',
+      media: "(min-width: 650px)",
+      type: "image/webp",
     },
   ],
   rightCrystal: [
     {
       srcSet: rightCystalWebpPortraitMd,
-      media: '(min-width: 650px) and (orientation: portrait)',
-      type: 'image/webp',
+      media: "(min-width: 650px) and (orientation: portrait)",
+      type: "image/webp",
     },
     {
       srcSet: rightCrystalWebpSm,
-      media: '(min-width: 300px) and (orientation: portrait)',
-      type: 'image/webp',
+      media: "(min-width: 300px) and (orientation: portrait)",
+      type: "image/webp",
     },
     {
       srcSet: rightCystalWebpXl,
-      media: '(min-width: 1440px)',
-      type: 'image/webp',
+      media: "(min-width: 1440px)",
+      type: "image/webp",
     },
     {
       srcSet: rightCystalWebpLg,
-      media: '(min-width: 900px)',
-      type: 'image/webp',
+      media: "(min-width: 900px)",
+      type: "image/webp",
     },
 
     {
       srcSet: rightCystalWebpMd,
-      media: '(min-width: 650px)',
-      type: 'image/webp',
+      media: "(min-width: 650px)",
+      type: "image/webp",
     },
   ],
   arcDesertReverse: [
     {
       srcSet: arcDessertReverseWebpPortraitMd,
-      media: '(min-width: 650px) and (orientation: portrait)',
-      type: 'image/webp',
+      media: "(min-width: 650px) and (orientation: portrait)",
+      type: "image/webp",
     },
     {
       srcSet: arcDessertReverseWebpSm,
-      media: '(min-width: 300px) and (orientation: portrait)',
-      type: 'image/webp',
+      media: "(min-width: 300px) and (orientation: portrait)",
+      type: "image/webp",
     },
     {
       srcSet: arcDessertReverseWebpXl,
-      media: '(min-width: 1440px)',
-      type: 'image/webp',
+      media: "(min-width: 1440px)",
+      type: "image/webp",
     },
     {
       srcSet: arcDessertReverseWebpLg,
-      media: '(min-width: 900px)',
-      type: 'image/webp',
+      media: "(min-width: 900px)",
+      type: "image/webp",
     },
 
     {
       srcSet: arcDessertReverseWebpMd,
-      media: '(min-width: 650px)',
-      type: 'image/webp',
+      media: "(min-width: 650px)",
+      type: "image/webp",
     },
   ],
 };
@@ -221,17 +221,17 @@ const Background = component$(
     const firstRender = useSignal<boolean>(true);
 
     useOnWindow(
-      'resize',
+      "resize",
       $(() => {
         windowWidth.value = window.screen.width;
         windowHeight.value = window.screen.height;
-      })
+      }),
     );
 
     useOnWindow(
-      'orientationchange',
+      "orientationchange",
       $(() => {
-        const mediaQuery = window.matchMedia('(orientation: portrait)');
+        const mediaQuery = window.matchMedia("(orientation: portrait)");
 
         if (mediaQuery.matches) {
           windowWidth.value = window.screen.width;
@@ -240,7 +240,7 @@ const Background = component$(
           windowWidth.value = window.screen.width;
           windowHeight.value = window.screen.height;
         }
-      })
+      }),
     );
 
     useVisibleTask$(({ track }) => {
@@ -259,7 +259,7 @@ const Background = component$(
       canvas.width = windowWidth.value;
       canvas.height = windowHeight.value;
 
-      const ctx = canvas.getContext('2d');
+      const ctx = canvas.getContext("2d");
 
       if (!ctx) {
         return;
@@ -276,8 +276,8 @@ const Background = component$(
           Math.random() * 0.5 + 0.5,
         ]);
 
-      const getNextColorLeft = getColorTransition('#5250E6', '#3CE6E6', 10000);
-      const getNextColorRight = getColorTransition('#3CE6E6', '#5250E6', 10000);
+      const getNextColorLeft = getColorTransition("#5250E6", "#3CE6E6", 10000);
+      const getNextColorRight = getColorTransition("#3CE6E6", "#5250E6", 10000);
 
       // aniamtion time
       const duration = 1500;
@@ -298,7 +298,7 @@ const Background = component$(
         numPoints,
         windowWidth.value / 2,
         windowHeight.value / 2,
-        windowWidth.value / 2
+        windowWidth.value / 2,
       );
 
       const draw = (timestamp?: DOMHighResTimeStamp) => {
@@ -316,7 +316,7 @@ const Background = component$(
         const lineCurrentY = startY + distanceY * elapsedTime;
 
         const numCompletedPoints = Math.ceil(
-          (elapsedTime / duration) * numPoints
+          (elapsedTime / duration) * numPoints,
         );
 
         if ((lineCurrentX > endX || lineCurrentY < endY) && firstRender.value) {
@@ -342,7 +342,7 @@ const Background = component$(
             windowHeight.value,
             getNextColorLeft().rgb,
             getNextColorRight().rgb,
-            opacity.value
+            opacity.value,
           );
 
           drawCircle(
@@ -352,7 +352,7 @@ const Background = component$(
             windowWidth.value * 0.5,
             windowHeight.value * 1.7,
             windowWidth.value / 2,
-            opacity.value
+            opacity.value,
           );
 
           isShow.value = true;
@@ -362,7 +362,7 @@ const Background = component$(
           ctx.save();
           ctx.translate(x, y);
           ctx.rotate((Math.PI / 180) * 0);
-          ctx.strokeStyle = '#fff';
+          ctx.strokeStyle = "#fff";
           ctx.globalAlpha = opacity;
           ctx.beginPath();
           ctx.moveTo(-r / 2, 0);
@@ -400,16 +400,16 @@ const Background = component$(
         {/* planet */}
         <figure
           style={{
-            display: !showButtomDesert ? 'block' : 'none',
-            position: 'fixed',
-            backgroundAttachment: 'fixed',
-            top: '0',
-            left: '0',
-            zIndex: '0',
-            width: '100%',
-            height: '100%',
-            visibility: isShow.value ? 'visible' : 'hidden',
-            opacity: isShow.value ? '1' : '0',
+            display: !showButtomDesert ? "block" : "none",
+            position: "fixed",
+            backgroundAttachment: "fixed",
+            top: "0",
+            left: "0",
+            zIndex: "0",
+            width: "100%",
+            height: "100%",
+            visibility: isShow.value ? "visible" : "hidden",
+            opacity: isShow.value ? "1" : "0",
             transform: `translateY(${-transform * 0.1}%)`,
           }}
           class="trans-10-opacity"
@@ -426,16 +426,16 @@ const Background = component$(
         {/* right-crystal */}
         <figure
           style={{
-            display: !showButtomDesert ? 'block' : 'none',
-            position: 'fixed',
-            backgroundAttachment: 'fixed',
-            top: '0',
-            left: '0',
-            zIndex: '0',
-            width: '100%',
-            height: '100%',
-            visibility: isShow.value ? 'visible' : 'hidden',
-            opacity: isShow.value ? '1' : '0',
+            display: !showButtomDesert ? "block" : "none",
+            position: "fixed",
+            backgroundAttachment: "fixed",
+            top: "0",
+            left: "0",
+            zIndex: "0",
+            width: "100%",
+            height: "100%",
+            visibility: isShow.value ? "visible" : "hidden",
+            opacity: isShow.value ? "1" : "0",
             transform: `translate(${transform * 0.2}%, ${-transform * 0.1}%)`,
           }}
           class="trans-10-opacity"
@@ -453,16 +453,16 @@ const Background = component$(
         {/* left-crystal */}
         <figure
           style={{
-            display: !showButtomDesert ? 'block' : 'none',
-            position: 'fixed',
-            backgroundAttachment: 'fixed',
-            top: '0',
-            left: '0',
-            zIndex: '0',
-            width: '100%',
-            height: '100%',
-            visibility: isShow.value ? 'visible' : 'hidden',
-            opacity: isShow.value ? '1' : '0',
+            display: !showButtomDesert ? "block" : "none",
+            position: "fixed",
+            backgroundAttachment: "fixed",
+            top: "0",
+            left: "0",
+            zIndex: "0",
+            width: "100%",
+            height: "100%",
+            visibility: isShow.value ? "visible" : "hidden",
+            opacity: isShow.value ? "1" : "0",
             transform: `translate(${-transform * 0.2}%, ${-transform * 0.1}%)`,
           }}
           class="trans-10-opacity"
@@ -479,16 +479,16 @@ const Background = component$(
         {/* bottom */}
         <figure
           style={{
-            display: !showButtomDesert ? 'block' : 'none',
-            position: 'fixed',
-            backgroundAttachment: 'fixed',
-            top: '0',
-            left: '0',
-            zIndex: '0',
-            width: '100%',
-            height: '100%',
-            visibility: isShow.value ? 'visible' : 'hidden',
-            opacity: isShow.value ? '1' : '0',
+            display: !showButtomDesert ? "block" : "none",
+            position: "fixed",
+            backgroundAttachment: "fixed",
+            top: "0",
+            left: "0",
+            zIndex: "0",
+            width: "100%",
+            height: "100%",
+            visibility: isShow.value ? "visible" : "hidden",
+            opacity: isShow.value ? "1" : "0",
           }}
           class="trans-10-opacity"
         >
@@ -505,16 +505,16 @@ const Background = component$(
         {/* arcReverse */}
         <figure
           style={{
-            display: showButtomDesert ? 'block' : 'none',
-            position: 'fixed',
-            backgroundAttachment: 'fixed',
-            top: '0',
-            left: '0',
-            zIndex: '0',
-            width: '100%',
-            height: '100%',
-            visibility: isShow.value ? 'visible' : 'hidden',
-            opacity: isShow.value ? '1' : '0',
+            display: showButtomDesert ? "block" : "none",
+            position: "fixed",
+            backgroundAttachment: "fixed",
+            top: "0",
+            left: "0",
+            zIndex: "0",
+            width: "100%",
+            height: "100%",
+            visibility: isShow.value ? "visible" : "hidden",
+            opacity: isShow.value ? "1" : "0",
           }}
           class="trans-10-opacity"
         >
@@ -528,13 +528,13 @@ const Background = component$(
           ></Image>
         </figure>
         <canvas
-          style={{ position: 'fixed', top: '0', left: '0', zIndex: '-1' }}
+          style={{ position: "fixed", top: "0", left: "0", zIndex: "-1" }}
           class={styles.entryAnimation}
           ref={canvasRef}
         ></canvas>
       </>
     );
-  }
+  },
 );
 
 export default Background;

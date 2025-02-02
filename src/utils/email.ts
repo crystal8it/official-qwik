@@ -1,4 +1,4 @@
-import emailjs from 'emailjs-com';
+import emailjs from "emailjs-com";
 
 async function sendEmail(
   name: string,
@@ -6,11 +6,11 @@ async function sendEmail(
   email: string,
   company: string,
   demand: string,
-  comment: string
+  comment: string,
 ) {
   emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
   try {
-    await emailjs.send('service_12smlo1', 'template_mk1zlko', {
+    await emailjs.send("service_12smlo1", "template_mk1zlko", {
       name,
       phone,
       email,

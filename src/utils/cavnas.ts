@@ -1,30 +1,30 @@
-const gradientRgbBasis = '96,233,146';
+const gradientRgbBasis = "96,233,146";
 
 function drawLine(
   ctx: CanvasRenderingContext2D,
   startX: number,
   startY: number,
   endX: number,
-  endY: number
+  endY: number,
 ): void {
   ctx.beginPath();
   ctx.moveTo(startX, startY);
   ctx.lineTo(endX, endY);
-  ctx.strokeStyle = '#fff';
+  ctx.strokeStyle = "#fff";
   ctx.stroke();
 }
 
 function drawTriangle(
   ctx: CanvasRenderingContext2D,
   startX: number,
-  startY: number
+  startY: number,
 ) {
   ctx.beginPath();
   ctx.moveTo(startX, startY);
   ctx.lineTo(startX + 150, startY + 50);
   ctx.lineTo(startX - 50, 100);
   ctx.lineTo(startX, startY);
-  ctx.strokeStyle = '#fff';
+  ctx.strokeStyle = "#fff";
   ctx.stroke();
 }
 
@@ -34,12 +34,12 @@ function drawImage(
 
   endX: number,
   endY: number,
-  offset: number
+  offset: number,
 ) {
   ctx.beginPath();
 
   ctx.drawImage(imageEl, endX - offset, endY, imageEl.width, imageEl.height);
-  ctx.strokeStyle = '#fff';
+  ctx.strokeStyle = "#fff";
   ctx.stroke();
 }
 
@@ -51,7 +51,7 @@ function drawRect(
   endY: number,
   lrgb: string,
   rrgb: string,
-  opacity: number = 1
+  opacity: number = 1,
 ): void {
   const linearGradient = ctx.createLinearGradient(startX, startY, endX, endY);
   linearGradient.addColorStop(0, `rgba(${lrgb},${opacity})`);
@@ -66,7 +66,7 @@ function drawLineCirclePoints(
   numPoints: number = 200,
   centerX: number,
   centerY: number,
-  radius: number
+  radius: number,
 ) {
   const startAngle = 0;
   const endAngle = Math.PI * 2;
@@ -89,7 +89,7 @@ function drawLineCirclePoints(
 function drawLineCircle(
   ctx: CanvasRenderingContext2D,
   points: { x: number; y: number }[],
-  numCompletedPoints: number
+  numCompletedPoints: number,
 ) {
   ctx.beginPath();
   ctx.moveTo(points[0].x, points[0].y);
@@ -100,7 +100,7 @@ function drawLineCircle(
   }
   ctx.lineDashOffset = 0;
 
-  ctx.strokeStyle = '#fff';
+  ctx.strokeStyle = "#fff";
   ctx.stroke();
 }
 
@@ -111,7 +111,7 @@ function drawCircle(
   endX: number,
   endY: number,
   circleRadius: number,
-  opacity: number = 1
+  opacity: number = 1,
 ): void {
   const centerX = (startX + endX) / 2;
   const centerY = (startY + endY) / 2;
@@ -122,22 +122,22 @@ function drawCircle(
     0,
     centerX,
     centerY,
-    circleRadius
+    circleRadius,
   );
 
   // gradient.addColorStop(0, `rgba(${gradientCenter},${opacity})`);
   gradient.addColorStop(0, `rgba(${gradientRgbBasis},${opacity})`);
   gradient.addColorStop(
     0.4,
-    `rgba(${gradientRgbBasis},${opacity >= 0.5 ? 0.5 : opacity})`
+    `rgba(${gradientRgbBasis},${opacity >= 0.5 ? 0.5 : opacity})`,
   );
   gradient.addColorStop(
     0.5,
-    `rgba(${gradientRgbBasis},${opacity >= 0.3 ? 0.3 : opacity})`
+    `rgba(${gradientRgbBasis},${opacity >= 0.3 ? 0.3 : opacity})`,
   );
   gradient.addColorStop(
     0.6,
-    `rgba(${gradientRgbBasis},${opacity >= 0.1 ? 0.1 : opacity})`
+    `rgba(${gradientRgbBasis},${opacity >= 0.1 ? 0.1 : opacity})`,
   );
   gradient.addColorStop(1, `transparent`);
 

@@ -6,11 +6,11 @@ import {
   $,
   createContextId,
   useContextProvider,
-} from '@builder.io/qwik';
+} from "@builder.io/qwik";
 
-export const headerActiveContext = createContextId<any>('docs.headerActive');
+export const headerActiveContext = createContextId<any>("docs.headerActive");
 export const headerHandlerContext = createContextId<any>(
-  'handler.headerHandler'
+  "handler.headerHandler",
 );
 
 export default component$(() => {

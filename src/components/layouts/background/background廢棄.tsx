@@ -4,9 +4,9 @@ import {
   useSignal,
   useVisibleTask$,
   useOnWindow,
-} from '@builder.io/qwik';
-import styles from './background.module.css';
-import { getColorTransition } from '~/utils/color';
+} from "@builder.io/qwik";
+import styles from "./background.module.css";
+import { getColorTransition } from "~/utils/color";
 
 const Background = component$(() => {
   const canvasRef = useSignal<HTMLCanvasElement>();
@@ -14,11 +14,11 @@ const Background = component$(() => {
   const windowHeight = useSignal<number>(0);
 
   useOnWindow(
-    'resize',
+    "resize",
     $(() => {
       windowWidth.value = window.screen.width;
       windowHeight.value = window.screen.height;
-    })
+    }),
   );
 
   useVisibleTask$(({ track }) => {
@@ -32,7 +32,7 @@ const Background = component$(() => {
     canvas.width = windowWidth.value;
     canvas.height = windowHeight.value;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
 
     if (!ctx) {
       return;
@@ -48,8 +48,8 @@ const Background = component$(() => {
         Math.random() * 0.5 + 0.5,
       ]);
 
-    const getNextColorLeft = getColorTransition('#5250E6', '#3CE6E6', 20000);
-    const getNextColorRight = getColorTransition('#3CE6E6', '#5250E6', 20000);
+    const getNextColorLeft = getColorTransition("#5250E6", "#3CE6E6", 20000);
+    const getNextColorRight = getColorTransition("#3CE6E6", "#5250E6", 20000);
 
     // aniamtion time
     const duration = 1500;
@@ -72,7 +72,7 @@ const Background = component$(() => {
     const points = drawLineCirclePoints(
       numPoints,
       windowWidth.value / 2,
-      windowHeight.value / 2
+      windowHeight.value / 2,
     );
 
     const draw = (timestamp?: DOMHighResTimeStamp) => {
@@ -90,7 +90,7 @@ const Background = component$(() => {
       const lineCurrentY = startY + distanceY * elapsedTime;
 
       const numCompletedPoints = Math.ceil(
-        (elapsedTime / duration) * numPoints
+        (elapsedTime / duration) * numPoints,
       );
 
       if (lineCurrentX > endX || lineCurrentY < endY) {
@@ -112,7 +112,7 @@ const Background = component$(() => {
           windowHeight.value,
           getNextColorLeft().rgb,
           getNextColorRight().rgb,
-          opacity
+          opacity,
         );
 
         drawCircle(
@@ -122,8 +122,8 @@ const Background = component$(() => {
           windowWidth.value,
           windowHeight.value,
           windowWidth.value / 2,
-          '5,7,47',
-          opacity
+          "5,7,47",
+          opacity,
         );
       }
 
@@ -131,7 +131,7 @@ const Background = component$(() => {
         ctx.save();
         ctx.translate(x, y);
         ctx.rotate((Math.PI / 180) * 0);
-        ctx.strokeStyle = '#fff';
+        ctx.strokeStyle = "#fff";
         ctx.globalAlpha = opacity;
         ctx.beginPath();
         ctx.moveTo(-r / 2, 0);
@@ -170,27 +170,27 @@ const Background = component$(() => {
 
   return (
     <canvas
-      style={{ position: 'fixed', top: '0', left: '0', zIndex: '-1' }}
+      style={{ position: "fixed", top: "0", left: "0", zIndex: "-1" }}
       class={styles.entryAnimation}
       ref={canvasRef}
     />
   );
 });
 
-const gradientRgbBasis = '21,45,92';
+const gradientRgbBasis = "21,45,92";
 
 function drawLine(
   ctx: CanvasRenderingContext2D,
   startX: number,
   startY: number,
   endX: number,
-  endY: number
+  endY: number,
 ): void {
   ctx.beginPath();
   ctx.moveTo(startX, startY);
   ctx.lineWidth = 5;
   ctx.lineTo(endX, endY);
-  ctx.strokeStyle = '#fff';
+  ctx.strokeStyle = "#fff";
   ctx.stroke();
 }
 
@@ -202,7 +202,7 @@ function drawRect(
   endY: number,
   lrgb: string,
   rrgb: string,
-  opacity: number = 1
+  opacity: number = 1,
 ): void {
   const linearGradient = ctx.createLinearGradient(startX, startY, endX, endY);
   linearGradient.addColorStop(0, `rgba(${lrgb},${opacity})`);
@@ -216,7 +216,7 @@ function drawRect(
 function drawLineCirclePoints(
   numPoints: number = 200,
   centerX: number,
-  centerY: number
+  centerY: number,
 ) {
   const radius = 300;
 
@@ -239,7 +239,7 @@ function drawLineCirclePoints(
 function drawLineCircle(
   ctx: CanvasRenderingContext2D,
   points: { x: number; y: number }[],
-  numCompletedPoints: number
+  numCompletedPoints: number,
 ) {
   ctx.beginPath();
   ctx.moveTo(points[0].x, points[0].y);
@@ -250,7 +250,7 @@ function drawLineCircle(
   }
   ctx.lineDashOffset = 0;
 
-  ctx.strokeStyle = '#fff';
+  ctx.strokeStyle = "#fff";
   ctx.stroke();
 }
 
@@ -262,7 +262,7 @@ function drawCircle(
   endY: number,
   circleRadius: number,
   gradientColor1: string,
-  opacity: number = 1
+  opacity: number = 1,
 ): void {
   const centerX = (startX + endX) / 2;
   const centerY = (startY + endY) / 2;
@@ -273,22 +273,22 @@ function drawCircle(
     0,
     centerX,
     centerY,
-    circleRadius
+    circleRadius,
   );
 
   gradient.addColorStop(0, `rgba(${gradientColor1},${opacity})`);
   gradient.addColorStop(0.3, `rgba(${gradientRgbBasis},${opacity})`);
   gradient.addColorStop(
     0.4,
-    `rgba(${gradientRgbBasis},${opacity >= 0.5 ? 0.5 : opacity})`
+    `rgba(${gradientRgbBasis},${opacity >= 0.5 ? 0.5 : opacity})`,
   );
   gradient.addColorStop(
     0.5,
-    `rgba(${gradientRgbBasis},${opacity >= 0.3 ? 0.3 : opacity})`
+    `rgba(${gradientRgbBasis},${opacity >= 0.3 ? 0.3 : opacity})`,
   );
   gradient.addColorStop(
     0.6,
-    `rgba(${gradientRgbBasis},${opacity >= 0.1 ? 0.1 : opacity})`
+    `rgba(${gradientRgbBasis},${opacity >= 0.1 ? 0.1 : opacity})`,
   );
   gradient.addColorStop(1, `transparent`);
 

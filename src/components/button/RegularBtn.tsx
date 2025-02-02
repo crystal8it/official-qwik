@@ -1,13 +1,13 @@
-import { component$, Slot } from '@builder.io/qwik';
-import styles from './Btn.module.css';
+import { component$, Slot } from "@builder.io/qwik";
+import styles from "./Btn.module.css";
 
 type btn = {
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
   style?: any;
   event?: any;
 };
 
-export default component$(({ size = 'sm', style, event }: btn) => {
+export default component$(({ size = "sm", style, event }: btn) => {
   return (
     <button
       preventdefault:click

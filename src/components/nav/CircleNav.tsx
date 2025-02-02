@@ -1,5 +1,5 @@
-import { component$ } from '@builder.io/qwik';
-import styles from './CircleNav.module.css';
+import { component$ } from "@builder.io/qwik";
+import styles from "./CircleNav.module.css";
 
 type circleNavProps = {
   style?: any;
@@ -8,8 +8,8 @@ type circleNavProps = {
 export default component$(({ style }: circleNavProps) => {
   return (
     <svg
-      style={...style}
-      class={styles['half-circle']}
+      style={{ ...style }}
+      class={styles["half-circle"]}
       width="500px"
       height="500px"
     >

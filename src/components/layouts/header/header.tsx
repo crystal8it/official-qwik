@@ -6,18 +6,18 @@ import {
   useContextProvider,
   useContext,
   useOnWindow,
-} from '@builder.io/qwik';
-import { Link } from '@builder.io/qwik-city';
-import CrystalBitLogo from '~/components/icons/crystalbit';
-import Burger from '~/components/icons/burger';
-import Menu from '~/components/layouts/menu/menu';
-import Transition from '~/components/Transition/transition';
-import styles from './header.module.css';
-import { headerActiveContext } from '~/store/globalStore';
+} from "@builder.io/qwik";
+import { Link } from "@builder.io/qwik-city";
+import CrystalBitLogo from "~/components/icons/crystalbit";
+import Burger from "~/components/icons/burger";
+import Menu from "~/components/layouts/menu/menu";
+import Transition from "~/components/Transition/transition";
+import styles from "./header.module.css";
+import { headerActiveContext } from "~/store/globalStore";
 
 type menu = boolean;
 
-export const menuInactiveContext = createContextId<any>('docs.menuInactive');
+export const menuInactiveContext = createContextId<any>("docs.menuInactive");
 
 export default component$(() => {
   const menu = useSignal<menu>(false);
@@ -31,10 +31,10 @@ export default component$(() => {
   const headerActive = useContext(headerActiveContext);
 
   useOnWindow(
-    'resize',
+    "resize",
     $(() => {
       windowWidth.value = window.screen.width;
-    })
+    }),
   );
 
   return (
@@ -42,8 +42,8 @@ export default component$(() => {
       class={[
         styles.header,
         styles.wrapper,
-        headerActive.value ? styles.active : '',
-        'trans-3',
+        headerActive.value ? styles.active : "",
+        "trans-3",
       ]}
     >
       <div class={styles.logo}>
@@ -51,7 +51,7 @@ export default component$(() => {
           <CrystalBitLogo
             height={54}
             width={windowWidth.value <= 500 ? 150 : 200}
-            fill={'white'}
+            fill={"white"}
           />
         </Link>
       </div>
@@ -62,7 +62,7 @@ export default component$(() => {
       <Transition show={menu.value}>
         <Menu
           active={menu.value}
-          animationClass={['fade-in-right', menu.value ? 'show' : '']}
+          animationClass={["fade-in-right", menu.value ? "show" : ""]}
         ></Menu>
       </Transition>
     </header>

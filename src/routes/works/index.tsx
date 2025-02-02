@@ -1,36 +1,36 @@
-import { component$ } from '@builder.io/qwik';
-import { type DocumentHead, Link } from '@builder.io/qwik-city';
-import styles from './works.module.css';
-import WorksTranscript from '~/Transcript/works';
-import ImageCard from '~/components/layouts/card/ImageCard';
-import Image from '~/components/Image/Image';
-import If from '~/components/If/If';
+import { component$ } from "@builder.io/qwik";
+import { type DocumentHead, Link } from "@builder.io/qwik-city";
+import styles from "./works.module.css";
+import WorksTranscript from "~/Transcript/works";
+import ImageCard from "~/components/layouts/card/ImageCard";
+import Image from "~/components/Image/Image";
+import If from "~/components/If/If";
 
 export default component$(() => {
   return (
-    <div class={[styles['scroll-snap-type-y-mandatory'], 'bg-dark-blue']}>
-      <section class={[styles.works, 'bg-dark-blue']}>
+    <div class={[styles["scroll-snap-type-y-mandatory"], "bg-dark-blue"]}>
+      <section class={[styles.works, "bg-dark-blue"]}>
         <article
-          class={[styles.slogan, 'bg-dark-blue']}
+          class={[styles.slogan, "bg-dark-blue"]}
           style={{
-            visibility: 'visible',
-            opacity: '1',
-            height: '100%',
-            paddingTop: '70px',
+            visibility: "visible",
+            opacity: "1",
+            height: "100%",
+            paddingTop: "70px",
           }}
         >
-          <div class={[styles['slogan-box'], styles['works-section']]}>
+          <div class={[styles["slogan-box"], styles["works-section"]]}>
             <h2
               class={[
-                styles['slogan-text'],
-                'font-zen-maru',
-                'letter-spacing-2',
+                styles["slogan-text"],
+                "font-zen-maru",
+                "letter-spacing-2",
               ]}
             >
               WORKS
             </h2>
             <div style="display:flex;justify-content:space-between">
-              <h2 class={[styles['slogan-text-sm'], 'letter-spacing-2']}>
+              <h2 class={[styles["slogan-text-sm"], "letter-spacing-2"]}>
                 合作案例
               </h2>
             </div>
@@ -38,9 +38,9 @@ export default component$(() => {
 
           <div
             class={[
-              styles['protofolio-container'],
-              styles['works-section'],
-              'bg-dark-blue',
+              styles["protofolio-container"],
+              styles["works-section"],
+              "bg-dark-blue",
             ]}
           >
             {WorksTranscript.map(
@@ -56,14 +56,14 @@ export default component$(() => {
                   sources,
                   alt,
                 },
-                i
+                i,
               ) => (
                 <div
                   style="cursor:pointer"
                   key={title + i}
-                  class={styles['protofolio-item']}
+                  class={styles["protofolio-item"]}
                 >
-                  <If condition={href.type === 'inside'}>
+                  <If condition={href.type === "inside"}>
                     <Link href={href.url}>
                       <ImageCard
                         title={title}
@@ -83,7 +83,7 @@ export default component$(() => {
                       </ImageCard>
                     </Link>
                   </If>
-                  <If condition={href.type === 'outside'}>
+                  <If condition={href.type === "outside"}>
                     <a
                       href={href.url}
                       target="_blank"
@@ -108,7 +108,7 @@ export default component$(() => {
                     </a>
                   </If>
                 </div>
-              )
+              ),
             )}
           </div>
           <div style="margin-top:80px">
@@ -122,5 +122,5 @@ export default component$(() => {
 
 export const head: DocumentHead = {
   title:
-    '合作案例 - 桃園中壢網頁設計, 桃園中壢系統設計, 桃園中壢 UI/UX 規劃, Email 伺服器架設, 桃園中壢雲端空間架設等等的專業網站設計及系統設計服務公司',
+    "合作案例 - 桃園中壢網頁設計, 桃園中壢系統設計, 桃園中壢 UI/UX 規劃, Email 伺服器架設, 桃園中壢雲端空間架設等等的專業網站設計及系統設計服務公司",
 };

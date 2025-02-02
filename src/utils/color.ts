@@ -1,7 +1,7 @@
 export function getColorTransition(
   startColor: string,
   endColor: string,
-  duration: number
+  duration: number,
 ) {
   const start = parseInt(startColor.substr(1), 16);
   const end = parseInt(endColor.substr(1), 16);
@@ -22,7 +22,7 @@ export function getColorTransition(
     const r = Math.round(r0 + (r1 - r0) * reversedProgress);
     const g = Math.round(g0 + (g1 - g0) * reversedProgress);
     const b = Math.round(b0 + (b1 - b0) * reversedProgress);
-    const hex = `#${((r << 16) | (g << 8) | b).toString(16).padStart(6, '0')}`;
+    const hex = `#${((r << 16) | (g << 8) | b).toString(16).padStart(6, "0")}`;
 
     return { hex, rgb: `${r},${g},${b}` };
   };

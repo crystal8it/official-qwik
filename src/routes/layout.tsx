@@ -1,8 +1,8 @@
-import { component$, Slot } from '@builder.io/qwik';
-import GlobalStore from '~/store/globalStore';
-import Header from '~/components/layouts/header/header';
-import Footer from '~/components/layouts/footer/footer';
-import type { DocumentHead } from '@builder.io/qwik-city';
+import { component$, Slot } from "@builder.io/qwik";
+import GlobalStore from "~/store/globalStore";
+import Header from "~/components/layouts/header/header";
+import Footer from "~/components/layouts/footer/footer";
+import type { DocumentHead } from "@builder.io/qwik-city";
 
 export default component$(() => {
   return (

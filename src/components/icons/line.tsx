@@ -1,7 +1,7 @@
-import styles from './icons.module.css';
+import styles from "./icons.module.css";
 
 const Line = ({ size = 40 }) => (
-  <a href="https://lin.ee/802mVjh" target="_blank" class={styles['icon-hover']}>
+  <a href="https://lin.ee/802mVjh" target="_blank" class={styles["icon-hover"]}>
     <svg
       width={size}
       height={size}

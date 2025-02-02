@@ -1,4 +1,4 @@
-import { useSignal, component$, useVisibleTask$, Slot } from '@builder.io/qwik';
+import { useSignal, component$, useVisibleTask$, Slot } from "@builder.io/qwik";
 
 type transformYProps = {
   index: number;
@@ -18,10 +18,10 @@ export default component$(
     return (
       <article
         style={{ ...style }}
-        class={[`hidden-${index + 1}`, isShow.value ? 'show' : '', ...myClass]}
+        class={[`hidden-${index + 1}`, isShow.value ? "show" : "", ...myClass]}
       >
         <Slot></Slot>
       </article>
     );
-  }
+  },
 );

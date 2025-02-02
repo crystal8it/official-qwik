@@ -1,16 +1,16 @@
-import { component$ } from '@builder.io/qwik';
+import { component$ } from "@builder.io/qwik";
 
 type source = {
   srcSet: string;
-  type: 'image/webp' | 'image/png' | 'image/jpeg';
+  type: "image/webp" | "image/png" | "image/jpeg";
   media?: string;
 };
 
 type ImageProps = {
   src: string;
   alt: string;
-  obectFit?: 'cover' | 'contain';
-  fitPosition?: 'top' | 'center' | 'bottom';
+  obectFit?: "cover" | "contain";
+  fitPosition?: "top" | "center" | "bottom";
   width?: any;
   height?: any;
   sources?: source[];
@@ -20,10 +20,10 @@ export default component$(
   ({
     src,
     alt,
-    obectFit = 'cover',
-    fitPosition = 'top',
-    width = '100%',
-    height = '100%',
+    obectFit = "cover",
+    fitPosition = "top",
+    width = "100%",
+    height = "100%",
     sources,
   }: ImageProps) => {
     return (
@@ -39,13 +39,13 @@ export default component$(
           style={{
             objectFit: obectFit,
             objectPosition: fitPosition,
-            width: '100%',
-            height: '100%',
+            width: "100%",
+            height: "100%",
           }}
           alt={alt}
           src={src}
         />
       </picture>
     );
-  }
+  },
 );

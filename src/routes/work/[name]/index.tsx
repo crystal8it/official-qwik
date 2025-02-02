@@ -5,17 +5,17 @@ import {
   useSignal,
   useVisibleTask$,
   useContext,
-} from '@builder.io/qwik';
-import { useLocation, type StaticGenerateHandler } from '@builder.io/qwik-city';
-import type { DocumentHead } from '@builder.io/qwik-city';
-import styles from './work.module.css';
-import LinearBtn from '~/components/button/LinearBtn';
-import loadWorkNames from './loadWorkNames';
-import WorkTranscript from '~/Transcript/work-id';
-import Image from '~/components/Image/Image';
-import TransformY from '~/components/Transition/transformY';
-import Contact from '~/components/Section/Contact';
-import { headerHandlerContext } from '~/store/globalStore';
+} from "@builder.io/qwik";
+import { useLocation, type StaticGenerateHandler } from "@builder.io/qwik-city";
+import type { DocumentHead } from "@builder.io/qwik-city";
+import styles from "./work.module.css";
+import LinearBtn from "~/components/button/LinearBtn";
+import loadWorkNames from "./loadWorkNames";
+import WorkTranscript from "~/Transcript/work-id";
+import Image from "~/components/Image/Image";
+import TransformY from "~/components/Transition/transformY";
+import Contact from "~/components/Section/Contact";
+import { headerHandlerContext } from "~/store/globalStore";
 
 export default component$(() => {
   const { params } = useLocation();
@@ -42,22 +42,22 @@ export default component$(() => {
   });
 
   const clickRedirect = $(() => {
-    const a = document.createElement('a');
+    const a = document.createElement("a");
     a.href = signal.href;
-    a.target = '_blank';
-    a.rel = 'noopener noreferrer';
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
     a.click();
   });
 
   return (
-    <article onScroll$={scroll} class={[styles['work-container']]}>
+    <article onScroll$={scroll} class={[styles["work-container"]]}>
       {/* banner */}
       <section class={styles.banner}>
         <div
           class={[
-            styles['img-container'],
+            styles["img-container"],
             `hidden-${1}`,
-            isShow.value ? 'show' : '',
+            isShow.value ? "show" : "",
           ]}
         >
           <Image
@@ -73,14 +73,14 @@ export default component$(() => {
 
         <div
           class={[
-            styles['title-container'],
+            styles["title-container"],
             `hidden-${2}`,
-            isShow.value ? 'show' : '',
+            isShow.value ? "show" : "",
           ]}
         >
           <h2 class={[styles.title, styles.eng]}>{signal.banner.eng}</h2>
           <h2 class={styles.title}>{signal.banner.cht}</h2>
-          <div class={styles['tag-container']}>
+          <div class={styles["tag-container"]}>
             {signal.banner.tag.map((tag) => (
               <p key={tag} class={styles.tag}>
                 #{tag}
@@ -104,17 +104,17 @@ export default component$(() => {
       </svg>
 
       {/* content */}
-      <section class={styles['content-background']}>
+      <section class={styles["content-background"]}>
         <section class={styles.content}>
-          <div class={styles['content-section']}>
+          <div class={styles["content-section"]}>
             <TransformY
               index={1}
               style={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
               }}
-              myClass={[styles['text-container']]}
+              myClass={[styles["text-container"]]}
             >
               <Image
                 width={300}
@@ -127,7 +127,7 @@ export default component$(() => {
               <p>{signal.customerIntroduction.content}</p>
             </TransformY>
 
-            <TransformY index={3} myClass={[styles['img-container']]}>
+            <TransformY index={3} myClass={[styles["img-container"]]}>
               <Image
                 width={800}
                 height={500}
@@ -142,9 +142,9 @@ export default component$(() => {
 
           <div
             style="margin-top:100px"
-            class={[styles['content-section'], styles['flex-reverse-750']]}
+            class={[styles["content-section"], styles["flex-reverse-750"]]}
           >
-            <TransformY index={3} myClass={[styles['text-container']]}>
+            <TransformY index={3} myClass={[styles["text-container"]]}>
               <Image
                 width={800}
                 height={500}
@@ -156,7 +156,7 @@ export default component$(() => {
               ></Image>
             </TransformY>
 
-            <TransformY index={1} myClass={[styles['text-container']]}>
+            <TransformY index={1} myClass={[styles["text-container"]]}>
               <div>
                 <h2>專案背景</h2>
                 <p>{signal.projectBackground.content}</p>
@@ -168,7 +168,7 @@ export default component$(() => {
 
               <LinearBtn
                 event={clickRedirect}
-                style={{ marginTop: '30px' }}
+                style={{ marginTop: "30px" }}
                 size="xl"
               >
                 前往網站 &nbsp; &nbsp; &rarr;
@@ -204,11 +204,11 @@ export const head: DocumentHead = ({ params }) => {
     title: `合作案例 - ${WorkTranscript[name].banner.cht} - 桃園中壢網頁設計, 桃園中壢系統設計, 桃園中壢 UI/UX 規劃, Email 伺服器架設, 桃園中壢雲端空間架設等等的專業網站設計及系統設計服務公司'`,
     meta: [
       {
-        name: 'description',
+        name: "description",
         content: WorkTranscript[name].banner.cht,
       },
       {
-        name: 'id',
+        name: "id",
         content: params.name,
       },
     ],

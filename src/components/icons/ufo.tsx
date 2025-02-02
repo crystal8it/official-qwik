@@ -1,5 +1,5 @@
-import { component$, useSignal, useVisibleTask$ } from '@builder.io/qwik';
-import styles from './ufo.module.css';
+import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
+import styles from "./ufo.module.css";
 
 export const UFO = component$(({ width = 40 }: { width?: number }) => {
   const isShow = useSignal(false);
@@ -23,7 +23,7 @@ export const UFO = component$(({ width = 40 }: { width?: number }) => {
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          class={[styles.light, 'trans-3', isShow.value ? styles.active : '']}
+          class={[styles.light, "trans-3", isShow.value ? styles.active : ""]}
           d="M230.347 95.9565L19.7312 222.916C19.7312 222.916 37.6513 292.694 140.392 328.469C243.132 364.245 300.516 320.689 300.516 320.689L230.347 95.9565Z"
           fill="url(#paint0_linear_2202_4370)"
         />

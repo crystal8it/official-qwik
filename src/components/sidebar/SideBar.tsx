@@ -1,9 +1,9 @@
-import { component$, Slot } from '@builder.io/qwik';
-import styles from './SideBar.module.css';
+import { component$, Slot } from "@builder.io/qwik";
+import styles from "./SideBar.module.css";
 
-import Facebook from '../icons/facebook';
-import Line from '../icons/line';
-import Telegram from '../icons/telegram';
+import Facebook from "../icons/facebook";
+import Line from "../icons/line";
+import Telegram from "../icons/telegram";
 
 type sideBarProps = {
   style?: any;
@@ -11,7 +11,7 @@ type sideBarProps = {
 
 export default component$(({ style }: sideBarProps) => {
   return (
-    <nav style={...style} class={styles.sidebar}>
+    <nav style={{ ...style }} class={styles.sidebar}>
       <Slot></Slot>
 
       <Line></Line>

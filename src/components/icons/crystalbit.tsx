@@ -1,4 +1,4 @@
-export type fill = 'black' | 'white';
+export type fill = "black" | "white";
 
 interface CrystalBitLogoProps {
   fill: fill;
@@ -7,7 +7,7 @@ interface CrystalBitLogoProps {
 }
 
 const CrystalBitLogo = ({
-  fill = 'black',
+  fill = "black",
   width = 167,
   height = 45,
 }: CrystalBitLogoProps) => (

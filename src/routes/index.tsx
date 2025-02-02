@@ -5,36 +5,36 @@ import {
   useVisibleTask$,
   useStore,
   useContext,
-} from '@builder.io/qwik';
-import type { DocumentHead } from '@builder.io/qwik-city';
-import styles from './home.module.css';
-import Wheel from '~/components/ScrollDown/Wheel';
-import RegularBtn from '~/components/button/RegularBtn';
-import Background from '~/components/layouts/background/background';
-import ImageCard from '~/components/layouts/card/ImageCard';
-import BorderCard from '~/components/layouts/card/BorderCard';
-import SolidCard from '~/components/layouts/card/SolidCard';
-import Image from '~/components/Image/Image';
-import SideBar from '~/components/sidebar/SideBar';
-import Divider from '~/components/divider/Divider';
-import { UFO } from '~/components/icons/ufo';
-import TransformY from '~/components/Transition/transformY';
-import arcPng from '~/assets/arc.png';
-import arcReverse from '~/assets/contact/arcReverse.png';
+} from "@builder.io/qwik";
+import type { DocumentHead } from "@builder.io/qwik-city";
+import styles from "./home.module.css";
+import Wheel from "~/components/ScrollDown/Wheel";
+import RegularBtn from "~/components/button/RegularBtn";
+import Background from "~/components/layouts/background/background";
+import ImageCard from "~/components/layouts/card/ImageCard";
+import BorderCard from "~/components/layouts/card/BorderCard";
+import SolidCard from "~/components/layouts/card/SolidCard";
+import Image from "~/components/Image/Image";
+import SideBar from "~/components/sidebar/SideBar";
+import Divider from "~/components/divider/Divider";
+import { UFO } from "~/components/icons/ufo";
+import TransformY from "~/components/Transition/transformY";
+import arcPng from "~/assets/arc.png";
+import arcReverse from "~/assets/contact/arcReverse.png";
 import {
   ProtofolioTranscript,
   ServiceTranscript,
   PartnerTranscript,
   ProcessTranscript,
-} from '~/Transcript';
-import { headerHandlerContext } from '~/store/globalStore';
-import Contact from '~/components/Section/Contact';
+} from "~/Transcript";
+import { headerHandlerContext } from "~/store/globalStore";
+import Contact from "~/components/Section/Contact";
 
 export default component$(() => {
   const showSlogan = useSignal(false);
   const containerEl = useSignal<HTMLElement>();
   const itemElRef = useStore<HTMLElement[]>([]);
-  const activeSection = useSignal<string>('#hero');
+  const activeSection = useSignal<string>("#hero");
   const heroTransform = useSignal<number>(0);
   const showButtomDesert = useSignal(false);
 
@@ -51,7 +51,7 @@ export default component$(() => {
   });
 
   const scroll = $((e: any) => {
-    const sectionHeight = (document.querySelector('#hero') as HTMLElement)
+    const sectionHeight = (document.querySelector("#hero") as HTMLElement)
       .clientHeight;
 
     const activeNumber = e.target.scrollTop / sectionHeight;
@@ -81,31 +81,31 @@ export default component$(() => {
     }
 
     if (activeNumber < 1.14) {
-      activeSection.value = '#hero';
+      activeSection.value = "#hero";
     }
     if (activeNumber >= 1.14 && activeNumber < 3.5) {
-      activeSection.value = '#protofolio';
+      activeSection.value = "#protofolio";
     }
 
     if (activeNumber >= 3.5 && activeNumber < 4.4) {
-      activeSection.value = '#service';
+      activeSection.value = "#service";
     }
 
     if (activeNumber >= 4.4 && activeNumber < 4.5) {
-      activeSection.value = '#partner';
+      activeSection.value = "#partner";
     }
 
     if (activeNumber >= 4.5 && activeNumber < 4.95) {
-      activeSection.value = '#process';
+      activeSection.value = "#process";
     }
 
     if (activeNumber >= 4.95) {
-      activeSection.value = '#contact';
+      activeSection.value = "#contact";
     }
   });
 
   const redirectToContact = $(() => {
-    window.location.href = '#contact';
+    window.location.href = "#contact";
   });
 
   return (
@@ -113,21 +113,21 @@ export default component$(() => {
       {/* Layouts */}
       <SideBar
         style={{
-          visibility: showSlogan.value ? 'visible' : 'hidden',
-          opacity: showSlogan.value ? '1' : '0',
-          transition: 'all 0.3s ease-in',
+          visibility: showSlogan.value ? "visible" : "hidden",
+          opacity: showSlogan.value ? "1" : "0",
+          transition: "all 0.3s ease-in",
         }}
       >
         <Divider
           type="verticle"
           width="0.5px"
           links={[
-            '#hero',
-            '#protofolio',
-            '#service',
-            '#partner',
-            '#process',
-            '#contact',
+            "#hero",
+            "#protofolio",
+            "#service",
+            "#partner",
+            "#process",
+            "#contact",
           ]}
           active={activeSection.value}
         ></Divider>
@@ -141,44 +141,44 @@ export default component$(() => {
         onScroll$={scroll}
         ref={containerEl}
         class={[
-          styles['scroll-snap-type-y-mandatory'],
-          activeSection.value === '#hero' ||
-          activeSection.value === '#contact' ||
-          activeSection.value === '#process'
+          styles["scroll-snap-type-y-mandatory"],
+          activeSection.value === "#hero" ||
+          activeSection.value === "#contact" ||
+          activeSection.value === "#process"
             ? null
-            : 'bg-dark-blue',
+            : "bg-dark-blue",
         ]}
       >
         {/* Hero */}
         <section
           ref={addElementRef}
           id="hero"
-          class={[styles.home, styles['grid-center']]}
+          class={[styles.home, styles["grid-center"]]}
           style={{
-            visibility: showSlogan.value ? 'visible' : 'hidden',
-            opacity: showSlogan.value ? '1' : '0',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            position: activeSection.value === '#hero' ? 'sticky' : 'relative',
-            top: '0',
-            height: '100%',
+            visibility: showSlogan.value ? "visible" : "hidden",
+            opacity: showSlogan.value ? "1" : "0",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            position: activeSection.value === "#hero" ? "sticky" : "relative",
+            top: "0",
+            height: "100%",
           }}
         >
           <article
-            class={[styles.slogan, 'my-10', styles.banner]}
+            class={[styles.slogan, "my-10", styles.banner]}
             style={{
-              visibility: showSlogan.value ? 'visible' : 'hidden',
-              opacity: showSlogan.value ? '1' : '0',
+              visibility: showSlogan.value ? "visible" : "hidden",
+              opacity: showSlogan.value ? "1" : "0",
             }}
           >
-            <div class={[styles['slogan-box'], styles.banner]}>
+            <div class={[styles["slogan-box"], styles.banner]}>
               <h2
-                class={[styles['slogan-text'], styles.banner, 'font-zen-maru']}
+                class={[styles["slogan-text"], styles.banner, "font-zen-maru"]}
               >
                 Full Service for Impact Brand
               </h2>
-              <h2 class={[styles['slogan-text-sm'], styles.banner]}>
+              <h2 class={[styles["slogan-text-sm"], styles.banner]}>
                 為你的品牌注入全新力量
               </h2>
               <RegularBtn
@@ -205,30 +205,30 @@ export default component$(() => {
         <section
           ref={addElementRef}
           id="protofolio"
-          class={[styles.home, 'bg-dark-blue']}
+          class={[styles.home, "bg-dark-blue"]}
         >
           <article
-            class={[styles.slogan, 'grid-center', 'bg-dark-blue']}
+            class={[styles.slogan, "grid-center", "bg-dark-blue"]}
             style={{
-              visibility: showSlogan.value ? 'visible' : 'hidden',
-              opacity: showSlogan.value ? '1' : '0',
-              height: '100%',
-              paddingTop: '140px',
-              paddingBottom: '140px',
+              visibility: showSlogan.value ? "visible" : "hidden",
+              opacity: showSlogan.value ? "1" : "0",
+              height: "100%",
+              paddingTop: "140px",
+              paddingBottom: "140px",
             }}
           >
-            <div class={[styles['slogan-box'], styles['home-section']]}>
+            <div class={[styles["slogan-box"], styles["home-section"]]}>
               <h2
                 class={[
-                  styles['slogan-text'],
-                  'font-zen-maru',
-                  'letter-spacing-2',
+                  styles["slogan-text"],
+                  "font-zen-maru",
+                  "letter-spacing-2",
                 ]}
               >
                 WORKS
               </h2>
               <div style="display:flex;justify-content:space-between">
-                <h2 class={[styles['slogan-text-sm'], 'letter-spacing-2']}>
+                <h2 class={[styles["slogan-text-sm"], "letter-spacing-2"]}>
                   合作案例
                 </h2>
               </div>
@@ -236,9 +236,9 @@ export default component$(() => {
 
             <div
               class={[
-                styles['protofolio-container'],
-                styles['home-section'],
-                'bg-dark-blue',
+                styles["protofolio-container"],
+                styles["home-section"],
+                "bg-dark-blue",
               ]}
             >
               {ProtofolioTranscript.map(
@@ -254,9 +254,9 @@ export default component$(() => {
                     sources,
                     alt,
                   },
-                  i
+                  i,
                 ) => (
-                  <div key={title + i} class={styles['protofolio-item']}>
+                  <div key={title + i} class={styles["protofolio-item"]}>
                     <a href={href} target="_blank" rel="noreferrer noopener">
                       <ImageCard
                         title={title}
@@ -276,7 +276,7 @@ export default component$(() => {
                       </ImageCard>
                     </a>
                   </div>
-                )
+                ),
               )}
             </div>
             <div style="margin-top:80px">
@@ -289,28 +289,28 @@ export default component$(() => {
         <section
           ref={addElementRef}
           id="service"
-          class={[styles.home, 'bg-dark-blue']}
+          class={[styles.home, "bg-dark-blue"]}
         >
           <article
-            class={[styles.slogan, 'grid-center', 'bg-dark-blue']}
+            class={[styles.slogan, "grid-center", "bg-dark-blue"]}
             style={{
-              visibility: showSlogan.value ? 'visible' : 'hidden',
-              opacity: showSlogan.value ? '1' : '0',
-              height: '100%',
-              paddingTop: '140px',
+              visibility: showSlogan.value ? "visible" : "hidden",
+              opacity: showSlogan.value ? "1" : "0",
+              height: "100%",
+              paddingTop: "140px",
             }}
           >
-            <div class={[styles['slogan-box'], styles['home-section']]}>
+            <div class={[styles["slogan-box"], styles["home-section"]]}>
               <h2
                 class={[
-                  styles['slogan-text'],
-                  'font-zen-maru',
-                  'letter-spacing-2',
+                  styles["slogan-text"],
+                  "font-zen-maru",
+                  "letter-spacing-2",
                 ]}
               >
                 SERVICE
               </h2>
-              <h2 class={[styles['slogan-text-sm'], 'letter-spacing-2']}>
+              <h2 class={[styles["slogan-text-sm"], "letter-spacing-2"]}>
                 服務項目
               </h2>
               <UFO width={350}></UFO>
@@ -318,9 +318,9 @@ export default component$(() => {
 
             <div
               class={[
-                styles['service-container'],
-                styles['home-section'],
-                'bg-dark-blue',
+                styles["service-container"],
+                styles["home-section"],
+                "bg-dark-blue",
               ]}
             >
               {ServiceTranscript.map(({ title, engTitle, content }, i) => (
@@ -340,37 +340,37 @@ export default component$(() => {
         <section
           ref={addElementRef}
           id="partner"
-          class={[styles.home, 'bg-dark-blue']}
+          class={[styles.home, "bg-dark-blue"]}
         >
           <article
-            class={[styles.slogan, 'grid-center', 'bg-dark-blue']}
+            class={[styles.slogan, "grid-center", "bg-dark-blue"]}
             style={{
-              visibility: showSlogan.value ? 'visible' : 'hidden',
-              opacity: showSlogan.value ? '1' : '0',
-              height: '100%',
-              paddingTop: '140px',
+              visibility: showSlogan.value ? "visible" : "hidden",
+              opacity: showSlogan.value ? "1" : "0",
+              height: "100%",
+              paddingTop: "140px",
             }}
           >
-            <div class={[styles['slogan-box'], styles['home-section']]}>
+            <div class={[styles["slogan-box"], styles["home-section"]]}>
               <h2
                 class={[
-                  styles['slogan-text'],
-                  'font-zen-maru',
-                  'letter-spacing-2',
+                  styles["slogan-text"],
+                  "font-zen-maru",
+                  "letter-spacing-2",
                 ]}
               >
                 PARTNER
               </h2>
-              <h2 class={[styles['slogan-text-sm'], 'letter-spacing-2']}>
+              <h2 class={[styles["slogan-text-sm"], "letter-spacing-2"]}>
                 合作夥伴
               </h2>
             </div>
 
             <div
               class={[
-                styles['partner-container'],
-                styles['home-section'],
-                'bg-dark-blue',
+                styles["partner-container"],
+                styles["home-section"],
+                "bg-dark-blue",
               ]}
             >
               {PartnerTranscript.map(
@@ -386,7 +386,7 @@ export default component$(() => {
                       ></Image>
                     </a>
                   </TransformY>
-                )
+                ),
               )}
             </div>
           </article>
@@ -396,34 +396,34 @@ export default component$(() => {
         <section
           ref={addElementRef}
           id="process"
-          class={[styles.home, 'bg-dark-blue']}
+          class={[styles.home, "bg-dark-blue"]}
         >
           <article
-            class={[styles.slogan, 'grid-center', 'bg-dark-blue']}
+            class={[styles.slogan, "grid-center", "bg-dark-blue"]}
             style={{
-              visibility: showSlogan.value ? 'visible' : 'hidden',
-              opacity: showSlogan.value ? '1' : '0',
-              height: '100%',
-              paddingTop: '180px',
-              paddingBottom: '360px',
+              visibility: showSlogan.value ? "visible" : "hidden",
+              opacity: showSlogan.value ? "1" : "0",
+              height: "100%",
+              paddingTop: "180px",
+              paddingBottom: "360px",
             }}
           >
-            <div class={[styles['slogan-box'], styles['home-section']]}>
+            <div class={[styles["slogan-box"], styles["home-section"]]}>
               <h2
                 class={[
-                  styles['slogan-text'],
-                  'font-zen-maru',
-                  'letter-spacing-2',
+                  styles["slogan-text"],
+                  "font-zen-maru",
+                  "letter-spacing-2",
                 ]}
               >
                 PROCESS
               </h2>
-              <h2 class={[styles['slogan-text-sm'], 'letter-spacing-2']}>
+              <h2 class={[styles["slogan-text-sm"], "letter-spacing-2"]}>
                 合作流程
               </h2>
             </div>
 
-            <div class={[styles['process-container'], styles['home-section']]}>
+            <div class={[styles["process-container"], styles["home-section"]]}>
               {ProcessTranscript.map(({ content }, i) => (
                 <TransformY key={content + i} index={i}>
                   <SolidCard content={content} index={i}></SolidCard>
@@ -444,7 +444,7 @@ export default component$(() => {
         {/* contact */}
 
         <Contact
-          active={activeSection.value === '#contact'}
+          active={activeSection.value === "#contact"}
           showSlogan={showSlogan.value}
           zIndex={-2}
         ></Contact>
@@ -453,8 +453,8 @@ export default component$(() => {
         <section
           id="emptySpace"
           style={{
-            height: '20%',
-            pointerEvents: 'none',
+            height: "20%",
+            pointerEvents: "none",
           }}
         ></section>
       </div>
@@ -464,12 +464,12 @@ export default component$(() => {
 
 export const head: DocumentHead = {
   title:
-    '首頁 - 桃園中壢網頁設計, 桃園中壢系統設計, 桃園中壢 UI/UX 規劃, Email 伺服器架設, 桃園中壢雲端空間架設等等的專業網站設計及系統設計服務公司',
+    "首頁 - 桃園中壢網頁設計, 桃園中壢系統設計, 桃園中壢 UI/UX 規劃, Email 伺服器架設, 桃園中壢雲端空間架設等等的專業網站設計及系統設計服務公司",
   meta: [
     {
-      name: 'description',
+      name: "description",
       content:
-        '位於桃園中壢的CRYSTAL BIT. 是桃園中壢網頁設計, 桃園中壢系統設計, 桃園中壢 UI/UX 規劃, Email 伺服器架設, 桃園中壢網站雲端空間架設等等的專業網站設計及系統設計服務公司, 網站設計, 系統設計, 雲端伺服器架設, Email 伺服器架設找CRYSTAL BIT. 就對了! ',
+        "位於桃園中壢的CRYSTAL BIT. 是桃園中壢網頁設計, 桃園中壢系統設計, 桃園中壢 UI/UX 規劃, Email 伺服器架設, 桃園中壢網站雲端空間架設等等的專業網站設計及系統設計服務公司, 網站設計, 系統設計, 雲端伺服器架設, Email 伺服器架設找CRYSTAL BIT. 就對了! ",
     },
   ],
 };

@@ -1,4 +1,4 @@
-import { component$, useSignal, useVisibleTask$ } from '@builder.io/qwik';
+import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 
 export default component$(() => {
   const svgRef = useSignal<SVGSVGElement>();
@@ -126,17 +126,17 @@ async function pipeline(svg: SVGSVGElement) {
 }
 
 function setDashOffset(svg: SVGSVGElement) {
-  const paths = svg.querySelectorAll('path');
+  const paths = svg.querySelectorAll("path");
 
   return new Promise((resolve) => {
     paths.forEach((path: SVGPathElement) => {
       const length = path.getTotalLength();
 
-      path.setAttribute('stroke-dashoffset', length.toString());
-      path.setAttribute('stroke-dasharray', length.toString());
-      path.setAttribute('stroke', '#fff');
-      path.setAttribute('stroke-width', '0.2');
-      path.setAttribute('fill', 'none');
+      path.setAttribute("stroke-dashoffset", length.toString());
+      path.setAttribute("stroke-dasharray", length.toString());
+      path.setAttribute("stroke", "#fff");
+      path.setAttribute("stroke-width", "0.2");
+      path.setAttribute("fill", "none");
     });
 
     resolve(true);
@@ -145,19 +145,19 @@ function setDashOffset(svg: SVGSVGElement) {
 
 async function animatePath(svg: SVGSVGElement) {
   return new Promise((resolve) => {
-    const paths = svg.querySelectorAll('path');
+    const paths = svg.querySelectorAll("path");
 
     paths.forEach((path: SVGPathElement) => {
-      path.style.transition = 'stroke-dashoffset 3s linear';
-      path.setAttribute('stroke-dashoffset', '0');
+      path.style.transition = "stroke-dashoffset 3s linear";
+      path.setAttribute("stroke-dashoffset", "0");
     });
 
     setTimeout(() => {
       paths.forEach((path: SVGPathElement) => {
         const length = path.getTotalLength();
 
-        path.style.transition = 'none';
-        path.setAttribute('stroke-dashoffset', length.toString());
+        path.style.transition = "none";
+        path.setAttribute("stroke-dashoffset", length.toString());
       });
 
       resolve(true);
@@ -166,9 +166,9 @@ async function animatePath(svg: SVGSVGElement) {
 }
 
 async function fillPath(svg: SVGSVGElement) {
-  const paths = svg.querySelectorAll('path');
+  const paths = svg.querySelectorAll("path");
   paths.forEach((path: SVGPathElement) => {
-    path.style.transition = 'fill 3s ease-in';
-    path.setAttribute('fill', '#fff');
+    path.style.transition = "fill 3s ease-in";
+    path.setAttribute("fill", "#fff");
   });
 }

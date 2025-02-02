@@ -1,9 +1,9 @@
-import { component$, useStore } from '@builder.io/qwik';
-import Wheel from '../ScrollDown/Wheel';
+import { component$, useStore } from "@builder.io/qwik";
+import Wheel from "../ScrollDown/Wheel";
 // import ImageCard from '../layouts/card/ImageCard';
 // import Image from '../Image/Image';
 // import { ProtofolioTranscript } from '~/Transcript';
-import styles from '~/routes/home.module.css';
+import styles from "~/routes/home.module.css";
 
 export default component$(
   ({
@@ -64,21 +64,21 @@ export default component$(
         }}
         ref={addElementRef}
         id="protofolio"
-        class={[styles.home, 'bg-dark-blue']}
+        class={[styles.home, "bg-dark-blue"]}
       >
         <article
-          class={[styles.slogan, 'grid-center']}
+          class={[styles.slogan, "grid-center"]}
           style={{
-            visibility: showSlogan ? 'visible' : 'hidden',
-            opacity: showSlogan ? '1' : '0',
-            padding: '60px 0px',
-            height: '100%',
+            visibility: showSlogan ? "visible" : "hidden",
+            opacity: showSlogan ? "1" : "0",
+            padding: "60px 0px",
+            height: "100%",
           }}
         >
-          <div class={[styles['slogan-box'], styles['home-section']]}>
-            <h2 class={styles['slogan-text-sm']}>合作案列</h2>
+          <div class={[styles["slogan-box"], styles["home-section"]]}>
+            <h2 class={styles["slogan-text-sm"]}>合作案列</h2>
             <div style="display:flex;justify-content:space-between">
-              <h2 class={[styles['slogan-text-sm'], 'font-zen-maru']}>
+              <h2 class={[styles["slogan-text-sm"], "font-zen-maru"]}>
                 Protfolio
               </h2>
               <Wheel rotate={true} hideText={true}></Wheel>
@@ -91,9 +91,9 @@ export default component$(
               transform: `translateX(${onDragScrollStore.transformX}%)`,
             }}
             class={[
-              styles['protofolio-container'],
-              styles['home-section'],
-              'mt-5',
+              styles["protofolio-container"],
+              styles["home-section"],
+              "mt-5",
             ]}
           >
             {/* {ProtofolioTranscript.map(({ title, src, alt }, i) => (
@@ -107,5 +107,5 @@ export default component$(
         </article>
       </section>
     );
-  }
+  },
 );
