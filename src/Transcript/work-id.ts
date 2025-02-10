@@ -270,7 +270,7 @@ const WorkTranscript: { [key: string]: TWorkTranscript } = {
     },
     href: "https://www.ilens.com.tw/pages/%E8%B2%A9%E5%94%AE%E9%80%9A%E8%B7%AF",
   },
-  "4U2": {
+  "4u2": {
     banner: {
       eng: "4U2 Sales Location Page",
       cht: "4U2台灣總代理銷售據點",

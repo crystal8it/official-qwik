@@ -85,7 +85,7 @@ const ProtofolioTranscript: TProtofolioTranscript[] = [
     alt: "愛能視隱形眼鏡",
   },
   {
-    id: "4U2",
+    id: "4u2",
     title: "4U2銷售據點",
     subTitle: "據點與販售系列都能一手掌握",
     href: {
