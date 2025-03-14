@@ -30,7 +30,7 @@ export default component$(
       <picture style="width: fit-content;height: fit-content">
         {sources !== undefined && sources.length > 0
           ? sources?.map(({ srcSet, media, type }) => (
-              <source key={srcSet} media={media} srcSet={srcSet} type={type} />
+              <source key={srcSet} media={media} srcset={srcSet} type={type} />
             ))
           : null}
         <img

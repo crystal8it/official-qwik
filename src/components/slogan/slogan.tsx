@@ -3,6 +3,7 @@ import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 export default component$(() => {
   const svgRef = useSignal<SVGSVGElement>();
 
+  // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(({ track }) => {
     track(() => svgRef.value);
 

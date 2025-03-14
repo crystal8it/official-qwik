@@ -11,6 +11,7 @@ type cardProps = {
 export default component$(({ index, title, subTitle, tag }: cardProps) => {
   const isShow = useSignal(false);
 
+  // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(({ cleanup }) => {
     isShow.value = true;
 

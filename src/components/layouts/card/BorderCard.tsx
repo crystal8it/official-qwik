@@ -13,6 +13,7 @@ export default component$(
   ({ index, title, engTitle, content }: BorderCardProps) => {
     const isShow = useSignal(false);
 
+    // eslint-disable-next-line qwik/no-use-visible-task
     useVisibleTask$(({ cleanup }) => {
       isShow.value = true;
       cleanup(() => (isShow.value = false));

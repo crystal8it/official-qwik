@@ -10,6 +10,7 @@ export default component$(
   ({ index, myClass = [], style = {} }: transformYProps) => {
     const isShow = useSignal(false);
 
+    // eslint-disable-next-line qwik/no-use-visible-task
     useVisibleTask$(({ cleanup }) => {
       isShow.value = true;
       cleanup(() => (isShow.value = false));

@@ -4,6 +4,7 @@ import styles from "./ufo.module.css";
 export const UFO = component$(({ width = 40 }: { width?: number }) => {
   const isShow = useSignal(false);
 
+  // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(({ cleanup }) => {
     const timeOut = setTimeout(() => {
       isShow.value = true;
@@ -78,7 +79,7 @@ export const UFO = component$(({ width = 40 }: { width?: number }) => {
             width="143.368"
             height="64.9751"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            color-interpolation-filters="s-rGB"
           >
             <feFlood flood-opacity="0" result="BackgroundImageFix" />
             <feBlend
@@ -131,7 +132,7 @@ export const UFO = component$(({ width = 40 }: { width?: number }) => {
             width="197.93"
             height="102.907"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            color-interpolation-filters="s-rGB"
           >
             <feFlood flood-opacity="0" result="BackgroundImageFix" />
             <feBlend
@@ -166,7 +167,7 @@ export const UFO = component$(({ width = 40 }: { width?: number }) => {
             width="114.338"
             height="76.0039"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            color-interpolation-filters="s-rGB"
           >
             <feFlood flood-opacity="0" result="BackgroundImageFix" />
             <feBlend

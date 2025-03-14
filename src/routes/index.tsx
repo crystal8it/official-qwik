@@ -40,6 +40,7 @@ export default component$(() => {
 
   const headerHandler = useContext(headerHandlerContext);
 
+  // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(() => {
     setTimeout(() => {
       showSlogan.value = true;

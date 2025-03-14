@@ -29,6 +29,7 @@ export default component$(({ active, animationClass }: Props) => {
 
       {links.map(({ href, content }) => (
         <a
+          href="#"
           style="cursor: pointer;"
           preventdefault:click
           onPointerDown$={() => {

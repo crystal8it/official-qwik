@@ -243,6 +243,7 @@ const Background = component$(
       }),
     );
 
+    // eslint-disable-next-line qwik/no-use-visible-task
     useVisibleTask$(({ track }) => {
       track(() => [canvasRef.value, windowWidth.value, windowHeight.value]);
       const canvas = canvasRef.value;

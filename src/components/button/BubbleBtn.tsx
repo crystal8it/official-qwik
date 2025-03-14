@@ -4,6 +4,7 @@ import styles from "./Btn.module.css";
 export default component$(() => {
   const isShow = useSignal<boolean>(false);
 
+  // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(({ cleanup }) => {
     isShow.value = true;
 

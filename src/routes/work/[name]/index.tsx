@@ -26,6 +26,7 @@ export default component$(() => {
   const height = window.innerHeight;
   const headerHandler = useContext(headerHandlerContext);
 
+  // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(({ cleanup }) => {
     isShow.value = true;
     cleanup(() => (isShow.value = false));
