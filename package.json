@@ -6,7 +6,9 @@
   },
   "engines-annotation": "Mostly required by sharp which needs a Node-API v9 compatible runtime",
   "private": true,
-  "trustedDependencies": ["sharp"],
+  "trustedDependencies": [
+    "sharp"
+  ],
   "trustedDependencies-annotation": "Needed for bun to allow running install scripts",
   "type": "module",
   "scripts": {
@@ -27,15 +29,15 @@
   },
   "devDependencies": {
     "@builder.io/partytown": "^0.8.1",
-    "@builder.io/qwik": "^1.12.1",
-    "@builder.io/qwik-city": "^1.12.1",
+    "@builder.io/qwik": "^1.18.0",
+    "@builder.io/qwik-city": "^1.18.0",
     "@types/eslint": "8.56.10",
     "@types/node": "20.14.11",
     "@typescript-eslint/eslint-plugin": "7.16.1",
     "@typescript-eslint/parser": "7.16.1",
     "autoprefixer": "^10.4.14",
     "eslint": "8.57.0",
-    "eslint-plugin-qwik": "^1.12.0",
+    "eslint-plugin-qwik": "^1.18.0",
     "postcss": "^8.4.23",
     "postcss-preset-env": "^8.3.2",
     "prettier": "3.3.3",
